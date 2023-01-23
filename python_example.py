@@ -3,26 +3,26 @@
 # print(datetime.datetime.now())
 
 """Write a Python program that accepts the user's first
-and last name and prints them in reverse order with a space between them."""
-import os
+# and last name and prints them in reverse order with a space between them."""
+# import os
 
 # print(input("First name"), input("Last Name"))
 
 """Write a Python program that accepts a sequence of 
-comma-separated numbers from the user and generates a list and a tuple of those numbers"""
+# comma-separated numbers from the user and generates a list and a tuple of those numbers"""
 
 # x = input("Enter Number using comma").split(",")
 # z = tuple(x)
 # print(x, z)
 
 """8. Write a Python program to display the first and last colors from the 
-following list. color_list = ["Red","Green","White" ,"Black"]"""
+# following list. color_list = ["Red","Green","White" ,"Black"]"""
 
 # color_list = ["Red","Green","White" ,"Black"]
 # print("%s %s"%(color_list[0],color_list[-1]))
 
 """
-9. Write a Python program to display the examination schedule. (extract the date from exam_st_date). 
+# 9. Write a Python program to display the examination schedule. (extract the date from exam_st_date). 
 """
 
 # exam_st_date = (11, 12, 2014)
@@ -48,7 +48,7 @@ following list. color_list = ["Red","Green","White" ,"Black"]"""
 # print(delta.days)
 
 """Write a Python program to calculate the difference between a given number and 17.
-If the number is greater than 17, return twice the absolute difference."""
+# If the number is greater than 17, return twice the absolute difference."""
 
 # x = int(input("Enter Number:"))
 
@@ -67,7 +67,7 @@ If the number is greater than 17, return twice the absolute difference."""
 
 
 """Write a Python program to calculate the sum of three given numbers.
-If the values are equal, return three times their sum."""
+# If the values are equal, return three times their sum."""
 
 # a,b,c = int(input("Enter Number 1 : ")), int(input("Enter Number 2 : ")), int(input("Enter Number 3 : "))
 # if a==b==c:
@@ -85,8 +85,8 @@ If the values are equal, return three times their sum."""
 # print(x(1,2,3)) 
 
 """
- Write a Python program to get a newly-generated string from a given string where "Is" has been added to the front.
- Return the string unchanged if the given string already begins with "Is"""
+#  Write a Python program to get a newly-generated string from a given string where "Is" has been added to the front.
+#  Return the string unchanged if the given string already begins with "Is"""
 
 # def s(st):
 #     if st[:2] == "Is":
@@ -128,7 +128,7 @@ If the values are equal, return three times their sum."""
 
 
 """Write a Python program to get n (non-negative integer) copies of the first 2 characters of a given string.
-Return n copies of the whole string if the length is less than 2"""
+# Return n copies of the whole string if the length is less than 2"""
 
 # def substring_copy(text, n):
 #   flen = 2
@@ -190,7 +190,7 @@ Return n copies of the whole string if the length is less than 2"""
 # print(con([1,2,3,5,4]))
 
 """Write a Python program to print all even numbers from a given list 
-of numbers in the same order and stop printing any after 237 in the sequence."""
+# of numbers in the same order and stop printing any after 237 in the sequence."""
 
 #
 # def n(number, stop):
@@ -212,7 +212,7 @@ of numbers in the same order and stop printing any after 237 in the sequence."""
 # n(numbers, 237)
 
 """Write a Python program that prints out all colors from 
-color_list_1 that are not present in color_list_2"""
+# color_list_1 that are not present in color_list_2"""
 
 #
 # def color(a, b):
@@ -292,7 +292,7 @@ color_list_1 that are not present in color_list_2"""
 # print(n(10,10,30))
 
 """Write a Python program to sum two given integers.
-However, if the sum is between 15 and 20 it will return 20."""
+# However, if the sum is between 15 and 20 it will return 20."""
 
 # def s(n, m, a, b):
 #     sum = n + m
@@ -416,8 +416,8 @@ However, if the sum is between 15 and 20 it will return 20."""
 # print("\n")
 
 """Write a Python program to determine the profiling of Python programs. Go to the editor
-Note: A profile is a set of statistics that describes how often and for how long various parts of the program executed.
-These statistics can be formatted into reports via the pstats module."""
+# Note: A profile is a set of statistics that describes how often and for how long various parts of the program executed.
+# These statistics can be formatted into reports via the pstats module."""
 
 # import cProfile
 # def sum():
@@ -456,562 +456,562 @@ These statistics can be formatted into reports via the pstats module."""
 
 """Write a Python program to sum the first n positive integers."""
 
-n = int(input("Input a number: "))
-sum_num = (n * (n + 1)) / 2
-print("Sum of the first", n, "positive integers:", sum_num)
+# n = int(input("Input a number: "))
+# sum_num = (n * (n + 1)) / 2
+# print("Sum of the first", n, "positive integers:", sum_num)
 
 
 
 """Write a Python program to convert height (in feet and inches) to centimeters."""
 
-print("Input your height: ")
-h_ft = int(input("Feet: "))
-h_inch = int(input("Inches: "))
+# print("Input your height: ")
+# h_ft = int(input("Feet: "))
+# h_inch = int(input("Inches: "))
 
-h_inch += h_ft * 12
-h_cm = round(h_inch * 2.54, 1)
+# h_inch += h_ft * 12
+# h_cm = round(h_inch * 2.54, 1)
 
-print("Your height is : %d cm." % h_cm)
+# print("Your height is : %d cm." % h_cm)
 
 """Write a Python program to calculate the hypotenuse of a right angled triangle."""
 
-from math import sqrt
-print("Input lengths of shorter triangle sides:")
-a = float(input("a: "))
-b = float(input("b: "))
-c = sqrt(a**2 + b**2)
-print("The length of the hypotenuse is:", c )
+# from math import sqrt
+# print("Input lengths of shorter triangle sides:")
+# a = float(input("a: "))
+# b = float(input("b: "))
+# c = sqrt(a**2 + b**2)
+# print("The length of the hypotenuse is:", c )
 
 
 """Write a Python program to convert the distance (in feet) to inches, yards, and miles."""
 
-d_ft = int(input("Input distance in feet: "))
-d_inches = d_ft * 12
-d_yards = d_ft / 3.0
-d_miles = d_ft / 5280.0
+# d_ft = int(input("Input distance in feet: "))
+# d_inches = d_ft * 12
+# d_yards = d_ft / 3.0
+# d_miles = d_ft / 5280.0
 
-print("The distance in inches is %i inches." % d_inches)
-print("The distance in yards is %.2f yards." % d_yards)
-print("The distance in miles is %.2f miles." % d_miles)
+# print("The distance in inches is %i inches." % d_inches)
+# print("The distance in yards is %.2f yards." % d_yards)
+# print("The distance in miles is %.2f miles." % d_miles)
 
 
 """Write a Python program to convert all units of time into seconds. """
 
-days = int(input("Input days: ")) * 3600 * 24
-hours = int(input("Input hours: ")) * 3600
-minutes = int(input("Input minutes: ")) * 60
-seconds = int(input("Input seconds: "))
+# days = int(input("Input days: ")) * 3600 * 24
+# hours = int(input("Input hours: ")) * 3600
+# minutes = int(input("Input minutes: ")) * 60
+# seconds = int(input("Input seconds: "))
 
-time = days + hours + minutes + seconds
+# time = days + hours + minutes + seconds
 
-print("The  amounts of seconds", time)
+# print("The  amounts of seconds", time)
 
 """Write a Python program to get an absolute file path."""
 
-def absolute_file_path(path_fname):
-        import os
-        return os.path.abspath('path_fname')        
-print("Absolute file path: ",absolute_file_path("test.txt"))
+# def absolute_file_path(path_fname):
+#         import os
+#         return os.path.abspath('path_fname')        
+# print("Absolute file path: ",absolute_file_path("test.txt"))
 
 
 """Write a Python program that retrieves the date and time of file creation and modification."""
 
-import os.path, time
-print("Last modified: %s" % time.ctime(os.path.getmtime("test.txt")))
-print("Created: %s" % time.ctime(os.path.getctime("test.txt")))
+# import os.path, time
+# print("Last modified: %s" % time.ctime(os.path.getmtime("test.txt")))
+# print("Created: %s" % time.ctime(os.path.getctime("test.txt")))
 
 
 """Write a Python program that converts seconds into days, hours, minutes, and seconds."""
 
-time = float(input("Input time in seconds: "))
-day = time // (24 * 3600)
-time = time % (24 * 3600)
-hour = time // 3600
-time %= 3600
-minutes = time // 60
-time %= 60
-seconds = time
-print("d:h:m:s-> %d:%d:%d:%d" % (day, hour, minutes, seconds))
+# time = float(input("Input time in seconds: "))
+# day = time // (24 * 3600)
+# time = time % (24 * 3600)
+# hour = time // 3600
+# time %= 3600
+# minutes = time // 60
+# time %= 60
+# seconds = time
+# print("d:h:m:s-> %d:%d:%d:%d" % (day, hour, minutes, seconds))
 
 
 """Write a Python program to calculate sum of digits of a number. """
-num = int(input("Input a four digit numbers: "))
-x  = num //1000
-x1 = (num - x*1000)//100
-x2 = (num - x*1000 - x1*100)//10
-x3 = num - x*1000 - x1*100 - x2*10
-print("The sum of digits in the number is", x+x1+x2+x3)
+# num = int(input("Input a four digit numbers: "))
+# x  = num //1000
+# x1 = (num - x*1000)//100
+# x2 = (num - x*1000 - x1*100)//10
+# x3 = num - x*1000 - x1*100 - x2*10
+# print("The sum of digits in the number is", x+x1+x2+x3)
 
 
 """Write a Python program to sort three integers without using conditional statements and loops."""
 
-x = int(input("Input first number: "))
-y = int(input("Input second number: "))
-z = int(input("Input third number: "))
+# x = int(input("Input first number: "))
+# y = int(input("Input second number: "))
+# z = int(input("Input third number: "))
 
-a1 = min(x, y, z)
-a3 = max(x, y, z)
-a2 = (x + y + z) - a1 - a3
-print("Numbers in sorted order: ", a1, a2, a3)
+# a1 = min(x, y, z)
+# a3 = max(x, y, z)
+# a2 = (x + y + z) - a1 - a3
+# print("Numbers in sorted order: ", a1, a2, a3)
 
 """Write a Python program to sort files by date."""
-import glob
-import os
+# import glob
+# import os
 
-files = glob.glob("*.txt")
-files.sort(key=os.path.getmtime)
-print("\n".join(files))
+# files = glob.glob("*.txt")
+# files.sort(key=os.path.getmtime)
+# print("\n".join(files))
 
 
 """Write a Python program to get the details of the math module."""
 # Imports the math module
-import math            
+# import math            
 #Sets everything to a list of math module
-math_ls = dir(math) # 
-print(math_ls)
+# math_ls = dir(math) # 
+# print(math_ls)
 
 """Write a Python program to calculate the midpoints of a line."""
 
-print('\nCalculate the midpoint of a line :')
+# print('\nCalculate the midpoint of a line :')
 
-x1 = float(input('The value of x (the first endpoint) '))
-y1 = float(input('The value of y (the first endpoint) '))
+# x1 = float(input('The value of x (the first endpoint) '))
+# y1 = float(input('The value of y (the first endpoint) '))
 
-x2 = float(input('The value of x (the first endpoint) '))
-y2 = float(input('The value of y (the first endpoint) '))
+# x2 = float(input('The value of x (the first endpoint) '))
+# y2 = float(input('The value of y (the first endpoint) '))
 
-x_m_point = (x1 + x2)/2
-y_m_point = (y1 + y2)/2
-print()
-print("The midpoint of line is :")
-print( "The midpoint's x value is: ",x_m_point)
-print( "The midpoint's y value is: ",y_m_point)
-print()
+# x_m_point = (x1 + x2)/2
+# y_m_point = (y1 + y2)/2
+# print()
+# print("The midpoint of line is :")
+# print( "The midpoint's x value is: ",x_m_point)
+# print( "The midpoint's y value is: ",y_m_point)
+# print()
 
 
 """Write a Python program to hash a word."""
 
-soundex=[0,1,2,3,0,1,2,0,0,2,2,4,5,5,0,1,2,6,2,3,0,1,0,2,0,2]
+# soundex=[0,1,2,3,0,1,2,0,0,2,2,4,5,5,0,1,2,6,2,3,0,1,0,2,0,2]
  
-word=input("Input the word be hashed: ")
+# word=input("Input the word be hashed: ")
  
-word=word.upper()
+# word=word.upper()
  
-coded=word[0]
+# coded=word[0]
  
-for a in word[1:len(word)]:
-    i=65-ord(a)
-    coded=coded+str(soundex[i])
-print() 
-print("The coded word is: "+coded)
-print()
+# for a in word[1:len(word)]:
+#     i=65-ord(a)
+#     coded=coded+str(soundex[i])
+# print() 
+# print("The coded word is: "+coded)
+# print()
 
 
 """Write a Python program to get the copyright information and write Copyright information in Python code."""
-import sys
-print("\nPython Copyright Information")
-print(sys.copyright)
-print()
+# import sys
+# print("\nPython Copyright Information")
+# print(sys.copyright)
+# print()
 
 """Write a Python program to get the command-line arguments (name of the script, the number of arguments, arguments) passed to a script."""
-import sys
-print("This is the name/path of the script:"),sys.argv[0]
-print("Number of arguments:",len(sys.argv))
-print("Argument List:",str(sys.argv))
+# import sys
+# print("This is the name/path of the script:"),sys.argv[0]
+# print("Number of arguments:",len(sys.argv))
+# print("Argument List:",str(sys.argv))
 
 """Write a Python program to test whether the system is a big-endian platform or a little-endian platform."""
 
-import sys
-print()
-if sys.byteorder == "little":
-    #intel, alpha
-    print("Little-endian platform.")
-else:
-    #motorola, sparc
-    print("Big-endian platform.")
-print()
+# import sys
+# print()
+# if sys.byteorder == "little":
+#     #intel, alpha
+#     print("Little-endian platform.")
+# else:
+#     #motorola, sparc
+#     print("Big-endian platform.")
+# print()
 
 
 
 """Write a Python program to find the available built-in modules."""
-import sys
-import textwrap
-module_name = ', '.join(sorted(sys.builtin_module_names))
-print(textwrap.fill(module_name, width=70))
+# import sys
+# import textwrap
+# module_name = ', '.join(sorted(sys.builtin_module_names))
+# print(textwrap.fill(module_name, width=70))
 
 """Write a Python program to concatenate N strings"""
-list_of_colors = ['Red', 'White', 'Black']  
-colors = '-'.join(list_of_colors)
-print()
-print("All Colors: "+colors)
-print()
+# list_of_colors = ['Red', 'White', 'Black']  
+# colors = '-'.join(list_of_colors)
+# print()
+# print("All Colors: "+colors)
+# print()
 
 """Write a Python program to calculate the sum of all items of a container (tuple, list, set, dictionary). """
 
-s = sum([10,20,30])
-print("\nSum of the container: ", s)
-print()
+# s = sum([10,20,30])
+# print("\nSum of the container: ", s)
+# print()
 
 """Write a Python program to test whether all numbers in a list are greater than a certain number."""
-num = [2, 3, 4, 5]
-print()
-print(all(x > 1 for x in num))
-print(all(x > 4 for x in num))
-print()
+# num = [2, 3, 4, 5]
+# print()
+# print(all(x > 1 for x in num))
+# print(all(x > 4 for x in num))
+# print()
 
 """Write a Python program to count the number of occurrences of a specific character in a string."""
-s = "The quick brown fox jumps over the lazy dog."  
-print("Original string:")
-print(s)
-print("Number of occurrence of 'o' in the said string:")
-print(s.count("o"))
+# s = "The quick brown fox jumps over the lazy dog."  
+# print("Original string:")
+# print(s)
+# print("Number of occurrence of 'o' in the said string:")
+# print(s.count("o"))
 
 """Write a Python program to check whether a file path is a file or a directory."""
 
-import os  
-path="abc.txt"  
-if os.path.isdir(path):  
-    print("\nIt is a directory")  
-elif os.path.isfile(path):  
-    print("\nIt is a normal file")  
-else:  
-    print("It is a special file (socket, FIFO, device file)" )
-print()
+# import os  
+# path="abc.txt"  
+# if os.path.isdir(path):  
+#     print("\nIt is a directory")  
+# elif os.path.isfile(path):  
+#     print("\nIt is a normal file")  
+# else:  
+#     print("It is a special file (socket, FIFO, device file)" )
+# print()
 
 """Write a Python program to get the ASCII value of a character."""
-print()
-print(ord('a'))
-print(ord('A'))
-print(ord('1'))
-print(ord('@'))
-print()
+# print()
+# print(ord('a'))
+# print(ord('A'))
+# print(ord('1'))
+# print(ord('@'))
+# print()
 
 """Write a Python program to get the size of a file."""
-import os
-file_size = os.path.getsize("abc.txt")
-print("\nThe size of abc.txt is :",file_size,"Bytes")
-print()
+# import os
+# file_size = os.path.getsize("abc.txt")
+# print("\nThe size of abc.txt is :",file_size,"Bytes")
+# print()
 
 
 """Given variables x=30 and y=20, write a Python program to print "30+20=50"."""
-x = 30
-y = 20
-print("\n%d+%d=%d" % (x, y, x+y))
-print()
+# x = 30
+# y = 20
+# print("\n%d+%d=%d" % (x, y, x+y))
+# print()
 
 
 """Write a Python program to create a copy of its own source code."""
 
-def file_copy(src, dest):
-    with open(src) as f, open(dest, 'w') as d:
-        d.write(f.read())
-        file_copy("untitled0.py", "z.py")
-        with open('z.py', 'r') as filehandle:
-            for line in filehandle:
-                print(line, end = '')
+# def file_copy(src, dest):
+#     with open(src) as f, open(dest, 'w') as d:
+#         d.write(f.read())
+#         file_copy("untitled0.py", "z.py")
+#         with open('z.py', 'r') as filehandle:
+#             for line in filehandle:
+#                 print(line, end = '')
 
 
 """Write a Python program to swap two variables."""
 
-a = 30
-b = 20
-print("\nBefore swap a = %d and b = %d" %(a, b))
-a, b = b, a
-print("\nAfter swaping a = %d and b = %d" %(a, b))
-print()
+# a = 30
+# b = 20
+# print("\nBefore swap a = %d and b = %d" %(a, b))
+# a, b = b, a
+# print("\nAfter swaping a = %d and b = %d" %(a, b))
+# print()
 
 
 """Write a Python program to define a string containing special characters in various forms."""
-print()
-print("\#{'}${\"}@/")
-print("\#{'}${"'"'"}@/")
-print(r"""\#{'}${"}@/""")
-print('\#{\'}${"}@/')
-print('\#{'"'"'}${"}@/')
-print(r'''\#{'}${"}@/''')
-print()
+# print()
+# print("\#{'}${\"}@/")
+# print("\#{'}${"'"'"}@/")
+# print(r"""\#{'}${"}@/""")
+# print('\#{\'}${"}@/')
+# print('\#{'"'"'}${"}@/')
+# print(r'''\#{'}${"}@/''')
+# print()
 
 
 """Write a Python program to get the Identity, Type, and Value of an object."""
-x = 34
-print("\nIdentity: ",x)
-print("\nType: ",type(x))
-print("\nValue: ",id(x))
+# x = 34
+# print("\nIdentity: ",x)
+# print("\nType: ",type(x))
+# print("\nValue: ",id(x))
 
 """Write a Python program to convert the bytes in a given string to a list of integers."""
 
-x = b'Abc'
-print()
-print("\nConvert bytes of the said string to a list of integers:")
-print(list(x))
-print()
+# x = b'Abc'
+# print()
+# print("\nConvert bytes of the said string to a list of integers:")
+# print(list(x))
+# print()
 
 
 """Write a Python program to check whether a string is numeric."""
-str = 'a123'
+# str = 'a123'
 #str = '123'
-try:
-    i = float(str)
-except (ValueError, TypeError):
-    print('\nNot numeric')
-print()
+# try:
+#     i = float(str)
+# except (ValueError, TypeError):
+#     print('\nNot numeric')
+# print()
 
 """Write a Python program to list the special variables used in the language."""
-s_var_names = sorted((set(globals().keys()) | set(__builtins__.__dict__.keys())) - set('_ names i'.split()))
-print()
-print( '\n'.join(' '.join(s_var_names[i:i+8]) for i in range(0, len(s_var_names), 8)) )
-print()
+# s_var_names = sorted((set(globals().keys()) | set(__builtins__.__dict__.keys())) - set('_ names i'.split()))
+# print()
+# print( '\n'.join(' '.join(s_var_names[i:i+8]) for i in range(0, len(s_var_names), 8)) )
+# print()
 
 """Write a Python program to get the name of the host on which the routine is running."""
-import socket
-host_name = socket.gethostname()
-print("Host name:", host_name)
+# import socket
+# host_name = socket.gethostname()
+# print("Host name:", host_name)
 
 """Write a Python program to access and print a URL's content to the console."""
-from http.client import HTTPConnection
-conn = HTTPConnection("example.com")
-conn.request("GET", "/")  
-result = conn.getresponse()
+# from http.client import HTTPConnection
+# conn = HTTPConnection("example.com")
+# conn.request("GET", "/")  
+# result = conn.getresponse()
 # retrieves the entire contents.  
-contents = result.read() 
-print(contents)
+# contents = result.read() 
+# print(contents)
 
 
 """Write a Python program to get system command output."""
 
-import subprocess
+# import subprocess
 # file and directory listing
-returned_text = subprocess.check_output("dir", shell=True, universal_newlines=True)
-print("dir command to list file and directory")
-print(returned_text)
+# returned_text = subprocess.check_output("dir", shell=True, universal_newlines=True)
+# print("dir command to list file and directory")
+# print(returned_text)
 
 """Write a Python program to extract the filename from a given path."""
-import os
-print()
-print(os.path.basename('/users/system1/student1/homework-1.py'))
-print()
+# import os
+# print()
+# print(os.path.basename('/users/system1/student1/homework-1.py'))
+# print()
 
 
 """Write a Python program to get the users environment."""
-import os
-import pprint
+# import os
+# import pprint
 # User's environment variables
-u_env_var = os.environ
-print("User's Environment variable:")
-pprint.pprint(dict(u_env_var), width = 1)
+# u_env_var = os.environ
+# print("User's Environment variable:")
+# pprint.pprint(dict(u_env_var), width = 1)
 
 """Write a Python program to divide a path by the extension separator."""
 
-import os.path
-for path in [ 'test.txt', 'filename', '/user/system/test.txt', '/', '' ]:
-    print('"%s" :' % path, os.path.splitext(path))
+# import os.path
+# for path in [ 'test.txt', 'filename', '/user/system/test.txt', '/', '' ]:
+#     print('"%s" :' % path, os.path.splitext(path))
 	
 
 """Write a Python program to retrieve file properties."""
-import os.path
-import time
+# import os.path
+# import time
 
-print('File         :', __file__)
-print('Access time  :', time.ctime(os.path.getatime(__file__)))
-print('Modified time:', time.ctime(os.path.getmtime(__file__)))
-print('Change time  :', time.ctime(os.path.getctime(__file__)))
-print('Size         :', os.path.getsize(__file__))
+# print('File         :', __file__)
+# print('Access time  :', time.ctime(os.path.getatime(__file__)))
+# print('Modified time:', time.ctime(os.path.getmtime(__file__)))
+# print('Change time  :', time.ctime(os.path.getctime(__file__)))
+# print('Size         :', os.path.getsize(__file__))
 
 """Write a Python program to find the path to a file or directory when you encounter a path name."""
-import os.path
+# import os.path
 
-for file in [ __file__, os.path.dirname(__file__), '/', './broken_link']:
-    print('File        :', file)
-    print('Absolute    :', os.path.isabs(file))
-    print('Is File?    :', os.path.isfile(file))
-    print('Is Dir?     :', os.path.isdir(file))
-    print('Is Link?    :', os.path.islink(file))
-    print('Exists?     :', os.path.exists(file))
-    print('Link Exists?:', os.path.lexists(file))
+# for file in [ __file__, os.path.dirname(__file__), '/', './broken_link']:
+#     print('File        :', file)
+#     print('Absolute    :', os.path.isabs(file))
+#     print('Is File?    :', os.path.isfile(file))
+#     print('Is Dir?     :', os.path.isdir(file))
+#     print('Is Link?    :', os.path.islink(file))
+#     print('Exists?     :', os.path.exists(file))
+#     print('Link Exists?:', os.path.lexists(file))
 	
 """Write a Python program to get numbers divisible by fifteen from a list using an anonymous function."""
-num_list = [45, 55, 60, 37, 100, 105, 220]
+# num_list = [45, 55, 60, 37, 100, 105, 220]
 # use anonymous function to filter
-result = list(filter(lambda x: (x % 15 == 0), num_list))
-print("Numbers divisible by 15 are",result)
+# result = list(filter(lambda x: (x % 15 == 0), num_list))
+# print("Numbers divisible by 15 are",result)
 
 
 """Write a Python program to make file lists from the current directory using a wildcard."""
-import glob
-file_list = glob.glob('*.*')
-print(file_list)
+# import glob
+# file_list = glob.glob('*.*')
+# print(file_list)
 #Specific files
-print(glob.glob('*.py'))
-print(glob.glob('./[0-9].*'))
+# print(glob.glob('*.py'))
+# print(glob.glob('./[0-9].*'))
 
 """Write a Python program to remove the first item from a specified list."""
-color = ["Red", "Black", "Green", "White", "Orange"]
-print("Original list elements:")
-print(color)
-del color[0]
-print("After removing the first color:")
-print(color)
+# color = ["Red", "Black", "Green", "White", "Orange"]
+# print("Original list elements:")
+# print(color)
+# del color[0]
+# print("After removing the first color:")
+# print(color)
 
 
 """Write a Python program that inputs a number and generates an error message if it is not a number."""
 
-while True:
-    try:
-        a = int(input("Input a number: "))
-        break
-    except ValueError:
-        print("\nThis is not a number. Try again...")
-        print()
+# while True:
+#     try:
+#         a = int(input("Input a number: "))
+#         break
+#     except ValueError:
+#         print("\nThis is not a number. Try again...")
+#         print()
 		
 
 """Write a Python program to filter positive numbers from a list. """
 
-nums = [34, 1, 0, -23, 12, -88]
-print("Original numbers in the list: ",nums)
-new_nums = list(filter(lambda x: x >0, nums))
-print("Positive numbers in the said list: ",new_nums)
+# nums = [34, 1, 0, -23, 12, -88]
+# print("Original numbers in the list: ",nums)
+# new_nums = list(filter(lambda x: x >0, nums))
+# print("Positive numbers in the said list: ",new_nums)
 
 """Write a Python program to compute the product of a list of integers (without using a for loop)."""
 
-from functools import reduce
-nums = [10, 20, 30,]
-print("Original list numbers:")
-print(nums)
-nums_product = reduce( (lambda x, y: x * y), nums)
-print("\nProduct of the said numbers (without using for loop):",nums_product)
+# from functools import reduce
+# nums = [10, 20, 30,]
+# print("Original list numbers:")
+# print(nums)
+# nums_product = reduce( (lambda x, y: x * y), nums)
+# print("\nProduct of the said numbers (without using for loop):",nums_product)
 
 
 """Write a Python program to print Unicode characters."""
-str = u'\u0050\u0079\u0074\u0068\u006f\u006e \u0045\u0078\u0065\u0072\u0063\u0069\u0073\u0065\u0073 \u002d \u0077\u0033\u0072\u0065\u0073\u006f\u0075\u0072\u0063\u0065'
-print()
-print(str)
-print()
+# str = u'\u0050\u0079\u0074\u0068\u006f\u006e \u0045\u0078\u0065\u0072\u0063\u0069\u0073\u0065\u0073 \u002d \u0077\u0033\u0072\u0065\u0073\u006f\u0075\u0072\u0063\u0065'
+# print()
+# print(str)
+# print()
 
 """ Write a Python program to prove that two string variables of the same value point to the same memory location."""
 
-str1 = "Python"
-str2 = "Python"
+# str1 = "Python"
+# str2 = "Python"
  
-print("\nMemory location of str1 =", hex(id(str1)))
-print("Memory location of str2 =", hex(id(str2)))
-print()
+# print("\nMemory location of str1 =", hex(id(str1)))
+# print("Memory location of str2 =", hex(id(str2)))
+# print()
 
 
 """Write a Python program to create a bytearray from a list."""
 
-print()
-nums = [10, 20, 56, 35, 17, 99]
+# print()
+# nums = [10, 20, 56, 35, 17, 99]
 # Create bytearray from list of integers.
-values = bytearray(nums)
-for x in values: print(x)
-print()
+# values = bytearray(nums)
+# for x in values: print(x)
+# print()
 
 
 """Write a Python program to round a floating-point number to a specified number of decimal places."""
-order_amt = 212.374
-print('\nThe total order amount comes to %f' % order_amt)
-print('The total order amount comes to %.2f' % order_amt)
-print()
+# order_amt = 212.374
+# print('\nThe total order amount comes to %f' % order_amt)
+# print('The total order amount comes to %.2f' % order_amt)
+# print()
 
 """Write a Python program to format a specified string and limit the length of a string."""
-str_num = "1234567890"
-print("Original string:",str_num)
-print('%.6s' % str_num)
-print('%.9s' % str_num)
-print('%.10s' % str_num)
+# str_num = "1234567890"
+# print("Original string:",str_num)
+# print('%.6s' % str_num)
+# print('%.9s' % str_num)
+# print('%.10s' % str_num)
 
 """ Write a Python program to determine if a variable is defined or not"""
-try:
-  x = 1
-except NameError:
-  print("Variable is not defined....!")
-else:
-  print("Variable is defined.")
-try:
-  y
-except NameError:
-  print("Variable is not defined....!")
-else:
-  print("Variable is defined.")
+# try:
+#   x = 1
+# except NameError:
+#   print("Variable is not defined....!")
+# else:
+#   print("Variable is defined.")
+# try:
+#   y
+# except NameError:
+#   print("Variable is not defined....!")
+# else:
+#   print("Variable is defined.")
   
 """Write a Python program to empty a variable without destroying it"""
-n = 20
-d = {"x":200}
-l = [1,3,5]
-t= (5,7,8)
-print(type(n)())
-print(type(d)())
-print(type(l)())
-print(type(t)())
+# n = 20
+# d = {"x":200}
+# l = [1,3,5]
+# t= (5,7,8)
+# print(type(n)())
+# print(type(d)())
+# print(type(l)())
+# print(type(t)())
 
 """Write a Python program to determine the largest and smallest integers, longs, and floats."""
-import sys
-print("Float value information: ",sys.float_info)
-print("\nInteger value information: ",sys.int_info)
-print("\nMaximum size of an integer: ",sys.maxsize) 
+# import sys
+# print("Float value information: ",sys.float_info)
+# print("\nInteger value information: ",sys.int_info)
+# print("\nMaximum size of an integer: ",sys.maxsize) 
 
 """Write a Python program to check whether multiple variables have the same value."""
 
-x = 20
-y = 20
-z = 20
-if x == y == z == 20:
-    print("All variables have same value!")  
+# x = 20
+# y = 20
+# z = 20
+# if x == y == z == 20:
+#     print("All variables have same value!")  
 	
 
 """Write a Python program to sum all counts in a collection."""
-import collections
-num = [2,2,4,6,6,8,6,10,4]
-print(sum(collections.Counter(num).values()))
+# import collections
+# num = [2,2,4,6,6,8,6,10,4]
+# print(sum(collections.Counter(num).values()))
 
 """Write a Python program to get the actual module object for a given object."""
-from inspect import getmodule
-from math import sqrt
-print(getmodule(sqrt))
+# from inspect import getmodule
+# from math import sqrt
+# print(getmodule(sqrt))
 
 """Write a Python program to check whether an integer fits in 64 bits."""
-int_val = 30
-if int_val.bit_length() <= 63:
-    print((-2 ** 63).bit_length())
-    print((2 ** 63).bit_length())
+# int_val = 30
+# if int_val.bit_length() <= 63:
+#     print((-2 ** 63).bit_length())
+#     print((2 ** 63).bit_length())
 	
 """Write a Python program to check whether lowercase letters exist in a string."""
-str1 = 'A8238i823acdeOUEI'
-print(any(c.islower() for c in str1))
+# str1 = 'A8238i823acdeOUEI'
+# print(any(c.islower() for c in str1))
 
 """Write a Python program to add leading zeroes to a string."""
-str1='122.22'
-print("Original String: ",str1)
-print("\nAdded trailing zeros:")
-str1 = str1.ljust(8, '0')
-print(str1)
-str1 = str1.ljust(10, '0')
-print(str1)
-print("\nAdded leading zeros:")
-str1='122.22'
-str1 = str1.rjust(8, '0')
-print(str1)
-str1 = str1.rjust(10, '0')
-print(str1)
+# str1='122.22'
+# print("Original String: ",str1)
+# print("\nAdded trailing zeros:")
+# str1 = str1.ljust(8, '0')
+# print(str1)
+# str1 = str1.ljust(10, '0')
+# print(str1)
+# print("\nAdded leading zeros:")
+# str1='122.22'
+# str1 = str1.rjust(8, '0')
+# print(str1)
+# str1 = str1.rjust(10, '0')
+# print(str1)
 
 
 """Write a Python program that uses double quotes to display strings."""
-import json
-print(json.dumps({'Alex': 1, 'Suresh': 2, 'Agnessa': 3}))
+# import json
+# print(json.dumps({'Alex': 1, 'Suresh': 2, 'Agnessa': 3}))
 
 
 """Write a Python program to split a variable length string into variables."""
-var_list = ['a', 'b', 'c']
-x, y, z = (var_list + [None] * 3)[:3]
-print(x, y, z)
-var_list = [100, 20.25]
-x, y = (var_list + [None] * 2)[:2]
-print(x, y)
+# var_list = ['a', 'b', 'c']
+# x, y, z = (var_list + [None] * 3)[:3]
+# print(x, y, z)
+# var_list = [100, 20.25]
+# x, y = (var_list + [None] * 2)[:2]
+# print(x, y)
 
 """Write a Python program to list the home directory without an absolute path."""
 
-import os.path
-print(os.path.expanduser('~'))
+# import os.path
+# print(os.path.expanduser('~'))
 
 
 
