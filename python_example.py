@@ -461,7 +461,14 @@ sum_num = (n * (n + 1)) / 2
 print("Sum of the first", n, "positive integers:", sum_num)
 
 
-#####This New Line#####
 
+"""Write a Python program to convert height (in feet and inches) to centimeters."""
 
-"Mehul"
+print("Input your height: ")
+h_ft = int(input("Feet: "))
+h_inch = int(input("Inches: "))
+
+h_inch += h_ft * 12
+h_cm = round(h_inch * 2.54, 1)
+
+print("Your height is : %d cm." % h_cm)
