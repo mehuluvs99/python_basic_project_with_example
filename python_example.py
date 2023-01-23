@@ -737,3 +737,56 @@ x = 34
 print("\nIdentity: ",x)
 print("\nType: ",type(x))
 print("\nValue: ",id(x))
+
+"""Write a Python program to convert the bytes in a given string to a list of integers."""
+
+x = b'Abc'
+print()
+print("\nConvert bytes of the said string to a list of integers:")
+print(list(x))
+print()
+
+
+"""Write a Python program to check whether a string is numeric."""
+str = 'a123'
+#str = '123'
+try:
+    i = float(str)
+except (ValueError, TypeError):
+    print('\nNot numeric')
+print()
+
+"""Write a Python program to list the special variables used in the language."""
+s_var_names = sorted((set(globals().keys()) | set(__builtins__.__dict__.keys())) - set('_ names i'.split()))
+print()
+print( '\n'.join(' '.join(s_var_names[i:i+8]) for i in range(0, len(s_var_names), 8)) )
+print()
+
+"""Write a Python program to get the name of the host on which the routine is running."""
+import socket
+host_name = socket.gethostname()
+print("Host name:", host_name)
+
+"""Write a Python program to access and print a URL's content to the console."""
+from http.client import HTTPConnection
+conn = HTTPConnection("example.com")
+conn.request("GET", "/")  
+result = conn.getresponse()
+# retrieves the entire contents.  
+contents = result.read() 
+print(contents)
+
+
+"""Write a Python program to get system command output."""
+
+import subprocess
+# file and directory listing
+returned_text = subprocess.check_output("dir", shell=True, universal_newlines=True)
+print("dir command to list file and directory")
+print(returned_text)
+
+"""Write a Python program to extract the filename from a given path."""
+import os
+print()
+print(os.path.basename('/users/system1/student1/homework-1.py'))
+print()
