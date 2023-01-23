@@ -459,3 +459,6 @@ These statistics can be formatted into reports via the pstats module."""
 n = int(input("Input a number: "))
 sum_num = (n * (n + 1)) / 2
 print("Sum of the first", n, "positive integers:", sum_num)
+
+
+#####This New Line#####
