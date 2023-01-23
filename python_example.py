@@ -686,4 +686,54 @@ print(ord('1'))
 print(ord('@'))
 print()
 
+"""Write a Python program to get the size of a file."""
+import os
+file_size = os.path.getsize("abc.txt")
+print("\nThe size of abc.txt is :",file_size,"Bytes")
+print()
 
+
+"""Given variables x=30 and y=20, write a Python program to print "30+20=50"."""
+x = 30
+y = 20
+print("\n%d+%d=%d" % (x, y, x+y))
+print()
+
+
+"""Write a Python program to create a copy of its own source code."""
+
+def file_copy(src, dest):
+    with open(src) as f, open(dest, 'w') as d:
+        d.write(f.read())
+        file_copy("untitled0.py", "z.py")
+        with open('z.py', 'r') as filehandle:
+            for line in filehandle:
+                print(line, end = '')
+
+
+"""Write a Python program to swap two variables."""
+
+a = 30
+b = 20
+print("\nBefore swap a = %d and b = %d" %(a, b))
+a, b = b, a
+print("\nAfter swaping a = %d and b = %d" %(a, b))
+print()
+
+
+"""Write a Python program to define a string containing special characters in various forms."""
+print()
+print("\#{'}${\"}@/")
+print("\#{'}${"'"'"}@/")
+print(r"""\#{'}${"}@/""")
+print('\#{\'}${"}@/')
+print('\#{'"'"'}${"}@/')
+print(r'''\#{'}${"}@/''')
+print()
+
+
+"""Write a Python program to get the Identity, Type, and Value of an object."""
+x = 34
+print("\nIdentity: ",x)
+print("\nType: ",type(x))
+print("\nValue: ",id(x))
