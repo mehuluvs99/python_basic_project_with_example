@@ -790,3 +790,229 @@ import os
 print()
 print(os.path.basename('/users/system1/student1/homework-1.py'))
 print()
+
+
+"""Write a Python program to get the users environment."""
+import os
+import pprint
+# User's environment variables
+u_env_var = os.environ
+print("User's Environment variable:")
+pprint.pprint(dict(u_env_var), width = 1)
+
+"""Write a Python program to divide a path by the extension separator."""
+
+import os.path
+for path in [ 'test.txt', 'filename', '/user/system/test.txt', '/', '' ]:
+    print('"%s" :' % path, os.path.splitext(path))
+	
+
+"""Write a Python program to retrieve file properties."""
+import os.path
+import time
+
+print('File         :', __file__)
+print('Access time  :', time.ctime(os.path.getatime(__file__)))
+print('Modified time:', time.ctime(os.path.getmtime(__file__)))
+print('Change time  :', time.ctime(os.path.getctime(__file__)))
+print('Size         :', os.path.getsize(__file__))
+
+"""Write a Python program to find the path to a file or directory when you encounter a path name."""
+import os.path
+
+for file in [ __file__, os.path.dirname(__file__), '/', './broken_link']:
+    print('File        :', file)
+    print('Absolute    :', os.path.isabs(file))
+    print('Is File?    :', os.path.isfile(file))
+    print('Is Dir?     :', os.path.isdir(file))
+    print('Is Link?    :', os.path.islink(file))
+    print('Exists?     :', os.path.exists(file))
+    print('Link Exists?:', os.path.lexists(file))
+	
+"""Write a Python program to get numbers divisible by fifteen from a list using an anonymous function."""
+num_list = [45, 55, 60, 37, 100, 105, 220]
+# use anonymous function to filter
+result = list(filter(lambda x: (x % 15 == 0), num_list))
+print("Numbers divisible by 15 are",result)
+
+
+"""Write a Python program to make file lists from the current directory using a wildcard."""
+import glob
+file_list = glob.glob('*.*')
+print(file_list)
+#Specific files
+print(glob.glob('*.py'))
+print(glob.glob('./[0-9].*'))
+
+"""Write a Python program to remove the first item from a specified list."""
+color = ["Red", "Black", "Green", "White", "Orange"]
+print("Original list elements:")
+print(color)
+del color[0]
+print("After removing the first color:")
+print(color)
+
+
+"""Write a Python program that inputs a number and generates an error message if it is not a number."""
+
+while True:
+    try:
+        a = int(input("Input a number: "))
+        break
+    except ValueError:
+        print("\nThis is not a number. Try again...")
+        print()
+		
+
+"""Write a Python program to filter positive numbers from a list. """
+
+nums = [34, 1, 0, -23, 12, -88]
+print("Original numbers in the list: ",nums)
+new_nums = list(filter(lambda x: x >0, nums))
+print("Positive numbers in the said list: ",new_nums)
+
+"""Write a Python program to compute the product of a list of integers (without using a for loop)."""
+
+from functools import reduce
+nums = [10, 20, 30,]
+print("Original list numbers:")
+print(nums)
+nums_product = reduce( (lambda x, y: x * y), nums)
+print("\nProduct of the said numbers (without using for loop):",nums_product)
+
+
+"""Write a Python program to print Unicode characters."""
+str = u'\u0050\u0079\u0074\u0068\u006f\u006e \u0045\u0078\u0065\u0072\u0063\u0069\u0073\u0065\u0073 \u002d \u0077\u0033\u0072\u0065\u0073\u006f\u0075\u0072\u0063\u0065'
+print()
+print(str)
+print()
+
+""" Write a Python program to prove that two string variables of the same value point to the same memory location."""
+
+str1 = "Python"
+str2 = "Python"
+ 
+print("\nMemory location of str1 =", hex(id(str1)))
+print("Memory location of str2 =", hex(id(str2)))
+print()
+
+
+"""Write a Python program to create a bytearray from a list."""
+
+print()
+nums = [10, 20, 56, 35, 17, 99]
+# Create bytearray from list of integers.
+values = bytearray(nums)
+for x in values: print(x)
+print()
+
+
+"""Write a Python program to round a floating-point number to a specified number of decimal places."""
+order_amt = 212.374
+print('\nThe total order amount comes to %f' % order_amt)
+print('The total order amount comes to %.2f' % order_amt)
+print()
+
+"""Write a Python program to format a specified string and limit the length of a string."""
+str_num = "1234567890"
+print("Original string:",str_num)
+print('%.6s' % str_num)
+print('%.9s' % str_num)
+print('%.10s' % str_num)
+
+""" Write a Python program to determine if a variable is defined or not"""
+try:
+  x = 1
+except NameError:
+  print("Variable is not defined....!")
+else:
+  print("Variable is defined.")
+try:
+  y
+except NameError:
+  print("Variable is not defined....!")
+else:
+  print("Variable is defined.")
+  
+"""Write a Python program to empty a variable without destroying it"""
+n = 20
+d = {"x":200}
+l = [1,3,5]
+t= (5,7,8)
+print(type(n)())
+print(type(d)())
+print(type(l)())
+print(type(t)())
+
+"""Write a Python program to determine the largest and smallest integers, longs, and floats."""
+import sys
+print("Float value information: ",sys.float_info)
+print("\nInteger value information: ",sys.int_info)
+print("\nMaximum size of an integer: ",sys.maxsize) 
+
+"""Write a Python program to check whether multiple variables have the same value."""
+
+x = 20
+y = 20
+z = 20
+if x == y == z == 20:
+    print("All variables have same value!")  
+	
+
+"""Write a Python program to sum all counts in a collection."""
+import collections
+num = [2,2,4,6,6,8,6,10,4]
+print(sum(collections.Counter(num).values()))
+
+"""Write a Python program to get the actual module object for a given object."""
+from inspect import getmodule
+from math import sqrt
+print(getmodule(sqrt))
+
+"""Write a Python program to check whether an integer fits in 64 bits."""
+int_val = 30
+if int_val.bit_length() <= 63:
+    print((-2 ** 63).bit_length())
+    print((2 ** 63).bit_length())
+	
+"""Write a Python program to check whether lowercase letters exist in a string."""
+str1 = 'A8238i823acdeOUEI'
+print(any(c.islower() for c in str1))
+
+"""Write a Python program to add leading zeroes to a string."""
+str1='122.22'
+print("Original String: ",str1)
+print("\nAdded trailing zeros:")
+str1 = str1.ljust(8, '0')
+print(str1)
+str1 = str1.ljust(10, '0')
+print(str1)
+print("\nAdded leading zeros:")
+str1='122.22'
+str1 = str1.rjust(8, '0')
+print(str1)
+str1 = str1.rjust(10, '0')
+print(str1)
+
+
+"""Write a Python program that uses double quotes to display strings."""
+import json
+print(json.dumps({'Alex': 1, 'Suresh': 2, 'Agnessa': 3}))
+
+
+"""Write a Python program to split a variable length string into variables."""
+var_list = ['a', 'b', 'c']
+x, y, z = (var_list + [None] * 3)[:3]
+print(x, y, z)
+var_list = [100, 20.25]
+x, y = (var_list + [None] * 2)[:2]
+print(x, y)
+
+"""Write a Python program to list the home directory without an absolute path."""
+
+import os.path
+print(os.path.expanduser('~'))
+
+
+
+
