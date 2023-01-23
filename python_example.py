@@ -472,3 +472,24 @@ h_inch += h_ft * 12
 h_cm = round(h_inch * 2.54, 1)
 
 print("Your height is : %d cm." % h_cm)
+
+"""Write a Python program to calculate the hypotenuse of a right angled triangle."""
+
+from math import sqrt
+print("Input lengths of shorter triangle sides:")
+a = float(input("a: "))
+b = float(input("b: "))
+c = sqrt(a**2 + b**2)
+print("The length of the hypotenuse is:", c )
+
+
+"""Write a Python program to convert the distance (in feet) to inches, yards, and miles."""
+
+d_ft = int(input("Input distance in feet: "))
+d_inches = d_ft * 12
+d_yards = d_ft / 3.0
+d_miles = d_ft / 5280.0
+
+print("The distance in inches is %i inches." % d_inches)
+print("The distance in yards is %.2f yards." % d_yards)
+print("The distance in miles is %.2f miles." % d_miles)
