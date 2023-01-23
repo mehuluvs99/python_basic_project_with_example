@@ -1013,6 +1013,190 @@
 # import os.path
 # print(os.path.expanduser('~'))
 
+"""Write a Python program to calculate the time runs (difference between start and current time) of a program."""
+
+from timeit import default_timer
+def timer(n):
+    start = default_timer()
+    # some code here
+    for row in range(0,n):
+        print(row)
+    print(default_timer() - start)
+
+timer(5)
+timer(15)
+
+"""Write a Python program to input two integers on a single line."""
+print("Input the value of x & y")
+x, y = map(int, input().split())
+print("The value of x & y are: ",x,y)
+
+"""Write a Python program to print a variable without spaces between values.
+Sample value : x =30
+Expected output : Value of x is "30""""
 
 
+x = 30
+print('Value of x is "{}"'.format(x))
 
+"""Write a Python program to find files and skip directories in a given directory."""
+
+import os
+print([f for f in os.listdir('/home/students') if os.path.isfile(os.path.join('/home/students', f))])
+
+"""Write a Python program to extract a single key-value pair from a dictionary into variables."""
+
+d = {'Red': 'Green'}
+(c1, c2), = d.items()
+print(c1)
+print(c2)
+
+
+"""Write a Python program to convert true to 1 and false to 0"""
+x = 'true'
+x = int(x == 'true')
+print(x)
+x = 'abcd'
+x = int(x == 'true')
+print(x)
+
+
+"""Write a Python program to validate an IP address."""
+import socket
+addr = '127.0.0.2561'
+try:
+    socket.inet_aton(addr)
+    print("Valid IP")
+except socket.error:
+    print("Invalid IP")
+
+
+"""Write a Python program to convert an integer to binary that keeps leading zeros.
+Sample data : x=12
+Expected output : 00001100
+0000001100"""
+
+x = 12
+print(format(x, '08b'))
+print(format(x, '010b'))
+
+
+"""Write a python program to convert decimal to hexadecimal.
+Sample decimal number: 30, 4
+Expected output: 1e, 04"""
+
+x = 30
+print(format(x, '02x'))
+x = 4
+print(format(x, '02x'))
+
+"""Write a Python program to check if every consecutive sequence of zeroes is followed by a consecutive sequence of ones of same length in a given string. Return True/False. Go to the editor
+Original sequence: 01010101
+Check if every consecutive sequence of zeroes is followed by a consecutive sequence of ones in the said string:
+True
+Original sequence: 00
+Check if every consecutive sequence of zeroes is followed by a consecutive sequence of ones in the said string:
+False
+Original sequence: 000111000111
+Check if every consecutive sequence of zeroes is followed by a consecutive sequence of ones in the said string:
+True
+Original sequence: 00011100011
+Check if every consecutive sequence of zeroes is followed by a consecutive sequence of ones in the said string:
+False"""
+
+def test(str1):
+    while '01' in str1:
+        str1 = str1.replace('01', '')
+    return len(str1) == 0
+
+str1 = "01010101"
+print("Original sequence:",str1)
+print("Check if every consecutive sequence of zeroes is followed by a consecutive sequence of ones in the said string:")
+print(test(str1))
+str1 = "00"
+print("\nOriginal sequence:",str1)
+print("Check if every consecutive sequence of zeroes is followed by a consecutive sequence of ones in the said string:")
+print(test(str1))
+str1 = "000111000111"
+print("\nOriginal sequence:",str1)
+print("Check if every consecutive sequence of zeroes is followed by a consecutive sequence of ones in the said string:")
+print(test(str1))
+str1 = "00011100011"
+print("\nOriginal sequence:",str1)
+print("Check if every consecutive sequence of zeroes is followed by a consecutive sequence of ones in the said string:")
+print(test(str1))
+
+"""Write a Python program to determine if the Python shell is executing in 32-bit or 64-bit mode on the operating system."""
+import struct
+print(struct.calcsize("P") * 8)
+
+"""Write a Python program to check whether a variable is an integer or string."""
+print(isinstance(25,int) or isinstance(25,str))
+print(isinstance([25],int) or isinstance([25],str))
+print(isinstance("25",int) or isinstance("25",str))
+
+"""Write a Python program to test if a variable is a list, tuple, or set."""
+#x = ['a', 'b', 'c', 'd']
+#x = {'a', 'b', 'c', 'd'}
+x = ('tuple', False, 3.2, 1)
+if type(x) is list:
+    print('x is a list')
+elif type(x) is set:
+    print('x is a set')
+elif type(x) is tuple:
+    print('x is a tuple')    
+else:
+    print('Neither a list or a set or a tuple.')
+
+"""Write a Python program to find the location of Python module sources."""
+import imp
+print("Location of Python os module sources:")
+print(imp.find_module('os'))
+print("\nLocation of Python sys module sources:")
+print(imp.find_module('datetime'))
+
+"""Write a Python function to check whether a number is divisible by another number. Accept two integer values from the user."""
+def multiple(m, n):
+	return True if m % n == 0 else False
+
+print(multiple(20, 5))
+print(multiple(7, 2))
+
+"""Write a Python function to find the maximum and minimum numbers from a sequence of numbers."""
+def max_min(data):
+  l = data[0]
+  s = data[0]
+  for num in data:
+    if num> l:
+      l = num
+    elif num< s:
+        s = num
+  return l, s
+
+print(max_min([0, 10, 15, 40, -5, 42, 17, 28, 75]))
+
+"""Write a Python function that takes a positive integer and returns the sum of the cube of all positive integers smaller than the specified number."""
+def sum_of_cubes(n):
+ n -= 1
+ total = 0
+ while n > 0:
+   total += n * n * n
+   n -= 1
+ return total
+print("Sum of cubes smaller than the specified number: ",sum_of_cubes(3))
+
+"""Write a Python function to check whether a distinct pair of numbers whose product is odd is present in a sequence of integer values."""
+def odd_product(nums):
+  for i in range(len(nums)):
+    for j in range(len(nums)):
+      if  i != j:
+        product = nums[i] * nums[j]
+        if product & 1:
+          return True
+  return False          
+dt1 = [2, 4, 6, 8]
+dt2 = [1, 6, 4, 7, 8]
+dt3 = [1, 3, 5, 7, 9]
+print(dt1, odd_product(dt1));
+print(dt2, odd_product(dt2));
+print(dt3, odd_product(dt3));
