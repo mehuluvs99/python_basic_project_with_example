@@ -493,3 +493,197 @@ d_miles = d_ft / 5280.0
 print("The distance in inches is %i inches." % d_inches)
 print("The distance in yards is %.2f yards." % d_yards)
 print("The distance in miles is %.2f miles." % d_miles)
+
+
+"""Write a Python program to convert all units of time into seconds. """
+
+days = int(input("Input days: ")) * 3600 * 24
+hours = int(input("Input hours: ")) * 3600
+minutes = int(input("Input minutes: ")) * 60
+seconds = int(input("Input seconds: "))
+
+time = days + hours + minutes + seconds
+
+print("The  amounts of seconds", time)
+
+"""Write a Python program to get an absolute file path."""
+
+def absolute_file_path(path_fname):
+        import os
+        return os.path.abspath('path_fname')        
+print("Absolute file path: ",absolute_file_path("test.txt"))
+
+
+"""Write a Python program that retrieves the date and time of file creation and modification."""
+
+import os.path, time
+print("Last modified: %s" % time.ctime(os.path.getmtime("test.txt")))
+print("Created: %s" % time.ctime(os.path.getctime("test.txt")))
+
+
+"""Write a Python program that converts seconds into days, hours, minutes, and seconds."""
+
+time = float(input("Input time in seconds: "))
+day = time // (24 * 3600)
+time = time % (24 * 3600)
+hour = time // 3600
+time %= 3600
+minutes = time // 60
+time %= 60
+seconds = time
+print("d:h:m:s-> %d:%d:%d:%d" % (day, hour, minutes, seconds))
+
+
+"""Write a Python program to calculate sum of digits of a number. """
+num = int(input("Input a four digit numbers: "))
+x  = num //1000
+x1 = (num - x*1000)//100
+x2 = (num - x*1000 - x1*100)//10
+x3 = num - x*1000 - x1*100 - x2*10
+print("The sum of digits in the number is", x+x1+x2+x3)
+
+
+"""Write a Python program to sort three integers without using conditional statements and loops."""
+
+x = int(input("Input first number: "))
+y = int(input("Input second number: "))
+z = int(input("Input third number: "))
+
+a1 = min(x, y, z)
+a3 = max(x, y, z)
+a2 = (x + y + z) - a1 - a3
+print("Numbers in sorted order: ", a1, a2, a3)
+
+"""Write a Python program to sort files by date."""
+import glob
+import os
+
+files = glob.glob("*.txt")
+files.sort(key=os.path.getmtime)
+print("\n".join(files))
+
+
+"""Write a Python program to get the details of the math module."""
+# Imports the math module
+import math            
+#Sets everything to a list of math module
+math_ls = dir(math) # 
+print(math_ls)
+
+"""Write a Python program to calculate the midpoints of a line."""
+
+print('\nCalculate the midpoint of a line :')
+
+x1 = float(input('The value of x (the first endpoint) '))
+y1 = float(input('The value of y (the first endpoint) '))
+
+x2 = float(input('The value of x (the first endpoint) '))
+y2 = float(input('The value of y (the first endpoint) '))
+
+x_m_point = (x1 + x2)/2
+y_m_point = (y1 + y2)/2
+print()
+print("The midpoint of line is :")
+print( "The midpoint's x value is: ",x_m_point)
+print( "The midpoint's y value is: ",y_m_point)
+print()
+
+
+"""Write a Python program to hash a word."""
+
+soundex=[0,1,2,3,0,1,2,0,0,2,2,4,5,5,0,1,2,6,2,3,0,1,0,2,0,2]
+ 
+word=input("Input the word be hashed: ")
+ 
+word=word.upper()
+ 
+coded=word[0]
+ 
+for a in word[1:len(word)]:
+    i=65-ord(a)
+    coded=coded+str(soundex[i])
+print() 
+print("The coded word is: "+coded)
+print()
+
+
+"""Write a Python program to get the copyright information and write Copyright information in Python code."""
+import sys
+print("\nPython Copyright Information")
+print(sys.copyright)
+print()
+
+"""Write a Python program to get the command-line arguments (name of the script, the number of arguments, arguments) passed to a script."""
+import sys
+print("This is the name/path of the script:"),sys.argv[0]
+print("Number of arguments:",len(sys.argv))
+print("Argument List:",str(sys.argv))
+
+"""Write a Python program to test whether the system is a big-endian platform or a little-endian platform."""
+
+import sys
+print()
+if sys.byteorder == "little":
+    #intel, alpha
+    print("Little-endian platform.")
+else:
+    #motorola, sparc
+    print("Big-endian platform.")
+print()
+
+
+
+"""Write a Python program to find the available built-in modules."""
+import sys
+import textwrap
+module_name = ', '.join(sorted(sys.builtin_module_names))
+print(textwrap.fill(module_name, width=70))
+
+"""Write a Python program to concatenate N strings"""
+list_of_colors = ['Red', 'White', 'Black']  
+colors = '-'.join(list_of_colors)
+print()
+print("All Colors: "+colors)
+print()
+
+"""Write a Python program to calculate the sum of all items of a container (tuple, list, set, dictionary). """
+
+s = sum([10,20,30])
+print("\nSum of the container: ", s)
+print()
+
+"""Write a Python program to test whether all numbers in a list are greater than a certain number."""
+num = [2, 3, 4, 5]
+print()
+print(all(x > 1 for x in num))
+print(all(x > 4 for x in num))
+print()
+
+"""Write a Python program to count the number of occurrences of a specific character in a string."""
+s = "The quick brown fox jumps over the lazy dog."  
+print("Original string:")
+print(s)
+print("Number of occurrence of 'o' in the said string:")
+print(s.count("o"))
+
+"""Write a Python program to check whether a file path is a file or a directory."""
+
+import os  
+path="abc.txt"  
+if os.path.isdir(path):  
+    print("\nIt is a directory")  
+elif os.path.isfile(path):  
+    print("\nIt is a normal file")  
+else:  
+    print("It is a special file (socket, FIFO, device file)" )
+print()
+
+"""Write a Python program to get the ASCII value of a character."""
+print()
+print(ord('a'))
+print(ord('A'))
+print(ord('1'))
+print(ord('@'))
+print()
+
+
