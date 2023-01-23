@@ -1015,60 +1015,60 @@
 
 """Write a Python program to calculate the time runs (difference between start and current time) of a program."""
 
-from timeit import default_timer
-def timer(n):
-    start = default_timer()
-    # some code here
-    for row in range(0,n):
-        print(row)
-    print(default_timer() - start)
+# from timeit import default_timer
+# def timer(n):
+#     start = default_timer()
+#     # some code here
+#     for row in range(0,n):
+#         print(row)
+#     print(default_timer() - start)
 
-timer(5)
-timer(15)
+# timer(5)
+# timer(15)
 
 """Write a Python program to input two integers on a single line."""
 print("Input the value of x & y")
-x, y = map(int, input().split())
-print("The value of x & y are: ",x,y)
+# x, y = map(int, input().split())
+# print("The value of x & y are: ",x,y)
 
 """Write a Python program to print a variable without spaces between values.
 Sample value : x =30
-Expected output : Value of x is "30""""
+Expected output : Value of x is "30"""
 
 
-x = 30
-print('Value of x is "{}"'.format(x))
+# x = 30
+# print('Value of x is "{}"'.format(x))
 
 """Write a Python program to find files and skip directories in a given directory."""
 
-import os
-print([f for f in os.listdir('/home/students') if os.path.isfile(os.path.join('/home/students', f))])
+# import os
+# print([f for f in os.listdir('/home/students') if os.path.isfile(os.path.join('/home/students', f))])
 
 """Write a Python program to extract a single key-value pair from a dictionary into variables."""
 
-d = {'Red': 'Green'}
-(c1, c2), = d.items()
-print(c1)
-print(c2)
+# d = {'Red': 'Green'}
+# (c1, c2), = d.items()
+# print(c1)
+# print(c2)
 
 
 """Write a Python program to convert true to 1 and false to 0"""
-x = 'true'
-x = int(x == 'true')
-print(x)
-x = 'abcd'
-x = int(x == 'true')
-print(x)
+# x = 'true'
+# x = int(x == 'true')
+# print(x)
+# x = 'abcd'
+# x = int(x == 'true')
+# print(x)
 
 
 """Write a Python program to validate an IP address."""
-import socket
-addr = '127.0.0.2561'
-try:
-    socket.inet_aton(addr)
-    print("Valid IP")
-except socket.error:
-    print("Invalid IP")
+# import socket
+# addr = '127.0.0.2561'
+# try:
+#     socket.inet_aton(addr)
+#     print("Valid IP")
+# except socket.error:
+#     print("Invalid IP")
 
 
 """Write a Python program to convert an integer to binary that keeps leading zeros.
@@ -1076,19 +1076,19 @@ Sample data : x=12
 Expected output : 00001100
 0000001100"""
 
-x = 12
-print(format(x, '08b'))
-print(format(x, '010b'))
+# x = 12
+# print(format(x, '08b'))
+# print(format(x, '010b'))
 
 
 """Write a python program to convert decimal to hexadecimal.
 Sample decimal number: 30, 4
 Expected output: 1e, 04"""
 
-x = 30
-print(format(x, '02x'))
-x = 4
-print(format(x, '02x'))
+# x = 30
+# print(format(x, '02x'))
+# x = 4
+# print(format(x, '02x'))
 
 """Write a Python program to check if every consecutive sequence of zeroes is followed by a consecutive sequence of ones of same length in a given string. Return True/False. Go to the editor
 Original sequence: 01010101
@@ -1104,101 +1104,562 @@ Original sequence: 00011100011
 Check if every consecutive sequence of zeroes is followed by a consecutive sequence of ones in the said string:
 False"""
 
-def test(str1):
-    while '01' in str1:
-        str1 = str1.replace('01', '')
-    return len(str1) == 0
+# def test(str1):
+#     while '01' in str1:
+#         str1 = str1.replace('01', '')
+#     return len(str1) == 0
 
-str1 = "01010101"
-print("Original sequence:",str1)
-print("Check if every consecutive sequence of zeroes is followed by a consecutive sequence of ones in the said string:")
-print(test(str1))
-str1 = "00"
-print("\nOriginal sequence:",str1)
-print("Check if every consecutive sequence of zeroes is followed by a consecutive sequence of ones in the said string:")
-print(test(str1))
-str1 = "000111000111"
-print("\nOriginal sequence:",str1)
-print("Check if every consecutive sequence of zeroes is followed by a consecutive sequence of ones in the said string:")
-print(test(str1))
-str1 = "00011100011"
-print("\nOriginal sequence:",str1)
-print("Check if every consecutive sequence of zeroes is followed by a consecutive sequence of ones in the said string:")
-print(test(str1))
+# str1 = "01010101"
+# print("Original sequence:",str1)
+# print("Check if every consecutive sequence of zeroes is followed by a consecutive sequence of ones in the said string:")
+# print(test(str1))
+# str1 = "00"
+# print("\nOriginal sequence:",str1)
+# print("Check if every consecutive sequence of zeroes is followed by a consecutive sequence of ones in the said string:")
+# print(test(str1))
+# str1 = "000111000111"
+# print("\nOriginal sequence:",str1)
+# print("Check if every consecutive sequence of zeroes is followed by a consecutive sequence of ones in the said string:")
+# print(test(str1))
+# str1 = "00011100011"
+# print("\nOriginal sequence:",str1)
+# print("Check if every consecutive sequence of zeroes is followed by a consecutive sequence of ones in the said string:")
+# print(test(str1))
 
 """Write a Python program to determine if the Python shell is executing in 32-bit or 64-bit mode on the operating system."""
-import struct
-print(struct.calcsize("P") * 8)
+# import struct
+# print(struct.calcsize("P") * 8)
 
 """Write a Python program to check whether a variable is an integer or string."""
-print(isinstance(25,int) or isinstance(25,str))
-print(isinstance([25],int) or isinstance([25],str))
-print(isinstance("25",int) or isinstance("25",str))
+# print(isinstance(25,int) or isinstance(25,str))
+# print(isinstance([25],int) or isinstance([25],str))
+# print(isinstance("25",int) or isinstance("25",str))
 
 """Write a Python program to test if a variable is a list, tuple, or set."""
 #x = ['a', 'b', 'c', 'd']
 #x = {'a', 'b', 'c', 'd'}
-x = ('tuple', False, 3.2, 1)
-if type(x) is list:
-    print('x is a list')
-elif type(x) is set:
-    print('x is a set')
-elif type(x) is tuple:
-    print('x is a tuple')    
-else:
-    print('Neither a list or a set or a tuple.')
+# x = ('tuple', False, 3.2, 1)
+# if type(x) is list:
+#     print('x is a list')
+# elif type(x) is set:
+#     print('x is a set')
+# elif type(x) is tuple:
+#     print('x is a tuple')    
+# else:
+#     print('Neither a list or a set or a tuple.')
 
 """Write a Python program to find the location of Python module sources."""
-import imp
-print("Location of Python os module sources:")
-print(imp.find_module('os'))
-print("\nLocation of Python sys module sources:")
-print(imp.find_module('datetime'))
+# import imp
+# print("Location of Python os module sources:")
+# print(imp.find_module('os'))
+# print("\nLocation of Python sys module sources:")
+# print(imp.find_module('datetime'))
 
 """Write a Python function to check whether a number is divisible by another number. Accept two integer values from the user."""
-def multiple(m, n):
-	return True if m % n == 0 else False
+# def multiple(m, n):
+# 	return True if m % n == 0 else False
 
-print(multiple(20, 5))
-print(multiple(7, 2))
+# print(multiple(20, 5))
+# print(multiple(7, 2))
 
 """Write a Python function to find the maximum and minimum numbers from a sequence of numbers."""
-def max_min(data):
-  l = data[0]
-  s = data[0]
-  for num in data:
-    if num> l:
-      l = num
-    elif num< s:
-        s = num
-  return l, s
+# def max_min(data):
+#   l = data[0]
+#   s = data[0]
+#   for num in data:
+#     if num> l:
+#       l = num
+#     elif num< s:
+#         s = num
+#   return l, s
 
 print(max_min([0, 10, 15, 40, -5, 42, 17, 28, 75]))
 
 """Write a Python function that takes a positive integer and returns the sum of the cube of all positive integers smaller than the specified number."""
-def sum_of_cubes(n):
- n -= 1
- total = 0
- while n > 0:
-   total += n * n * n
-   n -= 1
- return total
-print("Sum of cubes smaller than the specified number: ",sum_of_cubes(3))
+# def sum_of_cubes(n):
+#  n -= 1
+#  total = 0
+#  while n > 0:
+#    total += n * n * n
+#    n -= 1
+#  return total
+# print("Sum of cubes smaller than the specified number: ",sum_of_cubes(3))
 
 """Write a Python function to check whether a distinct pair of numbers whose product is odd is present in a sequence of integer values."""
-def odd_product(nums):
-  for i in range(len(nums)):
-    for j in range(len(nums)):
-      if  i != j:
-        product = nums[i] * nums[j]
-        if product & 1:
-          return True
-  return False          
-dt1 = [2, 4, 6, 8]
-dt2 = [1, 6, 4, 7, 8]
-dt3 = [1, 3, 5, 7, 9]
-print(dt1, odd_product(dt1))
-print(dt2, odd_product(dt2))
-print(dt3, odd_product(dt3))
+# def odd_product(nums):
+#   for i in range(len(nums)):
+#     for j in range(len(nums)):
+#       if  i != j:
+#         product = nums[i] * nums[j]
+#         if product & 1:
+#           return True
+#   return False          
+# dt1 = [2, 4, 6, 8]
+# dt2 = [1, 6, 4, 7, 8]
+# dt3 = [1, 3, 5, 7, 9]
+# print(dt1, odd_product(dt1))
+# print(dt2, odd_product(dt2))
+# print(dt3, odd_product(dt3))
 
-hi
+
+#https://www.w3resource.com/python-exercises/basic/#EDITOR
+############___________________Python_Example________##############
+"""Write a Python function that takes a sequence of numbers and determines whether all 
+the numbers are different from each other."""
+
+# def test_distinct(data):
+#   if len(data) == len(set(data)):
+#     return True
+#   else:
+#     return False;
+# print(test_distinct([1,5,7,9]))
+# print(test_distinct([2,4,5,5,7,9]))
+
+"""Write a Python program that creates all possible strings using the letters 'a', 'e', 'i', 'o', and 'I'.
+Ensure that each character is used only once."""
+
+# import random
+# char_list = ['a','e','i','o','u']
+# random.shuffle(char_list)
+# print(''.join(char_list))
+
+
+"""Write a Python program that removes and prints every third number from a list of numbers until the list is empty."""
+
+# def remove_nums(int_list):
+#   #list starts with 0 index
+#   position = 3 - 1 
+#   idx = 0
+#   len_list = (len(int_list))
+#   while len_list>0:
+#     idx = (position+idx)%len_list
+#     print(int_list.pop(idx))
+#     len_list -= 1
+# nums = [10,20,30,40,50,60,70,80,90]
+# remove_nums(nums)
+
+
+"""Write a Python program to identify unique triplets whose three elements sum to zero from an array of n integers."""
+
+def three_sum(nums):
+  result = []
+  nums.sort()
+  for i in range(len(nums)-2):
+    if i> 0 and nums[i] == nums[i-1]:
+      continue
+    l, r = i+1, len(nums)-1
+    while l < r:
+      s = nums[i] + nums[l] + nums[r]
+      if s > 0:
+        r -= 1
+      elif s < 0:
+          l += 1
+      else:
+        # found three sum
+        result.append((nums[i], nums[l], nums[r]))
+        # remove duplicates
+        while l < r and nums[l] == nums[l+1]:
+          l+=1
+          while l < r and nums[r] == nums[r-1]:
+            r -= 1
+            l += 1
+            r -= 1
+          return result
+
+x = [1, -6, 4, 2, -1, 2, 0, -2, 0 ]
+print(three_sum(x))
+
+
+#Write a Python program to make combinations of 3 digits.
+
+numbers = []
+for num in range(1000):
+  num=str(num).zfill(3)
+print(num)
+numbers.append(num)
+
+
+"""Write a Python program that prints long text, converts it to a list, and prints all the words and the frequency of each word."""
+string_words = '''United States Declaration of Independence
+From Wikipedia, the free encyclopedia
+The United States Declaration of Independence is the statement
+adopted by the Second Continental Congress meeting at the Pennsylvania State
+House (Independence Hall) in Philadelphia on July 4, 1776, which announced
+that the thirteen American colonies, then at war with the Kingdom of Great
+Britain, regarded themselves as thirteen independent sovereign states, no longer
+under British rule. These states would found a new nation - the United States of
+America. John Adams was a leader in pushing for independence, which was passed
+on July 2 with no opposing vote cast. A committee of five had already drafted the
+formal declaration, to be ready when Congress voted on independence.
+
+John Adams persuaded the committee to select Thomas Jefferson to compose the original
+draft of the document, which Congress would edit to produce the final version.
+The Declaration was ultimately a formal explanation of why Congress had voted on July
+2 to declare independence from Great Britain, more than a year after the outbreak of
+the American Revolutionary War. The next day, Adams wrote to his wife Abigail: "The
+Second Day of July 1776, will be the most memorable Epocha, in the History of America."
+But Independence Day is actually celebrated on July 4, the date that the Declaration of
+Independence was approved.
+
+After ratifying the text on July 4, Congress issued the Declaration of Independence in
+several forms. It was initially published as the printed Dunlap broadside that was widely
+distributed and read to the public. The source copy used for this printing has been lost,
+and may have been a copy in Thomas Jefferson's hand.[5] Jefferson's original draft, complete
+with changes made by John Adams and Benjamin Franklin, and Jefferson's notes of changes made
+by Congress, are preserved at the Library of Congress. The best-known version of the Declaration
+is a signed copy that is displayed at the National Archives in Washington, D.C., and which is
+popularly regarded as the official document. This engrossed copy was ordered by Congress on
+July 19 and signed primarily on August 2.
+
+The sources and interpretation of the Declaration have been the subject of much scholarly inquiry.
+The Declaration justified the independence of the United States by listing colonial grievances against
+King George III, and by asserting certain natural and legal rights, including a right of revolution.
+Having served its original purpose in announcing independence, references to the text of the
+Declaration were few in the following years. Abraham Lincoln made it the centerpiece of his rhetoric
+(as in the Gettysburg Address of 1863) and his policies. Since then, it has become a well-known statement
+on human rights, particularly its second sentence:
+
+We hold these truths to be self-evident, that all men are created equal, that they are endowed by their
+Creator with certain unalienable Rights, that among these are Life, Liberty and the pursuit of Happiness.
+
+This has been called "one of the best-known sentences in the English language", containing "the most potent
+and consequential words in American history". The passage came to represent a moral standard to which
+the United States should strive. This view was notably promoted by Abraham Lincoln, who considered the
+Declaration to be the foundation of his political philosophy and argued that it is a statement of principles
+through which the United States Constitution should be interpreted.
+
+The U.S. Declaration of Independence inspired many other similar documents in other countries, the first
+being the 1789 Declaration of Flanders issued during the Brabant Revolution in the Austrian Netherlands
+(modern-day Belgium). It also served as the primary model for numerous declarations of independence across
+Europe and Latin America, as well as Africa (Liberia) and Oceania (New Zealand) during the first half of the
+19th century.'''
+
+word_list = string_words.split()
+
+word_freq = [word_list.count(n) for n in word_list]
+
+print("String:\n {} \n".format(string_words))
+print("List:\n {} \n".format(str(word_list)))
+print("Pairs (Words and Frequencies:\n {}".format(str(list(zip(word_list, word_freq)))))
+
+
+"""Write a Python program to count the number of each character in a text file."""
+
+import collections
+import pprint
+file_input = input('File Name: ')
+with open(file_input, 'r') as info:
+  count = collections.Counter(info.read().upper())
+  value = pprint.pformat(count)
+print(value)
+
+
+"""Write a Python program that retrieves the top stories from Google News."""
+
+from bs4 import BeautifulSoup as soup
+from urllib.request import urlopen
+
+news_url="https://news.google.com/news/rss"
+Client=urlopen(news_url)
+xml_page=Client.read()
+Client.close()
+
+soup_page=soup(xml_page,"xml")
+news_list=soup_page.findAll("item")
+# Print news title, url and publish date
+for news in news_list:
+  print(news.title.text)
+  print(news.link.text)
+  print(news.pubDate.text)
+  print("-"*60)
+
+"""Write a Python program to get a list of locally installed Python modules."""
+import pkg_resources
+installed_packages = pkg_resources.working_set
+installed_packages_list = sorted(["%s==%s" % (i.key, i.version) for i in installed_packages])
+for m in installed_packages_list:
+    print(m)
+
+"""Write a Python program to display some information about the OS where the script is running."""
+import platform as pl
+
+os_profile = [
+        'architecture',
+        'linux_distribution',
+        'mac_ver',
+        'machine',
+        'node',
+        'platform',
+        'processor',
+        'python_build',
+        'python_compiler',
+        'python_version',
+        'release',
+        'system',
+        'uname',
+        'version',
+    ]
+for key in os_profile:
+  if hasattr(pl, key):
+    print(key +  ": " + str(getattr(pl, key)()))
+
+"""Write a Python program to check the sum of three elements (each from an array) from three arrays is equal to a target value.
+Print all those three-element combinations.
+Sample data:
+/*
+X = [10, 20, 20, 20]
+Y = [10, 20, 30, 40]
+Z = [10, 30, 40, 20]
+target = 70
+*/"""
+ 
+import itertools
+from functools import partial
+X = [10, 20, 20, 20]
+Y = [10, 20, 30, 40]
+Z = [10, 30, 40, 20]
+T = 70
+
+def check_sum_array(N, *nums):
+  if sum(x for x in nums) == N:
+    return (True, nums)
+  else:
+      return (False, nums)
+pro = itertools.product(X,Y,Z)
+func = partial(check_sum_array, T)
+sums = list(itertools.starmap(func, pro))
+
+result = set()
+for s in sums:
+    if s[0] == True and s[1] not in result:
+      result.add(s[1])
+      print(result)
+
+
+"""Write a Python program that generates a list of all possible permutations from a given collection of distinct numbers."""
+
+def permute(nums):
+  result_perms = [[]]
+  for n in nums:
+    new_perms = []
+    for perm in result_perms:
+      for i in range(len(perm)+1):
+        new_perms.append(perm[:i] + [n] + perm[i:])
+        result_perms = new_perms
+  return result_perms
+
+my_nums = [1,2,3]
+print("Original Cofllection: ",my_nums)
+print("Collection of distinct numbers:\n",permute(my_nums))
+
+"""Write a Python program to get all possible two-digit letter combinations from a 1-9 digit string."""
+
+def letter_combinations(digits):
+    if digits == "":
+        return []
+    string_maps = {
+                  "1": "abc",
+                  "2": "def",
+                  "3": "ghi",
+                  "4": "jkl",
+                  "5": "mno",
+                  "6": "pqrs",
+                  "7": "tuv",
+                  "8": "wxy",
+                  "9": "z"
+                  }
+    result = [""]
+    for num in digits:
+        temp = []
+        for an in result:
+            for char in string_maps[num]:
+                temp.append(an + char)
+        result = temp
+    return result
+
+digit_string = "47"
+print(letter_combinations(digit_string))
+digit_string = "29"
+print(letter_combinations(digit_string))
+
+"""Write a Python program to add two positive integers without using the '+' operator"""
+def add_without_plus_operator(a, b):
+    while b != 0:
+        data = a & b
+        a = a ^ b
+        b = data << 1
+    return a
+print(add_without_plus_operator(2, 10))
+print(add_without_plus_operator(-20, 10))
+print(add_without_plus_operator(-10, -20))
+
+"""Write a Python program to check the priority of the four operators (+, -, *, /). """
+
+from collections import deque
+import re
+
+__operators__ = "+-/*"
+__parenthesis__ = "()"
+__priority__ = {
+    '+': 0,
+    '-': 0,
+    '*': 1,
+    '/': 1,
+}
+
+def test_higher_priority(operator1, operator2):
+    return __priority__[operator1] >= __priority__[operator2]
+
+print(test_higher_priority('*','-'))
+print(test_higher_priority('+','-'))
+print(test_higher_priority('+','*'))
+print(test_higher_priority('+','/'))
+print(test_higher_priority('*','/'))
+
+"""Write a Python program to get the third side of a right-angled triangle from two given sides."""
+
+def pythagoras(opposite_side,adjacent_side,hypotenuse):
+        if opposite_side == str("x"):
+            return ("Opposite = " + str(((hypotenuse**2) - (adjacent_side**2))**0.5))
+        elif adjacent_side == str("x"):
+            return ("Adjacent = " + str(((hypotenuse**2) - (opposite_side**2))**0.5))
+        elif hypotenuse == str("x"):
+            return ("Hypotenuse = " + str(((opposite_side**2) + (adjacent_side**2))**0.5))
+        else:
+            return "You know the answer!"
+    
+print(pythagoras(3,4,'x'))
+print(pythagoras(3,'x',5))
+print(pythagoras('x',4,5))
+print(pythagoras(3,4,5))
+
+"""Write a Python program to get all strobogrammatic numbers that are of length n.
+A strobogrammatic number is a number whose numeral is rotationally symmetric, so that it appears the same when rotated 180 degrees.
+In other words, the numeral looks the same right-side up and upside down (e.g., 69, 96, 1001).
+For example,
+Given n = 2, return ["11", "69", "88", "96"].
+Given n = 3, return ['818', '111', '916', '619', '808', '101', '906', '609', '888', '181', '986', '689']"""
+
+#https://github.com/keon/algorithms/blob/master/math/generate_strobogrammtic.py
+def gen_strobogrammatic(n):
+    """
+    :type n: int
+    :rtype: List[str]
+    """
+    result = helper(n, n)
+    return result
+
+
+def helper(n, length):
+    if n == 0:
+        return [""]
+    if n == 1:
+        return ["1", "0", "8"]
+    middles = helper(n-2, length)
+    result = []
+    for middle in middles:
+        if n != length:
+            result.append("0" + middle + "0")
+        result.append("8" + middle + "8")
+        result.append("1" + middle + "1")
+        result.append("9" + middle + "6")
+        result.append("6" + middle + "9")
+    return result
+
+print("n = 2: \n",gen_strobogrammatic(2))
+print("n = 3: \n",gen_strobogrammatic(3))
+print("n = 4: \n",gen_strobogrammatic(4))
+
+"""Write a Python program to find the median among three given numbers."""
+
+x = input("Input the first number")
+y = input("Input the second number")
+z = input("Input the third number")
+print("Median of the above three numbers -")
+
+if y < x and x < z:
+    print(x)
+elif z < x and x < y:
+    print(x)
+    
+elif z < y and y < x:
+    print(y)
+elif x < y and y < z:
+    print(y)
+    
+elif y < z and z < x:
+    print(z)    
+elif x < z and z < y:
+    print(z)
+
+"""Write a Python program that finds the value of n when n degrees of number 2 are written sequentially on a line without spaces between them."""
+
+def ndegrees(num):
+  ans = True
+  n, tempn, i = 2, 2, 2
+  while ans:
+    if str(tempn) in num:
+      i += 1
+      tempn = pow(n, i)
+    else:
+      ans = False
+  return i-1;
+print(ndegrees("2481632"))
+print(ndegrees("248163264"))
+
+"""Write a Python program to find the number of zeros at the end of a factorial of a given positive number."""
+"""Range of the number(n): (1 <= n <= 2*109)."""
+def factendzero(n):
+  x = n // 5
+  y = x 
+  while x > 0:
+    x /= 5
+    y += int(x)
+  return y
+       
+print(factendzero(5))
+print(factendzero(12))
+print(factendzero(100))
+
+"""Write a Python program to find the number of notes (Samples of notes: 10, 20, 50, 100, 200, 500) against an amount."""
+
+def no_notes(a):
+  Q = [500, 200, 100, 50, 20, 10]
+  x = 0
+  for i in range(6):
+    q = Q[i]
+    x += int(a / q)
+    a = int(a % q)
+  if a > 0:
+    x = -1
+  return x
+print(no_notes(880))
+print(no_notes(1000))
+
+"""Write a Python program to create a sequence where the first four members of the sequence are equal to one.
+Each successive term of the sequence is equal to the sum of the four previous ones.
+Find the Nth member of the sequence."""
+
+def new_seq(n):
+    if n==1 or n==2 or n==3 or n==4:
+        return 1
+    return new_seq(n-1) + new_seq(n-2) + new_seq(n-3) + new_seq(n-4)
+print(new_seq(5))
+print(new_seq(6))
+print(new_seq(7))
+
+"""Write a Python program that accepts a positive number and subtracts from it the sum of its digits, and so on.
+Continue this operation until the number is positive."""
+
+def repeat_times(n):
+  n_str = str(n)
+  while (n > 0):
+    n -= sum([int(i) for i in list(n_str)])
+    n_str = list(str(n))
+  return n
+print(repeat_times(9))
+print(repeat_times(20))
+print(repeat_times(110))
+print(repeat_times(5674))
+
+
