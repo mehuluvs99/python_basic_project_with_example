@@ -1663,3 +1663,137 @@ print(repeat_times(110))
 print(repeat_times(5674))
 
 
+"""Write a Python program to find the total number of even or odd divisors of a given integer."""
+def divisor(n):
+  x = len([i for i in range(1,n+1) if not n % i])
+  return x
+print(divisor(15))
+print(divisor(12))
+print(divisor(9))
+print(divisor(6))
+print(divisor(3))
+
+"""Write a Python program to find the digits that are missing from a given mobile number."""
+
+def absent_digits(n):
+  all_nums = set([0,1,2,3,4,5,6,7,8,9])
+  n = set([int(i) for i in n])
+  n = n.symmetric_difference(all_nums)
+  n = sorted(n)
+  return n
+print(absent_digits([9,8,3,2,2,0,9,7,6,3]))
+
+"""Write a Python program to compute the summation of the absolute difference of all distinct pairs in a given array (non-decreasing order)."""
+
+def sum_distinct_pairs(arr):
+    result = 0
+    i = 0
+    while i<len(arr):
+        result+=i*arr[i]-(len(arr)-i-1)*arr[i]
+        i+=1
+    return result
+print(sum_distinct_pairs([1,2,3]))
+print(sum_distinct_pairs([1,4,5]))
+
+
+
+"""Write a Python program to print the length of the series and the series from the given 3rd term, 3rd last term and the sum of a series."""
+
+tn = int(input("Input third term of the series:"))
+tltn = int(input("Input 3rd last term:"))
+s_sum = int(input("Sum of the series:"))
+n = int(2*s_sum/(tn+tltn))
+print("Length of the series: ",n)
+
+
+if n-5==0:
+  d = (s_sum-3*tn)//6
+else:
+  d = (tltn-tn)/(n-5)
+
+a = tn-2*d
+j = 0
+print("Series:")
+for j in range(n-1):
+  print(int(a),end=" ")
+  a+=d
+print(int(a),end=" ")
+
+"""Write a Python program to find common divisors between two numbers in a given pair."""
+
+def ngcd(x, y):
+    i=1
+    while(i<=x and i<=y):
+        if(x%i==0 and y%i == 0):
+            gcd=i;
+        i+=1
+    return gcd;
+def num_comm_div(x, y):
+  n = ngcd(x, y)
+  result = 0
+  z = int(n**0.5)
+  i = 1
+  while( i <= z ):
+    if(n % i == 0):
+      result += 2 
+      if(i == n/i):
+        result-=1
+    i+=1
+  return result
+
+print("Number of common divisors: ",num_comm_div(2, 4))
+print("Number of common divisors: ",num_comm_div(2, 8))
+print("Number of common divisors: ",num_comm_div(12, 24))
+
+
+"""Find common divisors between two numbers in a given pair"""
+
+def ngcd(x, y):
+    i=1
+    while(i<=x and i<=y):
+        if(x%i==0 and y%i == 0):
+            gcd=i;
+        i+=1
+    return gcd;
+def num_comm_div(x, y):
+  n = ngcd(x, y)
+  result = 0
+  z = int(n**0.5)
+  i = 1
+  while( i <= z ):
+    if(n % i == 0):
+      result += 2 
+      if(i == n/i):
+        result-=1
+    i+=1
+  return result
+
+print("Number of common divisors: ",num_comm_div(2, 4))
+print("Number of common divisors: ",num_comm_div(2, 8))
+print("Number of common divisors: ",num_comm_div(12, 24))
+
+
+"""Write a Python program to reverse the digits of a given number and add them to the original. Repeat this procedure if the sum is not a palindrome."""
+
+def rev_number(n):
+  s = 0
+  while True:
+    k = str(n)
+    if k == k[::-1]:
+      break
+    else:
+      m = int(k[::-1])
+      n += m
+      s += 1
+  return n 
+
+print(rev_number(1234))
+print(rev_number(1473))
+
+
+"""Write a Python program to find the heights of the top three buildings in descending order from eight given buildings."""
+
+
+
+
+
