@@ -415,7 +415,7 @@
 #     print('*', end="")
 # print("\n")
 
-"""Write a Python program to determine the profiling of Python programs. Go to the editor
+"""Write a Python program to determine the profiling of Python programs. 
 # Note: A profile is a set of statistics that describes how often and for how long various parts of the program executed.
 # These statistics can be formatted into reports via the pstats module."""
 
@@ -1090,7 +1090,7 @@ Expected output: 1e, 04"""
 # x = 4
 # print(format(x, '02x'))
 
-"""Write a Python program to check if every consecutive sequence of zeroes is followed by a consecutive sequence of ones of same length in a given string. Return True/False. Go to the editor
+"""Write a Python program to check if every consecutive sequence of zeroes is followed by a consecutive sequence of ones of same length in a given string. Return True/False. 
 Original sequence: 01010101
 Check if every consecutive sequence of zeroes is followed by a consecutive sequence of ones in the said string:
 True
@@ -1793,7 +1793,538 @@ print(rev_number(1473))
 
 """Write a Python program to find the heights of the top three buildings in descending order from eight given buildings."""
 
+"""Input:
+0 <= height of building (integer) <= 10,000
+Input the heights of eight buildings:
+25
+35
+15
+16
+30
+45
+37
+39
+Heights of the top three buildings:
+45
+39
+37"""
+
+print("Input the heights of eight buildings:")
+l = [int(input()) for i in range(8)]
+print("Heights of the top three buildings:")
+l = sorted(l)
+print(*l[:4:-1], sep='\n')
+
+
+"""Write a Python program to compute the digit number of the sum of two given integers"""
+
+"""Each test case consists of two non-negative integers x and y which are separated by a space in a line.
+0 <= x, y <= 1,000,000
+Input two integers(a b):
+5 7
+Sum of two integers a and b.:
+2"""
+
+"""Write a Python program to compute the digit number of the sum of two given integers.
+Each test case consists of two non-negative integers x and y which are separated by a space in a line.
+0 ≤ x, y ≤ 1,000,000"""
+
+
+print("Input two integers(a b): ")
+a,b = map(int,input().split(" "))
+print("Number of digit of a and b.:")
+print(len(str(a+b)))
+
+"""Write a Python program to check whether three given lengths (integers) of three sides form a right triangle.
+Print "Yes" if the given sides form a right triangle otherwise print "No"."""
+
+"""Input:
+Integers separated by a single space.
+1 <= length of the side <= 1,000
+Input three integers(sides of a triangle)
+8 6 7
+No"""
+
+
+print("Input three integers(sides of a triangle)")
+int_num = list(map(int,input().split()))
+x,y,z = sorted(int_num)
+if x**2+y**2==z**2:
+    print('Yes')
+else:
+    print('No')
+
+"""Write a Python program which solve the equation: 
+ax+by=c
+dx+ey=f
+Print the values of x, y where a, b, c, d, e and f are given.
+Input:
+a,b,c,d,e,f separated by a single space.
+(-1,000 <= a,b,c,d,e,f <= 1,000)
+Input the value of a, b, c, d, e, f:
+5 8 6 7 9 4
+Values of x and y:
+-2.000 2.000"""
+
+print("Input the value of a, b, c, d, e, f:")
+a, b, c, d, e, f = map(float, input().split())
+n = a*e - b*d
+print("Values of x and y:")
+if n != 0:
+    x = (c*e - b*f) / n
+    y = (a*f - c*d) / n
+    print('{:.3f} {:.3f}'.format(x+0, y+0))
+
+"""Write a Python program to compute the amount of debt in n months.
+Each month, the loan adds 5% interest to the $100,000 debt and rounds to the nearest 1,000 above.
+
+Input:
+An integer n (0 <= n <= 100)
+Input number of months: 7
+Amount of debt: $144000"""
+
+def round_n(n):
+    if n%1000:
+        return (1+n//1000)*1000
+    else:
+        return n
+     
+def compute_debt(n):
+    if n==0: return 100000
+    return int(round_n(compute_debt(n-1)*1.05))
+
+print("Input number of months:")
+result = compute_debt(int(input()))
+print("Amount of debt: ","$"+str(result).strip())
+
+"""Write a Python program that reads an integer n and finds the number of combinations of a,b,c and d (0 = a,b,c,d = 9) where (a + b + c + d) will be equal to n.
+Input:
+n (1 <= n <= 50)
+Input the number(n): 15
+Number of combinations: 592"""
+
+import itertools
+print("Input the number(n):")
+n=int(input())
+result=0
+for (i,j,k) in itertools.product(range(10),range(10),range(10)):
+    result+=(0<=n-(i+j+k)<=9)
+print("Number of combinations:",result)
+
+
+"""Write a Python program to print the number of prime numbers that are less than or equal to a given number.
+Input:
+n (1 <= n <= 999,999)
+Input the number(n): 35
+Number of prime numbers which are less than or equal to n.: 11"""
+
+primes = [1] * 500000
+primes[0] = 0
+ 
+for i in range(3, 1000, 2):
+    if primes[i // 2]:
+        primes[(i * i) // 2::i] = [0] * len(primes[(i * i) // 2::i])
+ 
+print("Input the number(n):")
+n=int(input())
+if n < 4:
+    print("Number of prime numbers which are less than or equal to n.:",n - 1)
+else:
+    print("Number of prime numbers which are less than or equal to n.:",sum(primes[:(n + 1) // 2]) + 1)
+
+"""Write a program to compute the radius and the central coordinate (x, y) of a circle which is constructed from three given points on the plane surface.
+Input:
+x1, y1, x2, y2, x3, y3 separated by a single space.
+Input three coordinate of the circle:
+9 3 6 8 3 6
+Radius of the said circle:
+3.358
+Central coordinate (x, y) of the circle:
+6.071 4.643"""
+
+print("Input three coordinate of the circle:")
+x1, y1, x2, y2, x3, y3 = map(float, input().split())
+c = (x1-x2)**2 + (y1-y2)**2
+a = (x2-x3)**2 + (y2-y3)**2
+b = (x3-x1)**2 + (y3-y1)**2
+s = 2*(a*b + b*c + c*a) - (a*a + b*b + c*c) 
+px = (a*(b+c-a)*x1 + b*(c+a-b)*x2 + c*(a+b-c)*x3) / s
+py = (a*(b+c-a)*y1 + b*(c+a-b)*y2 + c*(a+b-c)*y3) / s 
+ar = a**0.5
+br = b**0.5
+cr = c**0.5 
+r = ar*br*cr / ((ar+br+cr)*(-ar+br+cr)*(ar-br+cr)*(ar+br-cr))**0.5
+print("Radius of the said circle:")
+print("{:>.3f}".format(r))
+print("Central coordinate (x, y) of the circle:")
+print("{:>.3f}".format(px),"{:>.3f}".format(py))
+
+
+"""Write a Python program to check if a point (x,y) is in a triangle or not. A triangle is formed by three points. 
+Input:
+x1,y1,x2,y2,x3,y3,xp,yp separated by a single space.
+Input three coordinate of the circle:
+9 3 6 8 3 6
+Radius of the said circle:
+3.358
+Central coordinate (x, y) of the circle:
+6.071 4.643"""
+
+print("Input x1,y1,x2,y2,x3,y3,xp,yp:")
+x1,y1,x2,y2,x3,y3,xp,yp = map(float, input().split())
+c1 = (x2-x1)*(yp-y1)-(y2-y1)*(xp-x1)
+c2 = (x3-x2)*(yp-y2)-(y3-y2)*(xp-x2)
+c3 = (x1-x3)*(yp-y3)-(y1-y3)*(xp-x3)
+if (c1<0 and c2<0 and c3<0) or (c1>0 and c2>0 and c3>0):
+    print("The point is in the triangle.")
+else:
+    print("The point is outside the triangle.")
+
+"""Write a Python program to compute and print the sum of two given integers (greater or equal to zero). 
+In the event that the given integers or the sum exceed 80 digits, print "overflow". 
+Input first integer:
+25
+Input second integer:
+22
+Sum of the two integers: 47"""
+
+print("Input first integer:")
+x = int(input())
+print("Input second integer:")
+y = int(input())
+if x >= 10 ** 80 or y >= 10 ** 80 or x + y >= 10 ** 80:
+    print("Overflow!")
+else:
+    print("Sum of the two integers: ",x + y)
+
+"""Write a Python program that accepts six numbers as input and sorts them in descending order. 
+Input:
+Input consists of six numbers n1, n2, n3, n4, n5, n6 (-100000 <= n1, n2, n3, n4, n5, n6 <= 100000).
+The six numbers are separated by a space.
+Input six integers:
+15 30 25 14 35 40
+After sorting the said integers:
+40 35 30 25 15 14"""
+
+print("Input six integers:")
+nums = list(map(int, input().split()))
+nums.sort()
+nums.reverse()
+print("After sorting the said ntegers:")
+print(*nums)
+
+
+"""Write a Python program to test whether two lines PQ and RS are parallel.
+The four points are P(x1, y1), Q(x2, y2), R(x3, y3), S(x4, y4).
+Input:
+x1,y1,x2,y2,x3,y3,xp,yp separated by a single space
+Input x1,y1,x2,y2,x3,y3,xp,yp:
+2 5 6 4 8 3 9 7
+PQ and RS are not parallel"""
+
+print("Input x1,y1,x2,y2,x3,y3,xp,yp:")
+x1, y1,x2, y2, x3, y3, x4, y4 = map(float, input().split())
+print('PQ and RS are parallel.' if abs((x2 - x1)*(y4 - y3) - (x4 - x3)*(y2 - y1)) < 1e-10 else 'PQ and RS are not parallel')
+
+"""Write a Python program to find the maximum sum of a contiguous subsequence from a given sequence of numbers a1, a2, a3, ... an.
+A subsequence of one element is also a continuous subsequence. 
+Input:
+You can assume that 1 <= n <= 5000 and -100000 <= ai <= 100000.
+Input numbers are separated by a space.
+Input 0 to exit.
+Input number of sequence of numbers you want to input (0 to exit):
+3
+Input numbers:
+2
+4
+6
+Maximum sum of the said contiguous subsequence: 12
+Input number of sequence of numbers you want to input (0 to exit):
+0"""
+
+while True:
+    print("Input number of sequence of numbers you want to input (0 to exit):")
+    n = int(input())
+    if n == 0:
+        break
+    else:
+        A = []
+        Sum = []
+        print("Input numbers:") 
+        for i in range(n):
+            A.append(int(input()))
+        Wa = 0
+        for i in range(0,n):
+            Wa += A[i]
+            Sum.append(Wa)
+        for i in range(0 , n):
+            for j in range(0 , i):
+                Num = Sum[i] - Sum[j]
+                Sum.append(Num)
+        print("Maximum sum of the said contiguous subsequence:")
+        print(max(Sum))
+
+"""
+There are two circles C1 with radius r1, central coordinate (x1, y1) and C2 with radius r2 and central coordinate (x2, y2). Go to the editor
+
+Write a Python program to test the followings -
+
+"C2 is in C1" if C2 is in C1
+"C1 is in C2" if C1 is in C2
+"Circumference of C1 and C2 intersect" if circumference of C1 and C2 intersect
+"C1 and C2 do not overlap" if C1 and C2 do not overlap and
+"Circumference of C1 and C2 will touch" if C1 and C2 touch
+Input:
+Input numbers (real numbers) are separated by a space.
+Input x1, y1, r1, x2, y2, r2:
+5 4 2 3 9 2
+C1 and C2 do not overlap
+Input x1, y1, r1, x2, y2, r2:
+5 4 3 5 10 3
+Circumference of C1 and C2 will touch
+Input x1, y1, r1, x2, y2, r2:
+6 4 3 10 4 2
+Circumference of C1 and C2 intersect
+Input x1, y1, r1, x2, y2, r2:
+5 4 3 5 4 2
+C2 is in C1
+Input x1, y1, r1, x2, y2, r2:
+5 4 2 5 4 3
+C1 is in C2
+"""
+
+import math
+print("Input x1, y1, r1, x2, y2, r2:")
+x1,y1,r1,x2,y2,r2 = [float(i) for i in input().split()]
+d = math.sqrt((x1-x2)**2 + (y1-y2)**2)
+if d <= r1-r2:
+    print("C2  is in C1")
+elif d <= r2-r1:
+    print("C1  is in C2")
+elif d < r1+r2:
+    print("Circumference of C1  and C2  intersect")
+elif d == r1+r2:
+    print("Circumference of C1 and C2 will touch")
+else:
+    print("C1 and C2  do not overlap")
 
 
 
+"""Write a Python program that reads a date (from 2016/1/1 to 2016/12/31) and prints the day of the date. Jan. 1, 2016, is Friday. Note that 2016 is a leap year. Go to the editor
+Input:
+Two integers m and d separated by a single space in a line, m ,d represent the month and the day.
+Input month and date (separated by a single space):
+5 15
+Name of the date: Sunday"""
 
+from datetime import date
+print("Input month and date (separated by a single space):")
+m, d = map(int, input().split())
+weeks = {1:'Monday',2:'Tuesday',3:'Wednesday',4:'Thursday',5:'Friday',6:'Saturday',7:'Sunday'}
+w = date.isoweekday(date(2016, m, d))
+print("Name of the date: ",weeks[w])
+
+"""
+Write a Python program that reads text (only alphabetical characters and spaces) and prints two words.
+The first word is the one that appears most often in the text. The second one is the word with the most letters.
+Note: A word is a sequence of letters which is separated by the spaces.
+
+Input:
+A text is given in a line with following condition:
+a. The number of letters in the text is less than or equal to 1000.
+b. The number of letters in a word is less than or equal to 32.
+c. There is only one word which is arise most frequently in given text.
+d. There is only one word which has the maximum number of letters in given text.
+Input text: Thank you for your comment and your participation.
+Output: your participation.
+"""
+
+import collections
+print("Input a text in a line.")
+text_list = list(map(str, input().split()))
+sc = collections.Counter(text_list)
+common_word = sc.most_common()[0][0]
+max_char = ""
+for s in text_list:
+    if len(max_char) < len(s):
+        max_char = s
+print("\nMost frequent text and the word which has the maximum number of letters.")
+print(common_word, max_char)
+
+
+"""
+Write a Python program that reads n digits (given) chosen from 0 to 9 and prints the number of combinations where the sum of the digits equals another given number (s).
+Do not use the same digits in a combination.
+Input:
+Two integers as number of combinations and their sum by a single space in a line. Input 0 0 to exit.
+Input number of combinations and sum, input 0 0 to exit:
+5 6
+2 4
+0 0
+2
+"""
+
+import itertools
+print("Input number of combinations and sum, input 0 0 to exit:")
+while True:
+  x, y = map(int, input(). split())
+  if x == 0 and y == 0:
+    break
+  s = list(itertools.combinations(range(10), x))
+  ctr = 0
+  for i in s:
+    if sum(i) == y:
+            ctr += 1
+ 
+print(ctr)
+
+"""
+Write a Python program that reads the two adjoining sides and the diagonal of a parallelogram and checks whether the parallelogram is a rectangle or a rhombus. Go to the editor
+According to Wikipedia-
+parallelograms: In Euclidean geometry, a parallelogram is a simple (non-self-intersecting) quadrilateral with two pairs of parallel sides. The opposite or facing sides of a parallelogram are of equal length and the opposite angles of a parallelogram are of equal measure.
+rectangles: In Euclidean plane geometry, a rectangle is a quadrilateral with four right angles. It can also be defined as an equiangular quadrilateral, since equiangular means that all of its angles are equal (360°/4 = 90°). It can also be defined as a parallelogram containing a right angle.
+rhombus: In plane Euclidean geometry, a rhombus (plural rhombi or rhombuses) is a simple (non-self-intersecting) quadrilateral whose four sides all have the same length. Another name is equilateral quadrilateral, since equilateral means that all of its sides are equal in length. The rhombus is often called a diamond, after the diamonds suit in playing cards which resembles the projection of an octahedral diamond, or a lozenge, though the former sometimes refers specifically to a rhombus with a 60° angle, and the latter sometimes refers specifically to a rhombus with a 45° angle.
+Input:
+Two adjoined sides and the diagonal.
+1 <= ai, bi, ci <= 1000, ai + bi > ci
+Input two adjoined sides and the diagonal of a parallelogram (comma separated):
+3,4,5
+This is a rectangle.
+"""
+
+print("Input two adjoined sides and the diagonal of a parallelogram (comma separated):")
+a,b,c = map(int, input().split(","))
+if c**2 == a**2+b**2 :
+    print("This is a rectangle.")
+if a == b:
+    print("This is a rhombus.")
+
+
+"""
+Write a Python program to replace a string "Python" with "Java" and "Java" with "Python" in a given string. 
+Input:
+English letters (including single byte alphanumeric characters, blanks, symbols) are given on one line.
+The length of the input character string is 1000 or less.
+Input a text with two words 'Python' and 'Java'
+Python is popular than Java
+Java is popular than Python
+"""
+
+print("Input a text with two words 'Python' and 'Java'")
+text = input().split()
+for i in range(len(text)):
+    if "Python" in text[i]:n = text[i].index("Python");text[i] = text[i][:n] + "Java" + text[i][n + 6:]
+    elif "Java" in text[i]:n = text[i].index("Java");text[i] = text[i][:n] + "Python" + text[i][n + 4:]
+print(*text)
+
+
+"""
+Write a Python program that determines the difference between the largest and smallest integers created by 8 numbers from 0 to 9. 
+The number that can be rearranged shall start with 0 as in 00135668.
+Input:
+Input an integer created by 8 numbers from 0 to 9.:
+2345
+Difference between the largest and the smallest integer from the given integer:
+3087
+"""
+
+print("Input an integer created by 8 numbers from 0 to 9.:")
+num = list(input())
+print("Difference between the largest and the smallest integer from the given integer:")
+print(int("".join(sorted(num,reverse=True))) - int("".join(sorted(num))))
+
+"""
+Write a Python program to compute the sum of the first n prime numbers. Go to the editor
+Input:
+n ( n <= 10000). Input 0 to exit the program.
+Input a number (n<=10000) to compute the sum:(0 to exit)
+25
+Sum of first 25 prime numbers:
+1060
+"""
+
+MAX = 105000
+print("Input a number (n≤10000) to compute the sum:(0 to exit)") 
+is_prime = [True for _ in range(MAX)]
+is_prime[0] = is_prime[1] = False
+for i in range(2, int(MAX ** (1 / 2)) + 1):
+  if is_prime[i]:
+    for j in range(i ** 2, MAX, i):
+      is_prime[j] = False 
+primes = [i for i in range(MAX) if is_prime[i]] 
+while True:
+  n = int(input())
+  if not n:
+    break
+  print("Sum of first",n,"prime numbers:")
+  print(sum(primes[:n]))
+
+"""
+Write a Python program which accepts an even number (>=4, Goldbach number) from the user and creates combinations which express the given number as a sum of two prime numbers. Print the number of combinations. Go to the editor
+Goldbach number: A Goldbach number is a positive even integer that can be expressed as the sum of two odd primes.[4] Since four is the only even number greater than two that requires the even prime 2 in order to be written as the sum of two primes, another form of the statement of Goldbach's conjecture is that all even integers greater than 4 are Goldbach numbers.
+The expression of a given even number as a sum of two primes is called a Goldbach partition of that number. The following are examples of Goldbach partitions for some even numbers:
+6 = 3 + 3
+8 = 3 + 5
+10 = 3 + 7 = 5 + 5
+12 = 7 + 5
+...
+100 = 3 + 97 = 11 + 89 = 17 + 83 = 29 + 71 = 41 + 59 = 47 + 53
+Input an even number (0 to exit):
+100
+Number of combinations:
+6
+"""
+
+import sys
+from bisect import bisect_right
+from itertools import chain, compress
+print("Input an even number (0 to exit):") 
+ub = 50000
+is_prime = [0, 0, 1, 1] + [0]*(ub-3)
+is_prime[5::6] = is_prime[7::6] = [1]*int(ub/6)
+primes = [2, 3]
+append = primes.append
+ 
+for n in chain(range(5, ub, 6), range(7, ub, 6)):
+    if is_prime[n]:
+        append(n)
+        is_prime[n*3::n*2] = [0]*((ub-n)//(n*2))
+primes.sort()
+
+for n in map(int, sys.stdin):
+    if not n:
+        break
+    if n%2:
+        print("Number of combinations:")  
+        print(is_prime[n-2])
+    else:
+        print("Number of combinations:")  
+        print(len([1 for p in primes[:bisect_right(primes, n/2)] if is_prime[n-p]]))
+
+"""
+If you draw a straight line on a plane, the plane is divided into two regions.
+For example, if you draw two straight lines in parallel, you get three areas, and if you draw vertically one to the other you get 4 areas.
+Write a Python program to create the maximum number of regions obtained by drawing n given straight lines.
+Input:
+(1 <= n <= 10,000)
+Input number of straight lines (o to exit):
+5
+Number of regions:
+16
+"""
+
+while True:
+    print("Input number of straight lines (o to exit): ")
+    n=int(input())
+    if n<=0:
+        break
+    print("Number of regions:") 
+    print((n*n+n+2)//2)
+
+"""
+There are four different points on a plane, P(xp,yp), Q(xq, yq), R(xr, yr) and S(xs, ys).
+Write a Python program to determine whether AB and CD are orthogonal.
+Input:
+xp,yp, xq, yq, xr, yr, xs and ys are -100 to 100 respectively and each value can be up to 5 digits after the decimal point It is given as a real number including the number of. Output:
+Output AB and CD are not orthogonal! or AB and CD are orthogonal!.
+"""
