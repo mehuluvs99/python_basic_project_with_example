@@ -2328,3 +2328,2095 @@ Input:
 xp,yp, xq, yq, xr, yr, xs and ys are -100 to 100 respectively and each value can be up to 5 digits after the decimal point It is given as a real number including the number of. Output:
 Output AB and CD are not orthogonal! or AB and CD are orthogonal!.
 """
+
+"""Write a Python program to sum all numerical values (positive integers) embedded in a sentence. Go to the editor
+Input:
+Sentences with positive integers are given over multiple lines.
+Each line is a character string containing one-byte alphanumeric characters, symbols, spaces, or an empty line. However the input is 80 characters or less per line and the sum is 10,000 or less.
+Input some text and numeric values ( to exit):
+Sum of the numeric values: 80
+None
+Input some text and numeric values ( to exit):
+Sum of the numeric values: 17
+None
+Input some text and numeric values ( to exit):
+Sum of the numeric values: 10
+None"""
+
+import sys,re
+def test(stri):
+  print("Input some text and numeric values (<ctrl-d> to exit):")
+  print("Sum of the numeric values: ",sum([sum(map(int,re.findall(r"[0-9]{1,5}",stri)))]))
+
+print(test("sd1fdsfs23 dssd56"))
+print(test("15apple2banana"))
+print(test("flowers5fruit5"))
+
+
+"""There are 10 vertical and horizontal squares on a plane. Each square is painted blue and green. Blue represents the sea, and green represents the land. When two green squares are in contact with the top and bottom, or right and left, they are said to be ground. The area created by only one green square is called "island". For example, there are five islands in the figure below.
+Write a Python program to read the mass data and find the number of islands. Go to the editor
+Input:
+Input 10 rows of 10 numbers representing green squares (island) as 1 and blue squares (sea) as zeros
+1100000111
+1000000111
+0000000111
+0010001000
+0000011100
+0000111110
+0001111111
+1000111110
+1100011100
+1110001000
+Number of islands:
+5"""
+
+c=0
+def f(x,y,z):
+    if 0<=y<10 and 0<=z<10 and x[z][y]=='1':
+        x[z][y]='0'
+        for dy,dz in [[-1,0],[1,0],[0,-1],[0,1]]:f(x,y+dy,z+dz)
+print("Input 10 rows of 10 numbers representing green squares (island) as 1 and blue squares (sea) as zeros") 
+while 1:
+    try:
+        if c:input()
+    except:break
+    x = [list(input()) for _ in [0]*10]
+    c=1;b=0
+    for i in range(10):
+        for j in range(10):
+            if x[j][i]=='1':
+                b+=1;f(x,i,j)
+    print("Number of islands:")     
+    print(b)
+
+
+"""When character are consecutive in a string , it is possible to shorten the character string by replacing the character with a certain rule. For example, in the case of the character string YYYYY, if it is expressed as # 5 Y, it is compressed by one character.
+Write a Python program to restore the original string by entering the compressed string with this rule. However, the # character does not appear in the restored character string. Go to the editor
+Input:
+The restored character string for each character on one line.
+Original text: XY#6Z1#4023
+XYZZZZZZ1000023
+Original text: #39+1=1#30
+999+1=1000"""
+
+def restore_original_str(a1):
+  result = ""
+  ind = 0
+  end = len(a1)
+  while ind < end:
+    if a1[ind] == "#":
+      result += a1[ind + 2] * int(a1[ind + 1])
+      ind += 3
+    else:
+      result += a1[ind]
+      ind += 1
+  return result
+print("Original text:","XY#6Z1#4023")
+print(restore_original_str("XY#6Z1#4023"))
+print("Original text:","#39+1=1#30")
+print(restore_original_str("#39+1=1#30"))
+
+
+"""A convex polygon is a simple polygon in which no line segment between two points on the boundary ever goes outside the polygon. Equivalently, it is a simple polygon whose interior is a convex set. In a convex polygon, all interior angles are less than or equal to 180 degrees, while in a strictly convex polygon all interior angles are strictly less than 180 degrees.
+Write a Python program that compute the area of the polygon . The vertices have the names vertex 1, vertex 2, vertex 3, ... vertex n according to the order of edge connections Go to the editor
+Note: The original sentences are uppercase letters, lowercase letters, numbers, symbols, less than 100 letters, and consecutive letters are not more than 9 letters.
+Input:
+Input number of sides: 5
+Side: 1
+Input the Coordinate:
+Input Coordinate x: 1
+Input Coordinate y: 0
+Side: 2
+Input the Coordinate:
+Input Coordinate x: 0
+Input Coordinate y: 0
+Side: 3
+Input the Coordinate:
+Input Coordinate x: 1
+Input Coordinate y: 1
+Side: 4
+Input the Coordinate:
+Input Coordinate x: 2
+Input Coordinate y: 0
+Side: 5
+Input the Coordinate:
+Input Coordinate x: -1
+Input Coordinate y: 1
+Area of the Polygon: 0.5
+"""
+
+def poly_area(c):
+  add = []
+  for i in range(0, (len(c) - 2), 2):
+    add.append(c[i] * c[i + 3] - c[i + 1] * c[i + 2])
+    add.append(c[len(c) - 2] * c[1] - c[len(c) - 1] * c[0])
+    return abs(sum(add) / 2)
+no_sides = int(input('Input number of sides: '))
+cord_data = []
+for z in range(no_sides):
+    print("Side:",z+1)
+    print("Input the Coordinate:")
+    x = int(input('Input Coordinate x:'))
+    y = int(input('Input Coordinate y:'))
+    cord_data.append(x)
+    cord_data.append(y)
+print("\nArea of the Polygon:",poly_area(cord_data))
+
+
+"""
+Internet search engine giant, such as Google accepts web pages around the world and classify them, creating a huge database. The search engines also analyze the search keywords entered by the user and create inquiries for database search. In both cases, complicated processing is carried out in order to realize efficient retrieval, but basics are all cutting out words from sentences.
+Write a Python program to cut out words of 3 to 6 characters length from a given sentence not more than 1024 characters. Go to the editor
+Input:
+English sentences consisting of delimiters and alphanumeric characters are given on one line.
+Input a sentence (1024 characters. max.)
+The quick brown fox
+3 to 6 characters length of words:
+The quick brown fox
+"""
+
+print("Input a sentence (1024 characters. max.)")
+yy = input()
+yy = yy.replace(",", " ")
+yy = yy.replace(".", " ")
+print("3 to 6 characters length of words:")
+print(*[y for y in yy.split() if 3 <= len(y) <= 6])
+
+
+"""
+Arrange integers (0 to 99) as narrow hilltop, as illustrated in Figure 1. Reading such data representing huge, when starting from the top and proceeding according to the next rule to the bottom. Write a Python program that compute the maximum value of the sum of the passing integers. Go to the editor
+Input:
+A series of integers separated by commas are given in diamonds. No spaces are included in each line. The input example corresponds to Figure 1. The number of lines of data is less than 100 lines.
+Output:
+The maximum value of the sum of integers passing according to the rule on one line.
+Input the numbers (ctrl+d to exit):
+8
+4, 9
+9, 2, 1
+3, 8, 5, 5
+5, 6, 3, 7, 6
+3, 8, 5, 5
+9, 2, 1
+4, 9
+8
+Maximum value of the sum of integers passing according to the rule on one line.
+64
+"""
+
+import sys
+print("Input the numbers (ctrl+d to exit):")
+nums = [list(map(int, l.split(","))) for l in sys.stdin]
+mvv = nums[0]
+
+for i in range(1, (len(nums)+1)//2):
+    rvv = [0]*(i+1)
+    for j in range(i):
+        rvv[j] = max(rvv[j], mvv[j]+nums[i][j])
+        rvv[j+1] = max(rvv[j+1], mvv[j]+nums[i][j+1])
+    mvv = rvv
+
+for i in range((len(nums)+1)//2, len(nums)):
+    rvv = [0]*(len(mvv)-1)
+    for j in range(len(rvv)):
+        rvv[j] = max(mvv[j], mvv[j+1]) + nums[i][j]
+    mvv = rvv
+print("Maximum value of the sum of integers passing according to the rule on one line.") 
+print(mvv[0])
+
+
+"""
+Write a Python program to find the number of combinations that satisfy p + q + r + s = n where n is a given number <= 4000 and p, q, r, s are between 0 to 1000. Go to the editor
+Input a positive integer: (ctrl+d to exit)
+252
+Number of combinations of a,b,c,d: 2731135
+"""
+
+from collections import Counter
+print("Input a positive integer: (ctrl+d to exit)") 
+pair_dict = Counter()
+for i in range(2001):
+  pair_dict[i] = min(i, 2000 - i) + 1 
+ 
+while True:
+  try:
+    n = int(input())
+    ans = 0
+    for i in range(n + 1):
+      ans += pair_dict[i] * pair_dict[n - i]
+    print("Number of combinations of a,b,c,d:",ans) 
+  except EOFError:
+    break
+
+
+"""
+Write a Python program that adds up the columns and rows of the given table as shown in the specified figure. Go to the editor
+Input number of rows/columns (0 to exit)
+4
+Input cell value:
+25 69 51 26
+68 35 29 54
+54 57 45 63
+61 68 47 59
+Result:
+25 69 51 26 171
+68 35 29 54 186
+54 57 45 63 219
+61 68 47 59 235
+208 229 172 202 811
+Input number of rows/columns (0 to exit)
+"""
+
+while True:
+    print("Input number of rows/columns (0 to exit)")
+    n = int(input())
+    if n == 0:
+        break
+    print("Input cell value:")
+    x = []
+    for i in range(n):
+        x.append([int(num) for num in input().split()])
+
+    for i in range(n):
+        sum = 0
+        for j in range(n):
+            sum += x[i][j]
+        x[i].append(sum)
+
+    x.append([])
+    for i in range(n + 1):
+        sum = 0
+        for j in range(n):
+            sum += x[j][i]
+        x[n].append(sum)
+    print("Result:")
+    for i in range(n + 1):
+        for j in range(n + 1):
+            print('{0:>5}'.format(x[i][j]), end="")
+        print()
+
+"""
+Given a list of numbers and a number k, write a Python program to check whether the sum of any two numbers from the list is equal to k or not. Go to the editor
+For example, given [1, 5, 11, 5] and k = 16, return true since 11 + 5 is 16.
+Sample Input:
+([12, 5, 0, 5], 10)
+([20, 20, 4, 5], 40)
+([1, -1], 0)
+([1, 1, 0], 0)
+Sample Output:
+True
+True
+True
+False
+"""
+
+def check_sum(nums, k):   
+    for i in range(len(nums)):
+        for j in range(i+1, len(nums)):
+            if nums[i] + nums[j] == k:
+                return True
+    return False
+print(check_sum([12, 5, 0, 5], 10))
+print(check_sum([20, 20, 4, 5], 40))
+print(check_sum([1, -1], 0))
+print(check_sum([1, 1, 0], 0))
+
+
+"""
+In mathematics, a subsequence is a sequence that can be derived from another sequence by deleting some or no elements without changing the order of the remaining elements. For example, the sequence (A,B,D) is a subsequence of (A,B,C,D,E,F) obtained after removal of elements C, E, and F. The relation of one sequence being the subsequence of another is a preorder.
+The subsequence should not be confused with substring (A,B,C,D) which can be derived from the above string (A,B,C,D,E,F) by deleting substring (E,F). The substring is a refinement of the subsequence.
+The list of all subsequences for the word "apple" would be "a", "ap", "al", "ae", "app", "apl", "ape", "ale", "appl", "appe", "aple", "apple", "p", "pp", "pl", "pe", "ppl", "ppe", "ple", "pple", "l", "le", "e", "".
+Write a Python program to find the longest word in a set of words which is a subsequence of a given string. Go to the editor
+Sample Input:
+("Green", {"Gn", "Gren", "ree", "en"})
+("pythonexercises", {"py", "ex", "exercises"})
+Sample Output:
+Gren
+exercises
+"""
+
+def longest_word_sequence(s, d):
+	long_word = ""
+	
+	for word in d: 
+		temp_word = ''	
+		j = 0
+		for letter in word: 
+
+			for i in range(j, len(s)): 
+
+				if letter == s[i]: 
+					temp_word += letter 
+					j = i                  
+					break
+				else:				
+					continue        
+
+		if (temp_word) == word and len(long_word) < len(temp_word):
+			long_word = temp_word
+
+		else:
+			continue
+	return long_word
+
+
+print(longest_word_sequence("Green", {"Gn", "Gren", "ree", "en"}))
+print(longest_word_sequence("pythonexercises", {"py", "ex", "exercises"}))
+
+
+"""
+From Wikipedia, the free encyclopaedia:
+A happy number is defined by the following process:
+Starting with any positive integer, replace the number by the sum of the squares of its digits, and repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle which does not include 1. Those numbers for which this process ends in 1 are happy numbers, while those that do not end in 1 are unhappy numbers.
+Write a Python program to check whether a number is "happy" or not. Go to the editor
+Sample Input:
+(7)
+(932)
+(6)
+Sample Output:
+True
+True
+False
+"""
+
+def is_Happy_num(n):
+  past = set()
+  while n != 1:
+        n = sum(int(i)**2 for i in str(n))
+        if n in past:
+            return False
+        past.add(n)
+  return True
+print(is_Happy_num(7))
+print(is_Happy_num(932))
+print(is_Happy_num(6))
+
+"""
+From Wikipedia,
+A happy number is defined by the following process:
+Starting with any positive integer, replace the number by the sum of the squares of its digits, and repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle which does not include 1. Those numbers for which this process ends in 1 are happy numbers, while those that do not end in 1 are unhappy numbers.
+Write a Python program to find and print the first 10 happy numbers. Go to the editor
+Sample Input:
+[:10]
+Sample Output:
+[1, 7, 10, 13, 19, 23, 28, 31, 32, 44]
+"""
+
+def happy_numbers(n):
+    past = set()			
+    while n != 1:
+        n = sum(int(i)**2 for i in str(n))
+        if n in past:
+            return False
+        past.add(n)
+    return True
+print([x for x in range(500) if happy_numbers(x)][:10])
+
+
+
+"""
+Write a Python program that counts the number of prime numbers that are less than a given non-negative number. Go to the editor
+Sample Input:
+(10)
+(100)
+Sample Output:
+4
+25
+"""
+
+def count_Primes_nums(n):
+    ctr = 0
+    
+    for num in range(n):
+        if num <= 1:
+            continue
+        for i in range(2, num):
+            if (num % i) == 0:
+                break
+        else:
+            ctr += 1
+
+    return ctr
+
+print(count_Primes_nums(10))
+print(count_Primes_nums(100))
+
+
+"""
+In abstract algebra, a group isomorphism is a function between two groups that sets up a one-to-one correspondence between the elements of the groups in a way that respects the given group operations. If there exists an isomorphism between two groups, then the groups are called isomorphic.
+Two strings are isomorphic if the characters in string A can be replaced to get string B
+Given "foo", "bar", return false.
+Given "paper", "title", return true.
+Write a Python program to check if two given strings are isomorphic to each other or not. Go to the editor
+Sample Input:
+("foo", "bar")
+("bar", "foo")
+("paper", "title")
+("title", "paper")
+("apple", "orange")
+("aa", "ab")
+("ab", "aa")
+Sample Output:
+False
+False
+True
+True
+False
+False
+False
+"""
+
+def isIsomorphic(str1, str2):          
+    dict_str1 = {}
+    dict_str2 = {}
+    
+    for i, value in enumerate(str1):
+        dict_str1[value] = dict_str1.get(value, []) + [i]
+            
+    for j, value in enumerate(str2):
+        dict_str2[value] = dict_str2.get(value, []) + [j]
+    
+    if sorted(dict_str1.values()) == sorted(dict_str2.values()):
+        return True
+    else:
+        return False
+
+print(isIsomorphic("foo", "bar"))   
+print(isIsomorphic("bar", "foo")) 
+print(isIsomorphic("paper", "title")) 
+print(isIsomorphic("title", "paper"))
+print(isIsomorphic("apple", "orange"))
+print(isIsomorphic("aa", "ab"))
+print(isIsomorphic("ab", "aa"))
+
+
+"""
+Write a Python program to find the longest common prefix string among a given array of strings. Return false if there is no common prefix.
+For Example, longest common prefix of "abcdefgh" and "abcefgh" is "abc". Go to the editor
+Sample Input:
+["abcdefgh","abcefgh"]
+["w3r","w3resource"]
+["Python","PHP", "Perl"]
+["Python","PHP", "Java"]
+Sample Output:
+abc
+w3r
+P
+"""
+
+def longest_Common_Prefix(str1):
+    
+    if not str1:
+        return ""
+
+    short_str = min(str1,key=len)
+
+    for i, char in enumerate(short_str):
+        for other in str1:
+            if other[i] != char:
+                return short_str[:i]
+
+    return short_str 
+
+print(longest_Common_Prefix(["abcdefgh","abcefgh"]))
+print(longest_Common_Prefix(["w3r","w3resource"]))
+print(longest_Common_Prefix(["Python","PHP", "Perl"]))
+print(longest_Common_Prefix(["Python","PHP", "Java"]))
+
+
+"""
+Write a Python program to reverse only the vowels of a given string. Go to the editor
+Sample Input:
+("w3resource")
+("Python")
+("Perl")
+("USA")
+Sample Output:
+w3resuorce
+Python
+Perl
+ASU
+"""
+
+def reverse_vowels(str1):
+	vowels = ""
+	for char in str1:
+		if char in "aeiouAEIOU":
+			vowels += char
+	result_string = ""
+	for char in str1:
+		if char in "aeiouAEIOU":
+			result_string += vowels[-1]
+			vowels = vowels[:-1]
+		else:
+			result_string += char
+	return result_string
+print(reverse_vowels("w3resource"))
+print(reverse_vowels("Python"))
+print(reverse_vowels("Perl"))
+print(reverse_vowels("USA"))
+
+
+"""
+Write a Python program to check whether a given integer is a palindrome or not. Go to the editor
+Note: An integer is a palindrome when it reads the same backward as forward. Negative numbers are not palindromic.
+Sample Input:
+(100)
+(252)
+(-838)
+Sample Output:
+False
+True
+False
+"""
+
+def is_Palindrome(n):
+    return str(n) == str(n)[::-1]
+print(is_Palindrome(100))
+print(is_Palindrome(252))
+print(is_Palindrome(-838)) 
+
+
+"""
+Write a Python program that removes duplicate elements from a given array of numbers so that each element appears only once and returns the new length of the array. Go to the editor
+Sample Input:
+[0,0,1,1,2,2,3,3,4,4,4]
+[1, 2, 2, 3, 4, 4]
+Sample Output:
+5
+4
+"""
+
+def remove_duplicates(nums):
+    for i in range (len(nums)-1, 0, -1):
+        if nums[i] == nums[i-1]:
+            del nums[i-1]
+    return len(nums)
+
+print(remove_duplicates([0,0,1,1,2,2,3,3,4,4,4]))
+print(remove_duplicates([1, 2, 2, 3, 4, 4]))
+
+
+"""
+Write a Python program to calculate the maximum profit from selling and buying values of stock. An array of numbers represent the stock prices in chronological order. Go to the editor
+For example, given [8, 10, 7, 5, 7, 15], the function will return 10, since the buying value of the stock is 5 dollars and sell value is 15 dollars.
+Sample Input:
+([8, 10, 7, 5, 7, 15])
+([1, 2, 8, 1])
+([])
+Sample Output:
+10
+7
+0
+"""
+
+def buy_and_sell(stock_price):
+    max_profit_val, current_max_val = 0, 0 
+    for price in reversed(stock_price):                       
+        current_max_val = max(current_max_val, price)          
+        potential_profit = current_max_val - price          
+        max_profit_val = max(potential_profit, max_profit_val)
+
+    return max_profit_val
+
+print(buy_and_sell([8, 10, 7, 5, 7, 15]))
+print(buy_and_sell([1, 2, 8, 1]))
+print(buy_and_sell([]))
+
+
+"""
+Write a Python program to remove all instances of a given value from a given array of integers and find the length of the newly created array. Go to the editor
+Sample Input:
+([1, 2, 3, 4, 5, 6, 7, 5], 5)
+([10,10,10,10,10], 10)
+([10,10,10,10,10], 20)
+([], 1)
+Sample Output:
+6
+0
+5
+0
+"""
+
+def remove_element(array_nums, val):
+    i = 0
+    while i < len(array_nums):
+        if array_nums[i] == val:
+            array_nums.remove(array_nums[i])
+
+        else:
+            i += 1
+
+    return len(array_nums)
+print(remove_element([1, 2, 3, 4, 5, 6, 7, 5], 5))
+print(remove_element([10,10,10,10,10], 10)) 
+print(remove_element([10,10,10,10,10], 20)) 
+print(remove_element([], 1))
+
+
+"""
+Write a Python program to find the starting and ending position of a given value in a given array of integers, sorted in ascending order. Go to the editor
+If the target is not found in the array, return [0, 0].
+Input: [5, 7, 7, 8, 8, 8] target value = 8
+Output: [0, 5]
+Input: [1, 3, 6, 9, 13, 14] target value = 4
+Output: [0, 0]
+"""
+
+def search_Range(array_nums, target_val):
+  result_arra = []
+  start_pos = 0
+  end_pos = 0
+  for i in range(len(array_nums)):
+      if target_val == array_nums[i] and start_pos == -1:
+          start_pos = i
+          end_pos = i
+      elif target_val == array_nums[i] and start_pos != -1:
+          end_pos = i
+  result_arra.append(start_pos)
+  result_arra.append(end_pos)
+  return result_arra
+print(search_Range([5, 7, 7, 8, 8, 8], 8))
+print(search_Range([1, 3, 6, 9, 13, 14], 4))
+print(search_Range([5, 7, 7, 8, 10], 8))
+
+
+"""
+The price of a given stock on each day is stored in an array.
+Write a Python program to find the maximum profit in one transaction i.e., buy one and sell one share of the stock from the given price value of the said array. You cannot sell a stock before you buy one. Go to the editor
+Input (Stock price of each day): [224, 236, 247, 258, 259, 225]
+Output: 35
+Explanation:
+236 - 224 = 12
+247 - 224 = 23
+258 - 224 = 34
+259 - 224 = 35
+225 - 224 = 1
+247 - 236 = 11
+258 - 236 = 22
+259 - 236 = 23
+225 - 236 = -11
+258 - 247 = 11
+259 - 247 = 12
+225 - 247 = -22
+259 - 258 = 1
+225 - 258 = -33
+225 - 259 = -34
+"""
+
+def max_profit(stock_price):
+	max_profit_amt = 0
+
+	for i in range(len(stock_price)):
+		profit_amt = 0
+		for j in range(i+1, len(stock_price)):
+			profit_amt = stock_price[j] - stock_price[i]
+			if  profit_amt > max_profit_amt:
+				max_profit_amt = profit_amt
+	return max_profit_amt
+print(max_profit([224, 236, 247, 258, 259, 225]))
+
+
+
+"""
+Write a Python program to print a given N by M matrix of numbers line by line in forward > backwards > forward >... order. Go to the editor
+Input matrix:
+[[1, 2, 3,4],
+[5, 6, 7, 8],
+[0, 6, 2, 8],
+[2, 3, 0, 2]]
+Output:
+1
+2
+3
+4
+8
+7
+6
+5
+0
+6
+2
+8
+2
+0
+3
+2
+"""
+
+def print_matrix(nums):
+    flag = True 
+    
+    for line in nums:
+
+        if flag == True: 
+            i = 0
+            while i < len(line):
+                print(line[i])
+                i += 1
+            flag = False
+
+        else: 
+            i = -1
+            while i > -1 * len(line) - 1:
+                print(line[i])
+                i = i - 1
+            flag = True
+print_matrix([[1, 2, 3, 4],
+              [5, 6, 7, 8],
+              [0, 6, 2, 8],
+              [2, 3, 0, 2]])
+
+
+"""
+Write a Python program to compute the largest product of three integers from a given list of integers. Go to the editor
+Sample Input:
+[-10, -20, 20, 1]
+[-1, -1, 4, 2, 1]
+[1, 2, 3, 4, 5, 6]
+Sample Output:
+4000
+8
+120
+"""
+
+def largest_product_of_three(nums):
+    max_val = nums[1]
+
+    for i in range(len(nums)):
+        for j in range(i+1, len(nums)):
+            for k in range(j+1, len(nums)):
+                max_val = max(nums[i] * nums[j] * nums[k], max_val)
+                
+    return max_val
+    
+print(largest_product_of_three([-10, -20, 20, 1]))
+print(largest_product_of_three([-1, -1, 4, 2, 1]))
+print(largest_product_of_three([1, 2, 3, 4, 5, 6]))
+
+"""
+Write a Python program to find the first missing positive integer that does not exist in a given list. Go to the editor
+Sample Input:
+[2, 3, 7, 6, 8, -1, -10, 15, 16]
+[1, 2, 4, -7, 6, 8, 1, -10, 15]
+[1, 2, 3, 4, 5, 6, 7]
+[-2, -3, -1, 1, 2, 3]
+Sample Output:
+4
+3
+8
+4
+"""
+
+def first_missing_number(nums):
+    if len(nums) == 0:
+        return 1
+        
+    nums.sort()
+    smallest_int_num = 0
+    
+    for i in range(len(nums) - 1):
+
+        if nums[i] <= 0 or nums[i] == nums[i + 1]:
+            continue
+        else:
+            if nums[i + 1] - nums[i] != 1:
+                smallest_int_num = nums[i] + 1
+                return smallest_int_num    
+    if smallest_int_num == 0:
+        smallest_int_num = nums[-1] + 1
+    return smallest_int_num
+
+print(first_missing_number([2, 3, 7, 6, 8, -1, -10, 15, 16])) 
+print(first_missing_number([1, 2, 4, -7, 6, 8, 1, -10, 15]))
+print(first_missing_number([1, 2, 3, 4, 5, 6, 7]))
+print(first_missing_number([-2, -3, -1, 1, 2, 3]))
+
+
+"""
+Write a Python program to randomly generate a list of 10 even numbers between 1 and 100 inclusive. Go to the editor
+Note: Use random.sample() to generate a list of random values.
+Sample Input:
+(1,100)
+Sample Output:
+[4, 22, 8, 20, 24, 12, 30, 98, 28, 48]
+"""
+
+import random
+print(random.sample([i for i in range(1,100) if i%2==0], 10))
+
+"""
+Write a Python program to calculate the median from a list of numbers. Go to the editor
+Sample Input:
+[1,2,3,4,5]
+[1,2,3,4,5,6]
+[6,1,2,4,5,3]
+[1.0,2.11,3.3,4.2,5.22,6.55]
+[1.0,2.11,3.3,4.2,5.22]
+[2.0,12.11,22.3,24.12,55.22]
+Sample Output:
+3
+3.5
+3.5
+3.75
+3.3
+22.3
+"""
+
+def cal_median(nums):
+  nums.sort()
+  n = len(nums)
+  m = n // 2
+  if n % 2 == 0:
+    return (nums[m - 1] + nums[m]) / 2
+  else:
+    return nums[m]
+print(cal_median([1,2,3,4,5]))
+print(cal_median([1,2,3,4,5,6]))
+print(cal_median([6,1,2,4,5,3]))
+print(cal_median([1.0,2.11,3.3,4.2,5.22,6.55]))
+print(cal_median([1.0,2.11,3.3,4.2,5.22]))
+print(cal_median([2.0,12.11,22.3,24.12,55.22]))
+
+
+"""
+Write a Python program to test whether a given number is symmetrical or not. A number is symmetrical when it is equal to its reverse. Go to the editor
+A number is symmetrical when it is equal of its reverse.
+Sample Input:
+(121)
+(0)
+(122)
+(990099)
+Sample Output:
+True
+True
+False
+True
+"""
+
+def is_symmetrical_num(n):
+  return str(n) == str(n)[::-1]
+print(is_symmetrical_num(121))
+print(is_symmetrical_num(0))
+print(is_symmetrical_num(122))
+print(is_symmetrical_num(990099))
+
+
+"""
+Write a Python program that accepts a list of numbers. Count the negative numbers and compute the sum of the positive numbers of the said list. Return these values through a list. Go to the editor
+Original list: [1, 2, 3, 4, 5]
+Number of negative of numbers and sum of the positive numbers of the said list: [0, 15]
+Original list: [-1, -2, -3, -4, -5]
+[5, 0]
+Number of negative of numbers and sum of the positive numbers of the said list: [5, 0]
+Original list: [1, 2, 3, -4, -5]
+[2, 6]
+Number of negative of numbers and sum of the positive numbers of the said list: [2, 6]
+Original list: [1, 2, -3, -4, -5]
+[3, 3]
+Number of negative of numbers and sum of the positive numbers of the said list: [3, 3]
+"""
+
+def count_sum(nums):
+   if not nums: return []
+   return [len([n for n in nums if n < 0]), sum(n for n in nums if n > 0)]
+nums = [1, 2, 3, 4, 5]
+print("Original list:",nums)
+print("Number of negative of numbers and sum of the positive numbers of the said list:",count_sum(nums))
+nums = [-1, -2, -3, -4, -5]
+print("Original list:",nums)
+print(count_sum(nums))
+print("Number of negative of numbers and sum of the positive numbers of the said list:",count_sum(nums))
+nums = [1, 2, 3, -4, -5]
+print("Original list:",nums)
+print(count_sum(nums))
+print("Number of negative of numbers and sum of the positive numbers of the said list:",count_sum(nums))
+nums = [1, 2, -3, -4, -5]
+print("Original list:",nums)
+print(count_sum(nums))
+print("Number of negative of numbers and sum of the positive numbers of the said list:",count_sum(nums)) 
+
+
+"""
+From Wikipedia:
+An isogram (also known as a "nonpattern word") is a logological term for a word or phrase without a repeating letter. It is also used by some people to mean a word or phrase in which each letter appears the same number of times, not necessarily just once. Conveniently, the word itself is an isogram in both senses of the word, making it autological.
+Write a Python program to check whether a given string is an "isogram" or not. Go to the editor
+Sample Input:
+("w3resource")
+("w3r")
+("Python")
+("Java")
+Sample Output:
+False
+True
+True
+False
+"""
+
+def check_isogram(str1):
+    return len(str1) == len(set(str1.lower()))
+
+print(check_isogram("w3resource"))
+print(check_isogram("w3r"))
+print(check_isogram("Python"))
+print(check_isogram("Java"))
+
+
+"""
+Write a Python program to count the number of equal numbers from three given integers. Go to the editor
+Sample Input:
+(1, 1, 1)
+(1, 2, 2)
+(-1, -2, -3)
+(-1, -1, -1)
+Sample Output:
+3
+2
+0
+3
+"""
+
+def test_three_equal(x, y, z):
+  result= set([x, y, z])
+  if len(result)==3:
+    return 0
+  else:
+    return (4 - len(result))
+
+print(test_three_equal(1, 1, 1))
+print(test_three_equal(1, 2, 2))
+print(test_three_equal(-1, -2, -3))
+print(test_three_equal(-1, -1, -1))
+
+
+"""
+Write a Python program to check whether a given employee code is exactly 8 digits or 12 digits. Return True if the employee code is valid and False if it's not. Go to the editor
+Sample Input:
+('12345678')
+('1234567j')
+('12345678j')
+('123456789123')
+('123456abcdef')
+Sample Output:
+True
+False
+False
+True
+False
+"""
+
+def is_valid_emp_code(emp_code):
+  return len(emp_code) in [8, 12] and emp_code.isdigit()
+print(is_valid_emp_code('12345678'))
+print(is_valid_emp_code('1234567j'))
+print(is_valid_emp_code('12345678j'))
+print(is_valid_emp_code('123456789123'))
+print(is_valid_emp_code('123456abcdef'))
+
+
+"""
+Write a Python program that accepts two strings and determines whether the letters in the second string are present in the first string. Go to the editor
+Sample Input:
+["python", "ypth"]
+["python", "ypths"]
+["python", "ypthon"]
+["123456", "01234"]
+["123456", "1234"]
+Sample Output:
+True
+False
+True
+False
+True
+"""
+
+def string_letter_check(str1, str2):
+  return all([char in str1.lower() for char in str2.lower()])
+print(string_letter_check("python", "ypth"))
+print(string_letter_check("python", "ypths"))
+print(string_letter_check("python", "ypthon"))
+print(string_letter_check("123456", "01234"))
+print(string_letter_check("123456", "1234"))
+
+
+"""
+Write a Python program to compute the sum of the three lowest positive numbers from a given list of numbers. Go to the editor
+Original list of numbers: [10, 20, 30, 40, 50, 60, 7]
+Sum of the three lowest positive numbers of the said array: 37
+Original list of numbers: [1, 2, 3, 4, 5]
+Sum of the three lowest positive numbers of the said array: 6
+Original list of numbers: [0, 1, 2, 3, 4, 5]
+Sum of the three lowest positive numbers of the said array: 6
+"""
+
+def sum_three_smallest_nums(lst):
+	return sum(sorted([x for x in lst if x > 0])[:3])
+nums = [10, 20, 30, 40, 50, 60, 7]
+print("Original list of numbers: ",nums)
+print("Sum of the three lowest positive numbers of the said array: ",sum_three_smallest_nums(nums))
+nums = [1, 2, 3, 4, 5]
+print("\nOriginal list of numbers: ",nums)
+print("Sum of the three lowest positive numbers of the said array: ",sum_three_smallest_nums(nums))
+nums = [0, 1, 2, 3, 4, 5]
+print("\nOriginal list of numbers: ",nums)
+print("Sum of the three lowest positive numbers of the said array: ",sum_three_smallest_nums(nums))
+
+
+"""
+Write a Python program that replaces all but the last five characters of a string with "*" and returns the modified string. Go to the editor
+Original String: kdi39323swe
+new string: ******23swe
+Original String: 12345abcdef
+new string: ******bcdef
+Original String: 12345
+new string: 12345
+"""
+
+def new_string(str1):
+ return '*'*(len(str1)-5) + str1[-5:]
+text = "kdi39323swe"
+print("Original String: ",text)
+print("new string: ",new_string(text))
+text = "12345abcdef"
+print("\nOriginal String: ",text)
+print("new string: ",new_string(text))
+text = "12345"
+print("\nOriginal String: ",text)
+print("new string: ",new_string(text))
+
+
+"""
+Write a Python program to count the number of arguments in a given function. Go to the editor
+Sample Input:
+()
+(1)
+(1, 2)
+(1, 2, 3)
+(1, 2, 3, 4)
+[1, 2, 3, 4]
+Sample Output:
+0
+1
+2
+3
+4
+1
+"""
+
+def num_of_args(*args):
+	return(len(args))
+print(num_of_args())
+print(num_of_args(1))
+print(num_of_args(1, 2))
+print(num_of_args(1, 2, 3))
+print(num_of_args(1, 2, 3, 4))
+print(num_of_args([1, 2, 3, 4]))
+
+
+"""
+Write a Python program to compute the cumulative sum of numbers in a given list. Go to the editor
+Note: Cumulative sum = sum of itself + all previous numbers in the said list.
+Sample Input:
+[10, 20, 30, 40, 50, 60, 7]
+[1, 2, 3, 4, 5]
+[0, 1, 2, 3, 4, 5]
+Sample Output:
+[10, 30, 60, 100, 150, 210, 217]
+[1, 3, 6, 10, 15]
+[0, 1, 3, 6, 10, 15]
+"""
+
+def nums_cumulative_sum(nums_list):
+  return [sum(nums_list[:i+1]) for i in range(len(nums_list))]
+
+print(nums_cumulative_sum([10, 20, 30, 40, 50, 60, 7]))
+print(nums_cumulative_sum([1, 2, 3, 4, 5]))
+print(nums_cumulative_sum([0, 1, 2, 3, 4, 5]))
+
+
+"""
+Write a Python program to find the central character(s) of a given string. Return the two middle characters if the length of the string is even. Return the middle character if the length of the string is odd. Go to the editor
+Original string: Python
+Middle character(s) of the said string: th
+Original string: PHP
+Middle character(s) of the said string: H
+Original string: Java
+Middle character(s) of the said string: av
+"""
+
+def middle_char(txt):
+  return txt[(len(txt)-1)//2:(len(txt)+2)//2]
+text = "Python"
+print("Original string: ",text)
+print("Middle character(s) of the said string: ",middle_char(text))
+text = "PHP"
+print("Original string: ",text)
+print("Middle character(s) of the said string: ",middle_char(text))
+text = "Java"
+print("Original string: ",text)
+print("Middle character(s) of the said string: ",middle_char(text))
+
+
+"""
+Write a Python program to find the largest product of a pair of adjacent elements from a given list of integers. Go to the editor
+Original list: [1, 2, 3, 4, 5, 6]
+Largest product of the pair of adjacent elements of the said list: 30
+Original list: [1, 2, 3, 4, 5]
+Largest product of the pair of adjacent elements of the said list: 20
+Original list: [2, 3]
+Largest product of the pair of adjacent elements of the said list: 6
+"""
+
+def adjacent_num_product(list_nums):
+   return max(a*b for a, b in zip(list_nums, list_nums[1:]))
+nums = [1,2,3,4,5,6]
+print("Original list: ",nums)
+print("Largest product of the pair of adjacent elements of the said list:", adjacent_num_product(nums))
+nums = [1,2,3,4,5]
+print("\nOriginal list: ",nums)
+print("Largest product of the pair of adjacent elements of the said list:", adjacent_num_product(nums))
+nums = [2,3]
+print("\nOriginal list: ",nums)
+print("Largest product of the pair of adjacent elements of the said list:", adjacent_num_product(nums))
+
+
+"""
+Write a Python program that checks whether every even index contains an even number and every odd index contains an odd number of a given list. Go to the editor
+Original list of numbers: [2, 1, 4, 3, 6, 7, 6, 3]
+Check whether every even index contains an even number and every
+odd index contains odd number of a given list:
+True
+Original list of numbers: [2, 1, 4, 3, 6, 7, 6, 4]
+Check whether every even index contains an even number and every
+odd index contains odd number of a given list:
+False
+Original list of numbers: [2, 1, 4, 3, 6, 7, 6, 4]
+Check whether every even index contains an even number and every
+odd index contains odd number of a given list:
+True
+"""
+
+def odd_even_position(nums):
+           return all(nums[i]%2==i%2 for i in range(len(nums)))
+nums = [2, 1, 4, 3, 6, 7, 6, 3]
+print("Original list of numbers:", nums)
+print("Check whether every even index contains an even number and every \nodd index contains odd number of a given list:")
+print(odd_even_position(nums))
+nums = [2, 1, 4, 3, 6, 7, 6, 4]
+print("\nOriginal list of numbers:", nums)
+print("Check whether every even index contains an even number and every \nodd index contains odd number of a given list:")
+print(odd_even_position(nums))
+print("\nOriginal list of numbers:", nums)
+nums = [4, 1, 2]
+print("Check whether every even index contains an even number and every \nodd index contains odd number of a given list:")
+print(odd_even_position(nums))
+
+
+
+"""
+ Write a Python program to check whether a given number is a narcissistic number or not. Go to the editor
+
+If you are a reader of Greek mythology, then you are probably familiar with Narcissus. He was a hunter of exceptional beauty that he died because he was unable to leave a pool after falling in love with his own reflection. That's why I keep myself away from pools these days (kidding).
+In mathematics, he has kins by the name of narcissistic numbers - numbers that can't get enough of themselves. In particular, they are numbers that are the sum of their digits when raised to the power of the number of digits.
+For example, 371 is a narcissistic number; it has three digits, and if we cube each digits 33 + 73 + 13 the sum is 371. Other 3-digit narcissistic numbers are
+153 = 13 + 53 + 33
+370 = 33 + 73 + 03
+407 = 43 + 03 + 73.
+There are also 4-digit narcissistic numbers, some of which are 1634, 8208, 9474 since
+1634 = 14+64+34+44
+8208 = 84+24+04+84
+9474 = 94+44+74+44
+It has been proven that there are only 88 narcissistic numbers (in the decimal system) and that the largest of which is
+115,132,219,018,763,992,565,095,597,973,971,522,401
+has 39 digits.
+
+Ref.: //https://bit.ly/2qNYxo2
+Sample Input:
+(153)
+(370)
+(407)
+(409)
+(1634)
+(8208)
+(9474)
+(9475)
+Sample Output:
+True
+True
+True
+False
+True
+True
+True
+False
+"""
+
+def is_narcissistic_num(num):
+	return num == sum([int(x) ** len(str(num)) for x in str(num)])
+
+print(is_narcissistic_num(153))
+print(is_narcissistic_num(370))
+print(is_narcissistic_num(407))
+print(is_narcissistic_num(409))
+print(is_narcissistic_num(1634))
+print(is_narcissistic_num(8208))
+print(is_narcissistic_num(9474))
+print(is_narcissistic_num(9475))
+
+"""
+Write a Python program to find the highest and lowest number from a given string of space-separated integers. Go to the editor
+Original string: 1 4 5 77 9 0
+Highest and lowest number of the said string: (77, 0)
+Original string: -1 -4 -5 -77 -9 0
+Highest and lowest number of the said string: (0, -77)
+Original string: 0 0
+Highest and lowest number of the said string: (0, 0)
+"""
+
+def highest_lowest_num(str1):
+ num_list = list(map(int, str1.split()))
+ return max(num_list), min(num_list)
+text = "1 4 5 77 9 0"
+print("Original string:", text)
+print("Highest and lowest number of the said string:",highest_lowest_num(text))
+text = "-1 -4 -5 -77 -9 0"
+print("\nOriginal string:", text)
+print("Highest and lowest number of the said string:",highest_lowest_num(text))
+text = "0 0"
+print("\nOriginal string:", text)
+print("Highest and lowest number of the said string:",highest_lowest_num(text))
+
+
+"""
+Write a Python program to check whether a sequence of numbers has an increasing trend or not. Go to the editor
+Sample Input:
+[1,2,3,4]
+[1,2,5,3,4]
+[-1,-2,-3,-4]
+[-4,-3,-2,-1]
+[1,2,3,4,0]
+Sample Output:
+True
+False
+False
+True
+False
+"""
+
+def increasing_trend(nums):
+    if (sorted(nums) == nums):
+        return True
+    else:
+        return False
+
+print(increasing_trend([1,2,3,4]))
+print(increasing_trend([1,2,5,3,4]))
+print(increasing_trend([-1,-2,-3,-4]))
+print(increasing_trend([-4,-3,-2,-1]))
+print(increasing_trend([1,2,3,4,0]))
+
+
+"""
+Write a Python program to find the position of the second occurrence of a given string in another given string. If there is no such string return -1. Go to the editor
+Sample Input:
+("The quick brown fox jumps over the lazy dog", "the")
+("the quick brown fox jumps over the lazy dog", "the")
+Sample Output:
+-1
+31
+"""
+
+def find_string(txt, str1):
+	return txt.find(str1, txt.find(str1)+1)
+
+print(find_string("The quick brown fox jumps over the lazy dog", "the"))
+print(find_string("the quick brown fox jumps over the lazy dog", "the"))
+
+
+"""
+Write a Python program to compute the sum of all items in a given array of integers where each integer is multiplied by its index. Return 0 if there is no number.
+"""
+
+def sum_index_multiplier(nums):
+	return sum(j*i for i, j in enumerate(nums))
+
+print(sum_index_multiplier([1,2,3,4]))
+print(sum_index_multiplier([-1,-2,-3,-4]))
+print(sum_index_multiplier([]))
+
+
+"""
+Write a Python program to find the name of the oldest student in a given dictionary containing the names and ages of a group of students. Go to the editor
+Sample Input:
+{"Bernita Ahner": 12, "Kristie Marsico": 11, "Sara Pardee": 14, "Fallon Fabiano": 11, "Nidia Dominique": 15}
+{"Nilda Woodside": 12, "Jackelyn Pineda": 12.2, "Sofia Park": 12.4, "Joannie Archibald": 12.6, "Becki Saunder": 12.7}
+Sample Output:
+Nidia Dominique
+Becki Saunder
+"""
+
+def oldest_student(students):
+	return max(students, key=students.get)
+
+print(oldest_student({"Bernita Ahner": 12, "Kristie Marsico": 11, 
+                      "Sara Pardee": 14, "Fallon Fabiano": 11, 
+                      "Nidia Dominique": 15})) 
+print(oldest_student({"Nilda Woodside": 12, "Jackelyn Pineda": 12.2, 
+                      "Sofia Park": 12.4, "Joannie Archibald": 12.6, 
+                      "Becki Saunder": 12.7})) 
+
+
+"""
+Write a Python program to create a string with no duplicate consecutive letters from a given string. Go to the editor
+Sample Input:
+("PPYYYTTHON")
+("PPyyythonnn")
+("Java")
+("PPPHHHPPP")
+Sample Output:
+PYTHON
+Python
+Java
+PHP
+"""
+
+def no_consecutive_letters (txt):
+    return txt[0] + ''.join(txt[i] for i in range(1,len(txt)) if txt[i] != txt[i-1])
+
+print(no_consecutive_letters("PPYYYTTHON"))
+print(no_consecutive_letters("PPyyythonnn"))
+print(no_consecutive_letters("Java"))
+print(no_consecutive_letters("PPPHHHPPP")) 
+
+
+"""
+Write a Python program to check whether two given lines are parallel or not. Go to the editor
+Note: Parallel lines are two or more lines that never intersect. Parallel Lines are like railroad tracks that never intersect.
+The General Form of the equation of a straight line is: ax + by = c
+The said straight line is represented in a list as [a, b, c]
+Example of two parallel lines:
+x + 4y = 10 and x + 4y = 14
+Sample Input:
+([2,3,4], [2,3,8])
+([2,3,4], [4,-3,8])
+Sample Output:
+True
+False
+"""
+
+def parallel_lines(line1, line2):
+  return line1[0]/line1[1] == line2[0]/line2[1]
+#2x + 3y = 4, 2x + 3y = 8
+print(parallel_lines([2,3,4], [2,3,8]))
+#2x + 3y = 4, 4x - 3y = 8
+print(parallel_lines([2,3,4], [4,-3,8])) 
+
+
+"""
+Write a Python program to find a number in a given matrix that is maximum in its column and minimum in its row. Go to the editor
+Sample Input:
+Original matrix: [[1, 2], [2, 3]]
+Number in the said matrix which is maximum in its column and minimum in its row:
+[2]
+Original matrix: [[1, 2, 3], [3, 4, 5]]
+Number in the said matrix which is maximum in its column and minimum in its row:
+[3]
+Original matrix: [[7, 5, 6], [3, 4, 4], [6, 5, 7]]
+Number in the said matrix which is maximum in its column and minimum in its row:
+[5]
+"""
+
+# Number in a Matrix: Maximum in its column and minimum in its row.
+def matrix_number(matrix):
+   result = set(map(min, matrix)) & set(map(max, zip(*matrix)))
+   return list(result)
+m1 = [[1,2], [2,3]]
+print("Original matrix:",m1)
+print("Number in the said matrix which is maximum in its column and minimum in its row:")
+print(matrix_number(m1))
+m1 = [[1,2,3], [3,4,5]]
+print("\nOriginal matrix:",m1)
+print("Number in the said matrix which is maximum in its column and minimum in its row:")
+print(matrix_number(m1))
+m1 = [[7,5,6], [3,4,4], [6,5,7]]
+print("\nOriginal matrix:",m1)
+print("Number in the said matrix which is maximum in its column and minimum in its row:")
+print(matrix_number(m1))
+
+
+"""
+Write a Python program to check whether a given sequence is linear, quadratic or cubic. Go to the editor
+Sequences are sets of numbers that are connected in some way.
+Linear sequence:
+A number pattern which increases or decreases by the same amount each time is called a linear sequence. The amount it increases or decreases by is known as the common difference.
+Quadratic sequence:
+In quadratic sequence, the difference between each term increases, or decreases, at a constant rate.
+Cubic sequence:
+Sequences where the 3rd difference are known as cubic sequence.
+Sample Output:
+Original Sequence: [0, 2, 4, 6, 8, 10]
+Check the said sequence is Linear, Quadratic or Cubic?
+Linear Sequence
+Original Sequence: [1, 4, 9, 16, 25]
+Check the said sequence is Linear, Quadratic or Cubic?
+Quadratic Sequence
+Original Sequence: [0, 12, 10, 0, -12, -20]
+Check the said sequence is Linear, Quadratic or Cubic?
+Cubic Sequence
+Original Sequence: [1, 2, 3, 4, 5]
+Check the said sequence is Linear, Quadratic or Cubic?
+Linear Sequence
+"""
+
+def Seq_Linear_Quadratic_Cubic(seq_nums):
+  seq_nums = [seq_nums[x] - seq_nums[x-1] for x in range(1, len(seq_nums))]
+  if len(set(seq_nums)) == 1: return "Linear Sequence"
+  seq_nums = [seq_nums[x] - seq_nums[x-1] for x in range(1, len(seq_nums))]
+  if len(set(seq_nums)) == 1: return "Quadratic Sequence"
+  seq_nums = [seq_nums[x] - seq_nums[x-1] for x in range(1, len(seq_nums))]
+  if len(set(seq_nums)) == 1: return "Cubic Sequence"
+
+nums = [0,2,4,6,8,10]
+print("Original Sequence:",nums)
+print("Check the said sequence is Linear, Quadratic or Cubic?")
+print(Seq_Linear_Quadratic_Cubic(nums))
+nums = [1,4,9,16,25]
+print("\nOriginal Sequence:",nums)
+print("Check the said sequence is Linear, Quadratic or Cubic?")
+print(Seq_Linear_Quadratic_Cubic(nums))
+nums = [0,12,10,0,-12,-20]
+print("\nOriginal Sequence:",nums)
+print("Check the said sequence is Linear, Quadratic or Cubic?")
+print(Seq_Linear_Quadratic_Cubic(nums))
+nums = [1,2,3,4,5]
+print("\nOriginal Sequence:",nums)
+print("Check the said sequence is Linear, Quadratic or Cubic?")
+print(Seq_Linear_Quadratic_Cubic(nums))
+
+
+"""
+Write a Python program to test whether a given integer is a Pandigital number or not. Go to the editor
+From Wikipedia,
+In mathematics, a pandigital number is an integer that in a given base has among its significant digits each digit used in the base at least once.
+For example,
+1223334444555556666667777777888888889999999990 is a pandigital number in base 10.
+The first few pandigital base 10 numbers are given by:
+1023456789, 1023456798, 1023456879, 1023456897, 1023456978, 1023456987, 1023457689
+
+Sample Output:
+Original number: 1023456897 Check the said number is Pandigital number or not? True Original number: 1023456798 Check the said number is Pandigital number or not? True Original number: 1023457689 Check the said number is Pandigital number or not? True Original number: 1023456789 Check the said number is Pandigital number or not? True Original number: 102345679 Check the said number is Pandigital number or not? False
+"""
+
+def is_pandigital_num(n):
+    return len(set(str(n))) == 10
+
+n = 1023456897
+print("Original number:",n)
+print("Check the said number is Pandigital number or not?")
+print(is_pandigital_num(n))
+n = 1023456798
+print("Original number:",n)
+print("Check the said number is Pandigital number or not?")
+print(is_pandigital_num(n))
+n = 1023457689
+print("Original number:",n)
+print("Check the said number is Pandigital number or not?")
+print(is_pandigital_num(n))
+n = 1023456789
+print("Original number:",n)
+print("Check the said number is Pandigital number or not?")
+print(is_pandigital_num(n))
+n = 102345679
+print("Original number:",n)
+print("Check the said number is Pandigital number or not?")
+print(is_pandigital_num(n))
+
+
+"""
+Write a Python program to check whether a given number is odd or even. Go to the editor
+A number is called "Oddish" if the sum of all of its digits is odd, and a number is called "Evenish" if the sum of all of its digits is even.
+Sample Output:
+Original Number 120
+Check whether the sum of all digits of the said number is odd or even!
+Oddish
+Original Number 321
+Check whether the sum of all digits of the said number is odd or even!
+Evenish
+Original Number 43
+Check whether the sum of all digits of the said number is odd or even!
+Oddish
+Original Number 4433
+Check whether the sum of all digits of the said number is odd or even!
+Evenish
+Original Number 373
+Check whether the sum of all digits of the said number is odd or even!
+Oddish
+"""
+
+def oddish_evenish_num(n):
+	return 'Oddish' if sum(map(int, str(n))) % 2 else 'Evenish'
+n = 120
+print("Original Number",n)
+print("Check whether the sum of all digits of the said number is odd or even!")
+print(oddish_evenish_num(120))
+n = 321
+print("Original Number",n)
+print("Check whether the sum of all digits of the said number is odd or even!")
+print(oddish_evenish_num(321))
+n = 43 
+print("Original Number",n)
+print("Check whether the sum of all digits of the said number is odd or even!")
+print(oddish_evenish_num(43))
+n = 4433
+print("Original Number",n)
+print("Check whether the sum of all digits of the said number is odd or even!")
+print(oddish_evenish_num(4433))
+n = 373
+print("Original Number",n)
+print("Check whether the sum of all digits of the said number is odd or even!")
+print(oddish_evenish_num(373))
+
+
+"""
+Write a Python program that takes three integers and checks whether the sum of the last digit of the first number and the last digit of the second number equals the last digit of the third number. Go to the editor
+Sample Input:
+(12, 26, 44)
+(145, 122, 1010)
+(0, 20, 40)
+(1, 22, 40)
+(145, 129, 104)
+Sample Output:
+True
+False
+True
+False
+True
+"""
+
+def check_last_digit(x, y, z):
+  return str(x+z)[-1] == str(y)[-1]
+print(check_last_digit(12, 26, 44))
+print(check_last_digit(145, 122, 1010))
+print(check_last_digit(0, 20, 40))
+print(check_last_digit(1, 22, 40))
+print(check_last_digit(145, 129, 104))
+
+
+"""
+Write a Python program to find the indices of all occurrences of a given item in a given list. Go to the editor
+Sample Input:
+([1,2,3,4,5,2], 2)
+([3,1,2,3,4,5,6,3,3], 3)
+([1,2,3,-4,5,2,-4], -4)
+Sample Output:
+Original list of numbers: [1, 2, 3, 4, 5, 2]
+Given Number 2
+Indices of all occurrences of the said item in the given list:
+[1, 5]
+Original list of numbers: [3, 1, 2, 3, 4, 5, 6, 3, 3]
+Given Number 3
+Indices of all occurrences of the said item in the given list:
+[0, 3, 7, 8]
+Original list of numbers: [1, 2, 3, -4, 5, 2, -4]
+Given Number -4
+Indices of all occurrences of the said item in the given list:
+[3, 6]
+Original list of numbers: [1, 2, 3, 4, 5, 2]
+Given Number 7
+Indices of all occurrences of the said item in the given list:
+[]
+"""
+
+def indices_in_list(nums_list, n):
+           return [idx for idx, i in enumerate(nums_list) if i == n]
+nums = [1,2,3,4,5,2]
+print("Original list of numbers:",nums)
+n = 2
+print("Given Number",n)
+print("Indices of all occurrences of the said item in the given list:")
+print(indices_in_list(nums, n))
+nums = [3,1,2,3,4,5,6,3,3]
+print("\nOriginal list of numbers:",nums)
+n = 3
+print("Given Number",n)
+print("Indices of all occurrences of the said item in the given list:")
+print(indices_in_list(nums, n))
+nums = [1,2,3,-4,5,2,-4]
+print("\nOriginal list of numbers:",nums)
+n = -4
+print("Given Number",n)
+print("Indices of all occurrences of the said item in the given list:")
+print(indices_in_list(nums, n))
+nums = [1,2,3,4,5,2]
+print("\nOriginal list of numbers:",nums)
+n = 7
+print("Given Number",n)
+print("Indices of all occurrences of the said item in the given list:")
+print(indices_in_list(nums, n))
+
+
+"""
+Write a Python program to remove duplicate numbers from a given list of numbers. Go to the editor
+Sample Input:
+([1,2,3,2,3,4,5])
+([1,2,3,2,4,5])
+([1,2,3,4,5])
+Sample Output:
+Original list of numbers: [1, 2, 3, 2, 3, 4, 5]
+After removing the duplicate numbers from the said list:
+[1, 4, 5]
+Original list of numbers: [1, 2, 3, 2, 4, 5]
+After removing the duplicate numbers from the said list:
+[1, 3, 4, 5]
+Original list of numbers: [1, 2, 3, 4, 5]
+After removing the duplicate numbers from the said list:
+[1, 2, 3, 4, 5]
+"""
+
+def unique_nums(nums):
+ return [i for i in nums if nums.count(i)==1]
+nums = [1,2,3,2,3,4,5]
+print("Original list of numbers:",nums)
+print("After removing the duplicate numbers from the said list:")
+print(unique_nums(nums))
+nums = [1,2,3,2,4,5]
+print("\nOriginal list of numbers:",nums)
+print("After removing the duplicate numbers from the said list:")
+print(unique_nums(nums))
+nums = [1,2,3,4,5]
+print("\nOriginal list of numbers:",nums)
+print("After removing the duplicate numbers from the said list:")
+print(unique_nums(nums))
+
+
+
+"""
+111. Write a Python program which checks whether two circles in the same plane (with the same center (x,y) and radius) intersect. If intersection occurs, return true, otherwise return false. Go to the editor
+Sample Input:
+([1,2, 4], [1,2, 8])
+([0,0, 2], [10,10, 5])
+Sample Output:
+True
+False
+Click me to see the sample solution
+"""
+def is_circle_collision(circle1, circle2):
+   x1, y1, r1 = circle1
+   x2, y2, r2 = circle2
+   distance = ((x1-x2)**2 + (y1-y2)**2)**0.5
+   return distance <= r1 + r2
+print(is_circle_collision([1,2, 4], [1,2, 8]))
+print(is_circle_collision([0,0, 2], [10,10, 5]))
+
+"""
+112. Write a Python program to compute the digit distance between two integers. Go to the editor
+The digit distance between two numbers is the absolute value of the difference of those numbers.
+For example, the distance between 3 and -3 on the number line given by the |3 - (-3) | = |3 + 3 | = 6 units
+Digit distance of 123 and 256 is
+Since |1 - 2| + |2 - 5| + |3 - 6| = 1 + 3 + 3 = 7
+Sample Input:
+(123, 256)
+(23, 56)
+(1, 2)
+(24232, 45645)
+Sample Output:
+7
+6
+1
+11
+Click me to see the sample solution
+"""
+
+def digit_distance_nums(num1: int, num2: int) -> int:
+  return(sum(abs(i - j) for i, j in
+  zip(map(int, str(num1)), map(int, str(num2)))))
+print(digit_distance_nums(509, 510))
+print(digit_distance_nums(123, 256))
+print(digit_distance_nums(23, 56))
+print(digit_distance_nums(1, 2))
+print(digit_distance_nums(24232, 45645))
+
+"""
+113. Write a Python program to reverse all words of odd lengths. Go to the editor
+Sample Input:
+("The quick brown fox jumps over the lazy dog")
+("Python Exercises")
+Sample Output:
+The quick brown fox jumps revo the yzal dog
+nohtyP Exercises
+Click me to see the sample solution
+"""
+def reverse_even(txt):
+         return ' '.join(i[::-1] if not len(i)%2 else i for i in txt.split())
+print(reverse_even("The quick brown fox jumps over the lazy dog"))
+print(reverse_even("Python Exercises"))
+
+"""
+114. Write a Python program to print letters from the English alphabet from a-z and A-Z. Go to the editor
+Sample Input:
+("Alphabet from a-z:")
+("\nAlphabet from A-Z:")
+Sample Output:
+Alphabet from a-z:
+a b c d e f g h i j k l m n o p q r s t u v w x y z
+Alphabet from A-Z:
+A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+Click me to see the sample solution
+"""
+
+import string
+print("Alphabet from a-z:")
+for letter in string.ascii_lowercase:
+   print(letter, end =" ")
+print("\nAlphabet from A-Z:")
+for letter in string.ascii_uppercase:
+   print(letter, end =" ")
+
+
+"""
+115. Write a Python program to generate and print a list of numbers from 1 to 10. Go to the editor
+Sample Input:
+range(1,10)
+Sample Output:
+[1, 2, 3, 4, 5, 6, 7, 8, 9]
+['1', '2', '3', '4', '5', '6', '7', '8', '9']
+Click me to see the sample solution
+
+116. Write a Python program to identify non-prime numbers between 1 and 100 (integers). Print the non-prime numbers. Go to the editor
+Sample Input:
+range(1, 101)
+Sample Output:
+Nonprime numbers between 1 to 100:
+4
+6
+8
+9
+10
+..
+96
+98
+99
+100
+Click me to see the sample solution
+
+117. Write a Python program to make a request to a web page, and test the status code, and display the HTML code of the specified web page. Go to the editor
+Sample Output:
+Web page status: <Response [200]>
+HTML code of the above web page:
+<!doctype html>
+<html>
+<head>
+<title>Example Domain</title>
+<meta charset="utf-8" />
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body>
+<div>
+<h1>Example Domain</h1>
+<p>This domain is for use in illustrative examples in documents. You may use this
+domain in literature without prior coordination or asking for permission.</p>
+<p><a href="https://www.iana.org/domains/example">More information...</a></p>
+</div>
+</body>
+</html>
+
+Click me to see the sample solution
+
+118. In multiprocessing, processes are spawned by creating a Process object. Write a Python program to show the individual process IDs (parent process, process ID etc.) involved. Go to the editor
+Sample Output:
+Main line
+module name: __main__
+parent process: 23967
+process id: 27986
+function f
+module name: __main__
+parent process: 27986
+process id: 27987
+hello bob
+Click me to see the sample solution
+
+119. Write a Python program to check if two given numbers are Co Prime or not. Return True if two numbers are Co Prime otherwise return false. Go to the editor
+Sample Input:
+(17, 13)
+(17, 21)
+(15, 21)
+(25, 45)
+Sample Output:
+True
+True
+False
+False
+Click me to see the sample solution
+
+120. Write a Python program to calculate Euclid's totient function for a given integer. Use a primitive method to calculate Euclid's totient function. Go to the editor
+Sample Input:
+(10)
+(15)
+(33)
+Sample Output:
+4
+8
+20
+Click me to see the sample solution
+
+121. Write a Python program to create a coded string from a given string, using a specified formula. Go to the editor
+Replace all 'P' with '9', 'T' with '0', 'S' with '1', 'H' with '6' and 'A' with '8'
+Original string: PHP
+Coded string: 969
+Original string: JAVASCRIPT
+Coded string: J8V81CRI90
+Click me to see the sample solution
+
+122. Write a Python program to check if a given string contains only lowercase or uppercase characters. Go to the editor
+Original string: PHP
+Coded string: True
+Original string: javascript
+Coded string: True
+Original string: JavaScript
+Coded string: False
+Click me to see the sample solution
+
+123. Write a Python program to remove the first and last elements from a given string. Go to the editor
+Original string: PHP
+Removing the first and last elements from the said string: H
+Original string: Python
+Removing the first and last elements from the said string: ytho
+Original string: JavaScript
+Removing the first and last elements from the said string: avaScrip
+Click me to see the sample solution
+
+124. Write a Python program to check if a given string contains two similar consecutive letters. Go to the editor
+Original string: PHP
+Check for consecutive similar letters! False
+Original string: PHHP
+Check for consecutive similar letters! True
+Original string: PHPP
+Check for consecutive similar letters! True
+Click me to see the sample solution
+
+125. Write a Python program to reverse a given string in lower case. Go to the editor
+Original string: PHP
+Reverse the said string in lower case: php
+Original string: JavaScript
+Reverse the said string in lower case: tpircsavaj
+Original string: PHPP
+Reverse the said string in lower case: pphp
+Click me to see the sample solution
+
+126. Write a Python program to convert the letters of a given string (same case-upper/lower) into alphabetical order. Go to the editor
+Original string: PHP
+Convert the letters of the said string into alphabetical order: HPP
+Original string: javascript
+Convert the letters of the said string into alphabetical order: aacijprstv
+Original string: python
+Convert the letters of the said string into alphabetical order: hnopty
+Click me to see the sample solution
+
+127. Write a Python program to check whether the average value of the elements of a given array of numbers is a whole number or not. Go to the editor
+Original array:
+1 3 5 7 9
+Check the average value of the elements of the said array is a whole number or not: True
+Original array:
+2 4 2 6 4 8
+Check the average value of the elements of the said array is a whole number or not:
+False
+Click me to see the sample solution
+
+128. Write a Python program to remove all vowels from a given string. Go to the editor
+Original string: Python
+After removing all the vowels from the said string: Pythn
+Original string: C Sharp
+After removing all the vowels from the said string: C Shrp
+Original string: JavaScript
+After removing all the vowels from the said string: JvScrpt
+Click me to see the sample solution
+
+129. Write a Python program to get the index number of all lower case letters in a given string. Go to the editor
+Original string: Python
+Indices of all lower case letters of the said string: [1, 2, 3, 4, 5] Original string: JavaScript
+Indices of all lower case letters of the said string: [1, 2, 3, 5, 6, 7, 8, 9] Original string: PHP
+Indices of all lower case letters of the said string: []
+Click me to see the sample solution
+
+130. Write a Python program to check whether a given month and year contains a Monday 13th. Go to the editor
+Month No.: 11 Year: 2022
+Check whether the said month and year contains a Monday 13th.: False
+Month No.: 6 Year: 2022
+Check whether the said month and year contains a Monday 13th.: True
+Click me to see the sample solution
+
+131. Write a Python program to count the number of zeros and ones in the binary representation of a given integer. Go to the editor
+Original number: 12
+Number of ones and zeros in the binary representation of the said number: Number of zeros: 2, Number of ones: 2
+Original number: 1234
+Number of ones and zeros in the binary representation of the said number: Number of zeros: 6, Number of ones: 5
+Click me to see the sample solution
+
+132. Write a Python program to find all the factors of a given natural number. Go to the editor
+Factors:
+The factors of a number are the numbers that divide into it exactly. The number 12 has six factors:
+1, 2, 3, 4, 6 and 12 If 12 is divided by any of the six factors then the answer will be a whole number. For example:
+12 / 3 = 4
+Original Number: 1
+Factors of the said number: {1}
+Original Number: 12
+Factors of the said number: {1, 2, 3, 4, 6, 12}
+Original Number: 100
+Factors of the said number: {1, 2, 4, 100, 5, 10, 50, 20, 25}
+Click me to see the sample solution
+
+133. Write a Python program to compute the sum of the negative and positive numbers in an array of integers and display the largest sum. Go to the editor
+Original array elements: {0, 15, 16, 17, -14, -13, -12, -11, -10, 18, 19, 20}
+Largest sum - Positive/Negative numbers of the said array: 105
+Original array elements: {0, 3, 4, 5, 9, -22, -44, -11}
+Largest sum - Positive/Negative numbers of the said array: -77
+Click me to see the sample solution
+
+134. Write a Python program that alternates the case of each letter in a given string, with the first letter in the string being uppercase. Go to the editor
+Original string: Python Exercises
+After alternating the case of each letter of the said string: PyThOn ExErCiSeS
+Original string: C# is used to develop web apps, desktop apps, mobile apps, games and much more.
+After alternating the case of each letter of the said string: C# iS uSeD tO dEvElOp WeB aPpS, dEsKtOp ApPs, MoBiLe ApPs, GaMeS aNd MuCh MoRe.
+Click me to see the sample solution
+
+135. Write a Python program that calculates the Least Common Multiple (LCM) of more than two numbers. The numbers should be taken from a given list of positive integers. Go to the editor
+From Wikipedia,
+In arithmetic and number theory, the least common multiple, lowest common multiple, or smallest common multiple of two integers a and b, usually denoted by lcm(a, b), is the smallest positive integer that is divisible by both a and b. Since division of integers by zero is undefined, this definition has meaning only if a and b are both different from zero. However, some authors define lcm(a,0) as 0 for all a, which is the result of taking the lcm to be the least upper bound in the lattice of divisibility.
+Original list elements: [4, 6, 8]
+LCM of the numbers of the said array of positive integers: 24
+Original list elements: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+LCM of the numbers of the said array of positive integers: 2520
+Original list elements: [48, 72, 108]
+LCM of the numbers of the said array of positive integers: 432
+Click me to see the sample solution
+
+136. Write a Python program to reverse all words of odd lengths. Go to the editor
+Original string: The quick brown fox jumps over the lazy dog
+Reverse all the words of the said string which have odd length: ehT kciuq nworb xof spmuj over eht lazy god
+Original string: Python Exercises
+Reverse all the words of the said string which have odd length: Python sesicrexE
+Click me to see the sample solution
+
+137. Write a Python program to find the longest common ending between two given strings. Go to the editor
+Original strings: running ruminating
+Common ending between said two strings: ing
+Original strings: thisisatest testing123testing
+Common ending between said two strings:
+Click me to see the sample solution
+
+138. Write a Python program to reverse the binary representation of a given number and convert the reversed binary number into an integer. Go to the editor
+Original number: 13
+Reverse the binary representation of the said integer and convert it into an integer: 11
+Original number: 145
+Reverse the binary representation of the said integer and convert it into an integer: 137
+Original number: 1342
+Reverse the binary representation of the said integer and convert it into an integer: 997
+Click me to see the sample solution
+
+139. Write a Python program to find the closest palindrome number to a given integer. If there are two palindrome numbers in absolute distance return the smaller number. Go to the editor
+Original number: 120
+Closest Palindrome number of the said number: 121
+Original number: 321
+Closest Palindrome number of the said number: 323
+Original number: 43
+Closest Palindrome number of the said number: 44
+Original number: 1234
+Closest Palindrome number of the said number: 1221
+Click me to see the sample solution
+
+140. Write a Python program to convert all items in a given list to float values. Go to the editor
+Original list:
+['0.49', '0.54', '0.54', '0.54', '0.54', '0.54', '0.55', '0.54', '0.54', '0.54', '0.55', '0.55', '0.55', '0.54', '0.55', '0.55', '0.54', '0.55', '0.55', '0.54']
+List of Floats:
+[0.49, 0.54, 0.54, 0.54, 0.54, 0.54, 0.55, 0.54, 0.54, 0.54, 0.55, 0.55, 0.55, 0.54, 0.55, 0.55, 0.54, 0.55, 0.55, 0.54]
+Click me to see the sample solution
+
+141. Write a Python program to get the domain name using PTR DNS records from a given IP address. Go to the editor
+Domain name using PTR DNS:
+dns.google
+ec2-13-251-106-90.ap-southeast-1.compute.amazonaws.com
+dns.google
+ec2-23-23-212-126.compute-1.amazonaws.com
+Click me to see the sample solution
+
+142. Write a Python program to check if every consecutive sequence of zeroes is followed by a consecutive sequence of ones of the same length in a given string. Return True/False. Go to the editor
+Original sequence: 001011
+Check if every consecutive sequence of zeroes is followed by a consecutive sequence of ones in the said string:
+False
+Original sequence: 01010101
+Check if every consecutive sequence of zeroes is followed by a consecutive sequence of ones in the said string:
+True
+Original sequence: 00
+Check if every consecutive sequence of zeroes is followed by a consecutive sequence of ones in the said string:
+False
+Original sequence: 000111000111
+Check if every consecutive sequence of zeroes is followed by a consecutive sequence of ones in the said string:
+True
+Original sequence: 00011100011
+Check if every consecutive sequence of zeroes is followed by a consecutive sequence of ones in the said string:
+False
+Original sequence: 0011101
+Check if every consecutive sequence of zeroes is followed by a consecutive sequence of ones in the said string:
+False
+Click me to see the sample solution
+
+143. Write a Python program to print Emojis using Unicode characters or CLDR (Common Locale Data Repository) short names. Go to the editor
+
+
+Click me to see the sample solution
+
+144. Write a Python program to convert integer to string. Go to the editor
+Sample Input:
+language = "Python"
+version = 3.6
+sample Output:
+Language: Python, Version: 3.6
+Click me to see the sample solution
+
+145. Write a Python program to find the largest and smallest digits of a given number. Go to the editor
+Original Number: 9387422
+Largest Digit of the said number: 9
+Smallest Digit of the said number: 2
+Original Number: 500
+Largest Digit of the said number: 5
+Smallest Digit of the said number: 0
+Original Number: 231548
+Largest Digit of the said number: 8
+Smallest Digit of the said number: 1
+Click me to see the sample solution
+
+146. A Python list contains two positive integers. Write a Python program to check whether the cube root of the first number is equal to the square root of the second number. Go to the editor
+Sample Data:
+([8, 4]) -> True
+([64, 16]) -> True
+([64, 36]) -> False
+Click me to see the sample solution
+
+147. A Python list contains three positive integers. Write a Python program to check whether the sum of the digits in each number is equal or not. Return true otherwise false. Go to the editor
+Sample Data:
+([13, 4, 22]) -> True
+([-13, 4, 22]) -> False
+([45, 63, 90]) -> True
+Click me to see the sample solution
+
+148. A Python list contains some positive integers. Write a Python program to count the numbers that are greater than the previous number on the list.Go to the editor
+Sample Data:
+([1, 4, 7, 9, 11, 5]) -> 4
+([1, 3, 3, 2, 2]) -> 1
+([4, 3, 2, 1]) -> 0
+Click me to see the sample solution
+
+149. Write a Python program that takes a positive integer and creates an N x N square filled with the integer N. Display the N x N square. Go to the editor
+Sample Data:
+(2) -> [[2, 2], [2, 2]]
+(5) -> [[5, 5, 5, 5, 5], [5, 5, 5, 5, 5], [5, 5, 5, 5, 5], [5, 5, 5, 5, 5], [5, 5, 5, 5, 5]]
+(-6) -> []
+Click me to see the sample solution
+
+150. Write a Python program that takes a positive integer and calculates the cube root of the number until the number is less than three. Count the number of steps to complete the task. Go to the editor
+Sample Data:
+(3) -> 1
+(39) -> 2
+(10000) -> 2
+Click me to see the sample solution
+"""
+
