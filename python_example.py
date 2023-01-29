@@ -2213,8 +2213,8 @@ Java is popular than Python
 print("Input a text with two words 'Python' and 'Java'")
 text = input().split()
 for i in range(len(text)):
-    if "Python" in text[i]:n = text[i].index("Python");text[i] = text[i][:n] + "Java" + text[i][n + 6:]
-    elif "Java" in text[i]:n = text[i].index("Java");text[i] = text[i][:n] + "Python" + text[i][n + 4:]
+    if "Python" in text[i]:n = text[i].index("Python")text[i] = text[i][:n] + "Java" + text[i][n + 6:]
+    elif "Java" in text[i]:n = text[i].index("Java")text[i] = text[i][:n] + "Python" + text[i][n + 4:]
 print(*text)
 
 
@@ -4079,7 +4079,13 @@ Sample Output:
 [1, 2, 3, 4, 5, 6, 7, 8, 9]
 ['1', '2', '3', '4', '5', '6', '7', '8', '9']
 Click me to see the sample solution
+"""
+nums = range(1,10)
+print(list(nums))
+print(list(map(str, nums)))
 
+
+"""
 116. Write a Python program to identify non-prime numbers between 1 and 100 (integers). Print the non-prime numbers. Go to the editor
 Sample Input:
 range(1, 101)
@@ -4096,7 +4102,21 @@ Nonprime numbers between 1 to 100:
 99
 100
 Click me to see the sample solution
+"""
 
+import math
+def is_not_prime(n):
+    ans = False
+    for i in range(2, int(math.sqrt(n)) + 1):
+        if n % i == 0:
+            ans = True
+    return ans
+print("Nonprime numbers between 1 to 100:")
+for x in filter(is_not_prime, range(1, 101)):
+    print(x)
+
+
+"""
 117. Write a Python program to make a request to a web page, and test the status code, and display the HTML code of the specified web page. Go to the editor
 Sample Output:
 Web page status: <Response [200]>
@@ -4120,7 +4140,18 @@ domain in literature without prior coordination or asking for permission.</p>
 </html>
 
 Click me to see the sample solution
+"""
 
+import requests
+url = 'http://www.example.com/'
+headers = {'User-Agent': 'Mozilla/5.0 (Macintosh) Gecko/20100101 Firefox/38.0'}
+request = requests.get(url, headers=headers)
+print("Web page status: ", request)
+print("\nHTML code of the above web page:")
+if request.ok:
+    print(request.text)
+
+"""
 118. In multiprocessing, processes are spawned by creating a Process object. Write a Python program to show the individual process IDs (parent process, process ID etc.) involved. Go to the editor
 Sample Output:
 Main line
@@ -4133,7 +4164,25 @@ parent process: 27986
 process id: 27987
 hello bob
 Click me to see the sample solution
+"""
 
+from multiprocessing import Process
+import os
+def info(title):
+    print(title)
+    print('module name:', __name__)
+    print('parent process:', os.getppid())
+    print('process id:', os.getpid())
+def f(name):
+    info('function f')
+    print('hello', name)
+if __name__ == '__main__':
+    info('Main line')
+    p = Process(target=f, args=('bob',))
+    p.start()
+    p.join()
+
+"""
 119. Write a Python program to check if two given numbers are Co Prime or not. Return True if two numbers are Co Prime otherwise return false. Go to the editor
 Sample Input:
 (17, 13)
@@ -4147,6 +4196,21 @@ False
 False
 Click me to see the sample solution
 
+"""
+def gcd(p,q):
+# Create the gcd of two positive integers.
+    while q != 0:
+        p, q = q, p%q
+    return p
+def is_coprime(x, y):
+    return gcd(x, y) == 1
+print(is_coprime(17, 13))
+print(is_coprime(17, 21))
+print(is_coprime(15, 21))
+print(is_coprime(25, 45))
+
+
+"""
 120. Write a Python program to calculate Euclid's totient function for a given integer. Use a primitive method to calculate Euclid's totient function. Go to the editor
 Sample Input:
 (10)
@@ -4157,15 +4221,47 @@ Sample Output:
 8
 20
 Click me to see the sample solution
+"""
+def gcd(p,q):
+# Create the gcd of two positive integers.
+    while q != 0:
+        p, q = q, p%q
+    return p
 
+def is_coprime(x, y):
+    return gcd(x, y) == 1
+
+def phi_func(x):
+    if x == 1:
+        return 1
+    else:
+        n = [y for y in range(1,x) if is_coprime(x,y)]
+        return len(n)
+print(phi_func(10))
+print(phi_func(15))
+print(phi_func(33))
+
+
+"""
 121. Write a Python program to create a coded string from a given string, using a specified formula. Go to the editor
 Replace all 'P' with '9', 'T' with '0', 'S' with '1', 'H' with '6' and 'A' with '8'
 Original string: PHP
 Coded string: 969
 Original string: JAVASCRIPT
 Coded string: J8V81CRI90
-Click me to see the sample solution
+Click me to see the sample solution"""
 
+def test(str):
+	return str.translate(str.maketrans('PTSHA', '90168'))
+str = "PHP"
+print("Original string: ",str)
+print("Coded string: ",test(str))
+str = "JAVASCRIPT"
+print("\nOriginal string: ",str)
+print("Coded string: ",test(str))
+
+
+"""
 122. Write a Python program to check if a given string contains only lowercase or uppercase characters. Go to the editor
 Original string: PHP
 Coded string: True
@@ -4173,45 +4269,112 @@ Original string: javascript
 Coded string: True
 Original string: JavaScript
 Coded string: False
-Click me to see the sample solution
+Click me to see the sample solution"""
 
-123. Write a Python program to remove the first and last elements from a given string. Go to the editor
+def test(str):
+    return str.islower() or str.isupper()
+
+str = "PHP"
+print("Original string: ",str)
+print("Coded string: ",test(str))
+str = "javascript"
+print("\nOriginal string: ",str)
+print("Coded string: ",test(str))
+str = "JavaScript"
+print("\nOriginal string: ",str)
+print("Coded string: ",test(str))
+
+
+"""123. Write a Python program to remove the first and last elements from a given string. Go to the editor
 Original string: PHP
 Removing the first and last elements from the said string: H
 Original string: Python
 Removing the first and last elements from the said string: ytho
 Original string: JavaScript
 Removing the first and last elements from the said string: avaScrip
-Click me to see the sample solution
+Click me to see the sample solution"""
 
-124. Write a Python program to check if a given string contains two similar consecutive letters. Go to the editor
+def test(str):
+    return str if len(str) < 3 else str[1:-1]
+str = "PHP"
+print("Original string: ",str)
+print("Removing the first and last elements from the said string: ",test(str))
+str = "Python"
+print("\nOriginal string: ",str)
+print("Removing the first and last elements from the said string: ",test(str))
+str = "JavaScript"
+print("\nOriginal string: ",str)
+print("Removing the first and last elements from the said string: ",test(str))
+
+
+"""124. Write a Python program to check if a given string contains two similar consecutive letters. Go to the editor
 Original string: PHP
 Check for consecutive similar letters! False
 Original string: PHHP
 Check for consecutive similar letters! True
 Original string: PHPP
 Check for consecutive similar letters! True
-Click me to see the sample solution
+Click me to see the sample solution"""
 
-125. Write a Python program to reverse a given string in lower case. Go to the editor
+def test(str1):
+    return any(c1 == c2 for c1, c2 in zip(str1, str1[1:]))
+str = "PHP"
+print("Original string: ",str)
+print("Check for consecutive similar letters! ",test(str))
+str = "PHHP"
+print("\nOriginal string: ",str)
+print("Check for consecutive similar letters! ",test(str))
+str = "PHPP"
+print("\nOriginal string: ",str)
+print("Check for consecutive similar letters! ",test(str))
+
+
+"""125. Write a Python program to reverse a given string in lower case. Go to the editor
 Original string: PHP
 Reverse the said string in lower case: php
 Original string: JavaScript
 Reverse the said string in lower case: tpircsavaj
 Original string: PHPP
 Reverse the said string in lower case: pphp
-Click me to see the sample solution
+Click me to see the sample solution"""
 
-126. Write a Python program to convert the letters of a given string (same case-upper/lower) into alphabetical order. Go to the editor
+def test(str1):
+    return str1[::-1].lower()
+str = "PHP"
+print("Original string:",str)
+print("Reverse the said string in lower case:",test(str))
+str = "JavaScript"
+print("\nOriginal string:",str)
+print("Reverse the said string in lower case:",test(str))
+str = "PHPP"
+print("\nOriginal string:",str)
+print("Reverse the said string in lower case:",test(str)) 
+
+
+"""126. Write a Python program to convert the letters of a given string (same case-upper/lower) into alphabetical order. Go to the editor
 Original string: PHP
 Convert the letters of the said string into alphabetical order: HPP
 Original string: javascript
 Convert the letters of the said string into alphabetical order: aacijprstv
 Original string: python
 Convert the letters of the said string into alphabetical order: hnopty
-Click me to see the sample solution
+Click me to see the sample solution"""
 
-127. Write a Python program to check whether the average value of the elements of a given array of numbers is a whole number or not. Go to the editor
+def test(str1):
+    return ''.join(sorted(str1))
+
+str1 = "PHP"
+print("Original string:",str1)
+print("Convert the letters of the said string into alphabetical order:",test(str1))
+str1 = "javascript"
+print("\nOriginal string:",str1)
+print("Convert the letters of the said string into alphabetical order:",test(str1))
+str1 = "python"
+print("\nOriginal string:",str1)
+print("Convert the letters of the said string into alphabetical order:",test(str1)) 
+
+
+"""127. Write a Python program to check whether the average value of the elements of a given array of numbers is a whole number or not. Go to the editor
 Original array:
 1 3 5 7 9
 Check the average value of the elements of the said array is a whole number or not: True
@@ -4219,39 +4382,110 @@ Original array:
 2 4 2 6 4 8
 Check the average value of the elements of the said array is a whole number or not:
 False
-Click me to see the sample solution
+Click me to see the sample solution"""
 
-128. Write a Python program to remove all vowels from a given string. Go to the editor
+import array as arr
+def test(nums):
+    return sum(nums) % len(nums) == 0
+array_num = arr.array('i', [1, 3, 5, 7, 9])
+print("Original array:")
+for i in range(len(array_num)):    
+    print(array_num[i], end=' ')
+print("\nCheck the average value of the elements of the said array is a whole number or not:\n",test(array_num))
+array_num = arr.array('i', [2, 4, 2, 6, 4, 8])
+print("\nOriginal array:")
+for i in range(len(array_num)):    
+    print(array_num[i], end=' ')
+print("\nCheck the average value of the elements of the said array is a whole number or not:\n",test(array_num)) 
+
+
+"""128. Write a Python program to remove all vowels from a given string. Go to the editor
 Original string: Python
 After removing all the vowels from the said string: Pythn
 Original string: C Sharp
 After removing all the vowels from the said string: C Shrp
 Original string: JavaScript
 After removing all the vowels from the said string: JvScrpt
-Click me to see the sample solution
+Click me to see the sample solution"""
 
-129. Write a Python program to get the index number of all lower case letters in a given string. Go to the editor
+import re
+def test(text):
+    return re.sub(r'[aeiou]+', '', text, flags=re.IGNORECASE)
+text = "Python";
+print("Original string:",text)
+print("After removing all the vowels from the said string: " + test(text))
+text = "C Sharp"
+print("\nOriginal string:",text)
+print("After removing all the vowels from the said string: " + test(text))
+text = "JavaScript"
+print("\nOriginal string:",text)
+print("After removing all the vowels from the said string: " + test(text))
+
+
+"""129. Write a Python program to get the index number of all lower case letters in a given string. Go to the editor
 Original string: Python
 Indices of all lower case letters of the said string: [1, 2, 3, 4, 5] Original string: JavaScript
 Indices of all lower case letters of the said string: [1, 2, 3, 5, 6, 7, 8, 9] Original string: PHP
 Indices of all lower case letters of the said string: []
-Click me to see the sample solution
+Click me to see the sample solution"""
 
-130. Write a Python program to check whether a given month and year contains a Monday 13th. Go to the editor
+def test(text):
+   return [x for x in range(len(text)) if text[x].islower()]
+text = "Python";
+print("Original string:",text)
+print("Indices of all lower case letters of the said string:\n",test(text))
+text = "JavaScript";
+print("Original string:",text)
+print("Indices of all lower case letters of the said string:\n",test(text))
+text = "PHP";
+print("Original string:",text)
+print("Indices of all lower case letters of the said string:\n",test(text))
+
+
+"""130. Write a Python program to check whether a given month and year contains a Monday 13th. Go to the editor
 Month No.: 11 Year: 2022
 Check whether the said month and year contains a Monday 13th.: False
 Month No.: 6 Year: 2022
 Check whether the said month and year contains a Monday 13th.: True
-Click me to see the sample solution
+Click me to see the sample solution"""
 
-131. Write a Python program to count the number of zeros and ones in the binary representation of a given integer. Go to the editor
+from datetime import date
+def test(month, year): 
+    return str(date(year,month,13).strftime("%A")=='Monday')
+
+month = 11;
+year = 2022;            
+print("Month No.: ", month, " Year: ", year)
+print("Check whether the said month and year contains a Monday 13th.: " + test(month, year))
+month = 6;
+year = 2022;            
+print("\nMonth No.: ", month, " Year: ", year)
+print("Check whether the said month and year contains a Monday 13th.: " + test(month, year)) 
+
+
+"""131. Write a Python program to count the number of zeros and ones in the binary representation of a given integer. Go to the editor
 Original number: 12
 Number of ones and zeros in the binary representation of the said number: Number of zeros: 2, Number of ones: 2
 Original number: 1234
 Number of ones and zeros in the binary representation of the said number: Number of zeros: 6, Number of ones: 5
-Click me to see the sample solution
+Click me to see the sample solution"""
 
-132. Write a Python program to find all the factors of a given natural number. Go to the editor
+def test(num):
+    ones =  bin(num). replace("0b", "").count('1')
+    zeros = bin(num). replace("0b", "").count('0')
+    return "Number of zeros: " + str(zeros) + ", Number of ones: " + str(ones)
+
+n = 12; 
+print("Original number: ",n)
+print("Number of ones and zeros in the binary representation of the said number:")
+print(test(n))
+n = 1234;
+print("\nOriginal number: ",n)
+print("Number of ones and zeros in the binary representation of the said number:")
+print(test(n))
+
+
+"""132. Write a Python program to find all the factors of a given natural number. Go to the editor
 Factors:
 The factors of a number are the numbers that divide into it exactly. The number 12 has six factors:
 1, 2, 3, 4, 6 and 12 If 12 is divided by any of the six factors then the answer will be a whole number. For example:
@@ -4262,23 +4496,99 @@ Original Number: 12
 Factors of the said number: {1, 2, 3, 4, 6, 12}
 Original Number: 100
 Factors of the said number: {1, 2, 4, 100, 5, 10, 50, 20, 25}
-Click me to see the sample solution
+Click me to see the sample solution"""
 
-133. Write a Python program to compute the sum of the negative and positive numbers in an array of integers and display the largest sum. Go to the editor
+#Source https://bit.ly/3w492zp
+
+from functools import reduce
+
+def test(n):    
+    return set(reduce(list.__add__, 
+                ([i, n//i] for i in range(1, int(n**0.5) + 1) if n % i == 0)))
+
+'''
+sqrt(x) * sqrt(x) = x. So if the two factors are the same, they're both 
+the square root. If you make one factor bigger, you have to make the other 
+factor smaller. This means that one of the two will always be less than or 
+equal to sqrt(x), so you only have to search up to that point to find one 
+of the two matching factors. You can then use x / fac1 to get fac2.
+
+The reduce(list.__add__, ...) is taking the little lists of [fac1, fac2] 
+and joining them together in one long list.
+
+The [i, n/i] for i in range(1, int(sqrt(n)) + 1) if n % i == 0 returns 
+a pair of factors if the remainder when you divide n by the smaller one 
+is zero (it doesn't need to check the larger one too; it just gets that 
+by dividing n by the smaller one.)
+
+The set(...) on the outside is getting rid of duplicates, which only 
+happens for perfect squares. For n = 4, this will return 2 twice, so 
+set gets rid of one of them.
+'''
+n = 1
+print("\nOriginal Number:",n)
+print("Factors of the said number:",test(n))
+n = 12
+print("\nOriginal Number:",n)
+print("Factors of the said number:",test(n))
+n = 100
+print("\nOriginal Number:",n)
+print("Factors of the said number:",test(n))
+
+
+"""133. Write a Python program to compute the sum of the negative and positive numbers in an array of integers and display the largest sum. Go to the editor
 Original array elements: {0, 15, 16, 17, -14, -13, -12, -11, -10, 18, 19, 20}
 Largest sum - Positive/Negative numbers of the said array: 105
 Original array elements: {0, 3, 4, 5, 9, -22, -44, -11}
 Largest sum - Positive/Negative numbers of the said array: -77
-Click me to see the sample solution
+Click me to see the sample solution"""
 
-134. Write a Python program that alternates the case of each letter in a given string, with the first letter in the string being uppercase. Go to the editor
+def test(lst):
+  pos_sum = 0
+  neg_sum = 0
+  for n in lst:
+    if n > 0:
+      pos_sum += n
+    elif n < 0:
+      neg_sum += n
+  return max(pos_sum, neg_sum, key=abs)
+
+nums = { 0, -10, -11, -12, -13, -14, 15, 16, 17, 18, 19, 20 };
+print("Original array elements:")
+print(nums)
+print("Largest sum - Positive/Negative numbers of the said array: ", test(nums))
+nums = { -11, -22, -44, 0, 3, 4 , 5, 9 };
+print("\nOriginal array elements:")
+print(nums)
+print("Largest sum - Positive/Negative numbers of the said array: ", test(nums))
+
+
+"""134. Write a Python program that alternates the case of each letter in a given string, with the first letter in the string being uppercase. Go to the editor
 Original string: Python Exercises
 After alternating the case of each letter of the said string: PyThOn ExErCiSeS
 Original string: C# is used to develop web apps, desktop apps, mobile apps, games and much more.
 After alternating the case of each letter of the said string: C# iS uSeD tO dEvElOp WeB aPpS, dEsKtOp ApPs, MoBiLe ApPs, GaMeS aNd MuCh MoRe.
-Click me to see the sample solution
+Click me to see the sample solution"""
 
-135. Write a Python program that calculates the Least Common Multiple (LCM) of more than two numbers. The numbers should be taken from a given list of positive integers. Go to the editor
+def test(txt):
+    result_str = ""
+    s = True
+    for i in txt:
+        result_str += i.upper() if s else i.lower()
+        if i.isalpha():
+            s = not s
+    return result_str
+str1 = "Python Exercises";
+print("Original string: ", str1)
+print("After alternating the case of each letter of the said string:")
+print(test(str1))
+str1 = "C# is used to develop web apps, desktop apps, mobile apps, games and much more.";
+print("\nOriginal string: ", str1)
+print("After alternating the case of each letter of the said string:")
+print(test(str1))  
+
+
+"""135. Write a Python program that calculates the Least Common Multiple (LCM) of more than two numbers. The numbers should be taken from a given list of positive integers. Go to the editor
 From Wikipedia,
 In arithmetic and number theory, the least common multiple, lowest common multiple, or smallest common multiple of two integers a and b, usually denoted by lcm(a, b), is the smallest positive integer that is divisible by both a and b. Since division of integers by zero is undefined, this definition has meaning only if a and b are both different from zero. However, some authors define lcm(a,0) as 0 for all a, which is the result of taking the lcm to be the least upper bound in the lattice of divisibility.
 Original list elements: [4, 6, 8]
@@ -4287,32 +4597,100 @@ Original list elements: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 LCM of the numbers of the said array of positive integers: 2520
 Original list elements: [48, 72, 108]
 LCM of the numbers of the said array of positive integers: 432
-Click me to see the sample solution
+Click me to see the sample solution"""
 
-136. Write a Python program to reverse all words of odd lengths. Go to the editor
+from functools import reduce
+def test(nums):
+    return reduce(lambda x,y:lcm(x,y),nums)
+def gcd(a, b):
+    while b:
+        a, b = b, a%b
+    return a
+def lcm(a, b):
+    return a*b // gcd(a, b)
+nums = [ 4, 6, 8 ]
+print("Original list elements:")
+print(nums)
+print("LCM of the numbers of the said array of positive integers: ", test(nums))
+nums = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]
+print("\nOriginal list elements:")
+print(nums)
+print("LCM of the numbers of the said array of positive integers: ", test(nums))
+nums = [ 48, 72, 108  ]
+print("\nOriginal list elements:")
+print(nums)
+print("LCM of the numbers of the said array of positive integers: ", test(nums))
+
+
+"""136. Write a Python program to reverse all words of odd lengths. Go to the editor
 Original string: The quick brown fox jumps over the lazy dog
 Reverse all the words of the said string which have odd length: ehT kciuq nworb xof spmuj over eht lazy god
 Original string: Python Exercises
 Reverse all the words of the said string which have odd length: Python sesicrexE
-Click me to see the sample solution
+Click me to see the sample solution"""
 
-137. Write a Python program to find the longest common ending between two given strings. Go to the editor
+def test(txt):
+	return ' '.join(i[::-1] if len(i)%2 else i for i in txt.split())
+ 
+text = "The quick brown fox jumps over the lazy dog"
+print("Original string:")
+print(text)
+print("Reverse all the words of the said string which have odd length:")
+print(test(text))
+text = "Python Exercises"
+print("\nOriginal string:")
+print(text)
+print("Reverse all the words of the said string which have odd length:")
+print(test(text))
+
+
+"""137. Write a Python program to find the longest common ending between two given strings. Go to the editor
 Original strings: running ruminating
 Common ending between said two strings: ing
 Original strings: thisisatest testing123testing
 Common ending between said two strings:
-Click me to see the sample solution
+Click me to see the sample solution"""
 
-138. Write a Python program to reverse the binary representation of a given number and convert the reversed binary number into an integer. Go to the editor
+def test(str1, str2):
+    for i in range(len(str2)):
+        while str2[i:] in str1 and str2[-1]==str1[-1]:
+            return str2[i:]
+    return ""
+
+str1 = "running";
+str2 = "ruminating";
+print("Original strings: " + str1 + "  " + str2)
+print("Common ending between said two strings: " + test(str1, str2))
+str1 = "thisisatest";
+str2 = "testing123testing";
+print("\nOriginal strings: " + str1 + "  " + str2)
+print("Common ending between said two strings: " + test(str1, str2))
+
+
+"""138. Write a Python program to reverse the binary representation of a given number and convert the reversed binary number into an integer. Go to the editor
 Original number: 13
 Reverse the binary representation of the said integer and convert it into an integer: 11
 Original number: 145
 Reverse the binary representation of the said integer and convert it into an integer: 137
 Original number: 1342
 Reverse the binary representation of the said integer and convert it into an integer: 997
-Click me to see the sample solution
+Click me to see the sample solution"""
 
-139. Write a Python program to find the closest palindrome number to a given integer. If there are two palindrome numbers in absolute distance return the smaller number. Go to the editor
+def test(n):
+    return int(bin(n)[::-1][:-2], 2)
+
+n = 13
+print("Original number: ", n)
+print("Reverse the binary representation of the said integer and convert it into an integer:\n",test(n))
+n = 145
+print("Original number: ", n)
+print("Reverse the binary representation of the said integer and convert it into an integer:\n",test(n))
+n = 1342
+print("Original number: ", n)
+print("Reverse the binary representation of the said integer and convert it into an integer:\n",test(n))
+
+
+"""139. Write a Python program to find the closest palindrome number to a given integer. If there are two palindrome numbers in absolute distance return the smaller number. Go to the editor
 Original number: 120
 Closest Palindrome number of the said number: 121
 Original number: 321
@@ -4321,24 +4699,72 @@ Original number: 43
 Closest Palindrome number of the said number: 44
 Original number: 1234
 Closest Palindrome number of the said number: 1221
-Click me to see the sample solution
+Click me to see the sample solution"""
 
-140. Write a Python program to convert all items in a given list to float values. Go to the editor
+def test(n):
+    x = n
+    y = n
+    while True:
+        if str(x) == str(x)[::-1]:
+            return x
+        x -=  1
+        if str(y) == str(y)[::-1]:
+            return y
+        y += 1
+    return int(bin(n)[::-1][:-2], 2)
+
+n = 120;
+print("Original number: ", n)
+print("Closest Palindrome number of the said number: ",test(n))
+n = 321;
+print("Original number: ", n)
+print("Closest Palindrome number of the said number: ",test(n))
+n = 43;
+print("Original number: ", n)
+print("Closest Palindrome number of the said number: ",test(n))
+n = 1234;
+print("Original number: ", n)
+print("Closest Palindrome number of the said number: ",test(n))
+
+
+"""140. Write a Python program to convert all items in a given list to float values. Go to the editor
 Original list:
 ['0.49', '0.54', '0.54', '0.54', '0.54', '0.54', '0.55', '0.54', '0.54', '0.54', '0.55', '0.55', '0.55', '0.54', '0.55', '0.55', '0.54', '0.55', '0.55', '0.54']
 List of Floats:
 [0.49, 0.54, 0.54, 0.54, 0.54, 0.54, 0.55, 0.54, 0.54, 0.54, 0.55, 0.55, 0.55, 0.54, 0.55, 0.55, 0.54, 0.55, 0.55, 0.54]
-Click me to see the sample solution
+Click me to see the sample solution"""
 
-141. Write a Python program to get the domain name using PTR DNS records from a given IP address. Go to the editor
+nums = ['0.49', '0.54', '0.54', '0.54', '0.54', '0.54', '0.55', '0.54', '0.54',  '0.54', 
+ '0.55', '0.55', '0.55', '0.54', '0.55', '0.55', '0.54', '0.55', '0.55', '0.54']
+print("Original list:")
+print(nums)
+print("\nList of Floats:")
+nums_of_floats = []
+for item in nums:
+    nums_of_floats.append(float(item))
+print(nums_of_floats)
+
+
+"""141. Write a Python program to get the domain name using PTR DNS records from a given IP address. Go to the editor
 Domain name using PTR DNS:
 dns.google
 ec2-13-251-106-90.ap-southeast-1.compute.amazonaws.com
 dns.google
 ec2-23-23-212-126.compute-1.amazonaws.com
-Click me to see the sample solution
+Click me to see the sample solution"""
 
-142. Write a Python program to check if every consecutive sequence of zeroes is followed by a consecutive sequence of ones of the same length in a given string. Return True/False. Go to the editor
+def get_domain_name(ip_address):
+  import socket
+  result=socket.gethostbyaddr(ip_address)
+  return list(result)[0]
+print("Domain name using PTR DNS:")
+print(get_domain_name("8.8.8.8"))
+print(get_domain_name("13.251.106.90"))
+print(get_domain_name("8.8.4.4"))
+print(get_domain_name("23.23.212.126"))
+
+
+"""142. Write a Python program to check if every consecutive sequence of zeroes is followed by a consecutive sequence of ones of the same length in a given string. Return True/False. Go to the editor
 Original sequence: 001011
 Check if every consecutive sequence of zeroes is followed by a consecutive sequence of ones in the said string:
 False
@@ -4356,23 +4782,78 @@ Check if every consecutive sequence of zeroes is followed by a consecutive seque
 False
 Original sequence: 0011101
 Check if every consecutive sequence of zeroes is followed by a consecutive sequence of ones in the said string:
-False
-Click me to see the sample solution
+False"
+Click me to see the sample solution"""
 
-143. Write a Python program to print Emojis using Unicode characters or CLDR (Common Locale Data Repository) short names. Go to the editor
+import re
+def test(txt):
+    return [len(i) for i in re.findall('0+',txt)]==[len(i) for i in re.findall('1+',txt)]
+str1 = "001011"
+print("\nOriginal sequence:",str1)
+print("Check if every consecutive sequence of zeroes is followed by a consecutive sequence of ones in the said string:")
+print(test(str1))
+str1 = "01010101"
+print("\nOriginal sequence:",str1)
+print("Check if every consecutive sequence of zeroes is followed by a consecutive sequence of ones in the said string:")
+print(test(str1))
+str1 = "00"
+print("\nOriginal sequence:",str1)
+print("Check if every consecutive sequence of zeroes is followed by a consecutive sequence of ones in the said string:")
+print(test(str1))
+str1 = "000111000111"
+print("\nOriginal sequence:",str1)
+print("Check if every consecutive sequence of zeroes is followed by a consecutive sequence of ones in the said string:")
+print(test(str1))
+str1 = "00011100011"
+print("\nOriginal sequence:",str1)
+print("Check if every consecutive sequence of zeroes is followed by a consecutive sequence of ones in the said string:")
+print(test(str1))
+str1 = "0011101"
+print("\nOriginal sequence:",str1)
+print("Check if every consecutive sequence of zeroes is followed by a consecutive sequence of ones in the said string:")
+print(test(str1))
+
+"""143. Write a Python program to print Emojis using Unicode characters or CLDR (Common Locale Data Repository) short names. Go to the editor
 
 
-Click me to see the sample solution
+Click me to see the sample solution"""
 
-144. Write a Python program to convert integer to string. Go to the editor
+print("Smiling face with heart-eyes:")
+print("\U0001F60D")
+print("Unamused face:")
+print("\U0001F612")
+print("Beaming face with smiling eyes:")
+print("\U0001F601")
+print("Grinning face with sweat:")
+print("\U0001F605")
+print("Face with tears of joy:")
+print("\U0001F602")
+print("Slightly smiling face:")
+print("\U0001F642")
+print("Smiling face with halo:")
+print("\U0001F607")
+print("Zipper-mouth face:")
+print("\U0001F910")
+print("Grinning face:")
+print("\U0001F600")
+print("Rolling on the floor laughing:")
+print("\U0001F923")
+
+
+
+"""144. Write a Python program to convert integer to string. Go to the editor
 Sample Input:
 language = "Python"
 version = 3.6
 sample Output:
 Language: Python, Version: 3.6
-Click me to see the sample solution
+Click me to see the sample solution"""
 
-145. Write a Python program to find the largest and smallest digits of a given number. Go to the editor
+language = "Python"
+version = 3.6
+print('Language: ' + language + ',' + ' Version: ' + str(version))
+
+"""145. Write a Python program to find the largest and smallest digits of a given number. Go to the editor
 Original Number: 9387422
 Largest Digit of the said number: 9
 Smallest Digit of the said number: 2
@@ -4382,41 +4863,152 @@ Smallest Digit of the said number: 0
 Original Number: 231548
 Largest Digit of the said number: 8
 Smallest Digit of the said number: 1
-Click me to see the sample solution
+Click me to see the sample solution"""
 
-146. A Python list contains two positive integers. Write a Python program to check whether the cube root of the first number is equal to the square root of the second number. Go to the editor
+def Largest_Smallest_digit(n):
+   largest_digit = 0
+   smallest_digit = 9
+   while (n):
+       digit = n % 10
+       # largest digit
+       largest_digit = max(digit, largest_digit)
+       # smallest digit
+       smallest_digit = min(digit, smallest_digit)
+       n = n // 10
+   return largest_digit, smallest_digit
+n = 9387422
+print("Original Number:", n)
+result = Largest_Smallest_digit(n)
+print("Largest Digit of the said number:", result[0])
+print("Smallest Digit of the said number:", result[1])
+n = 500
+print("\nOriginal Number:", n)
+result = Largest_Smallest_digit(n)
+print("Largest Digit of the said number:", result[0])
+print("Smallest Digit of the said number:", result[1])
+n = 231548
+print("\nOriginal Number:", n)
+result = Largest_Smallest_digit(n)
+print("Largest Digit of the said number:", result[0])
+print("Smallest Digit of the said number:", result[1])
+
+
+"""146. A Python list contains two positive integers. Write a Python program to check whether the cube root of the first number is equal to the square root of the second number. Go to the editor
 Sample Data:
 ([8, 4]) -> True
 ([64, 16]) -> True
 ([64, 36]) -> False
-Click me to see the sample solution
+Click me to see the sample solution"""
 
-147. A Python list contains three positive integers. Write a Python program to check whether the sum of the digits in each number is equal or not. Return true otherwise false. Go to the editor
+def test(nums):
+    x = nums[0]
+    y = nums[1]
+    t = y**0.5
+    if(x == t*t*t):
+        return True
+    else:
+        return False         
+nums = [8, 4]
+print("Original list of positive numbers:")
+print(nums)
+print(test(nums))
+print("Check square root and cube root of the said numbers:")
+nums = [64, 16]
+print("Original list of positive numbers:")
+print(nums)
+print("Check square root and cube root of the said numbers:")
+print(test(nums))
+nums = [64, 36]
+print("Original list of positive numbers:")
+print(nums)
+print("Check square root and cube root of the said numbers:")
+print(test(nums)) 
+
+
+"""147. A Python list contains three positive integers. Write a Python program to check whether the sum of the digits in each number is equal or not. Return true otherwise false. Go to the editor
 Sample Data:
 ([13, 4, 22]) -> True
 ([-13, 4, 22]) -> False
 ([45, 63, 90]) -> True
-Click me to see the sample solution
+Click me to see the sample solution"""
 
-148. A Python list contains some positive integers. Write a Python program to count the numbers that are greater than the previous number on the list.Go to the editor
+def test(nums):
+    return nums[0] % 9 == nums[1] % 9 == nums[2] % 9 
+
+nums = [13, 4, 22]
+print("Original list of numbers:", nums)
+print("Check sum of the digits in each number of the said list is equal or not!")
+print(test(nums))
+nums = [-13, 4, 22]
+print("Original list of numbers:", nums)
+print("Check sum of the digits in each number of the said list is equal or not!")
+print(test(nums))
+nums = [45, 63, 90]
+print("Original list of numbers:", nums)
+print("Check sum of the digits in each number of the said list is equal or not!")
+print(test(nums))
+
+
+"""148. A Python list contains some positive integers. Write a Python program to count the numbers that are greater than the previous number on the list.Go to the editor
 Sample Data:
 ([1, 4, 7, 9, 11, 5]) -> 4
 ([1, 3, 3, 2, 2]) -> 1
 ([4, 3, 2, 1]) -> 0
-Click me to see the sample solution
+Click me to see the sample solution"""
 
-149. Write a Python program that takes a positive integer and creates an N x N square filled with the integer N. Display the N x N square. Go to the editor
+def test(nums):
+    ctr = 0
+    for i in range(1,len(nums)):
+        if nums[i] > nums[i-1]:
+            ctr += 1
+    return ctr
+
+nums = [1, 4, 7, 9, 11, 5]
+print("Original list of numbers:", nums)
+print("Count the numbers of the said list that are greater than the previous number!")
+print(test(nums))
+nums = [1, 3, 3, 2, 2]
+print("Original list of numbers:", nums)
+print("Count the numbers of the said list that are greater than the previous number!")
+print(test(nums))
+nums = [4, 3, 2, 1]
+print("Original list of numbers:", nums)
+print("Count the numbers of the said list that are greater than the previous number!")
+print(test(nums))
+
+
+"""149. Write a Python program that takes a positive integer and creates an N x N square filled with the integer N. Display the N x N square. Go to the editor
 Sample Data:
 (2) -> [[2, 2], [2, 2]]
 (5) -> [[5, 5, 5, 5, 5], [5, 5, 5, 5, 5], [5, 5, 5, 5, 5], [5, 5, 5, 5, 5], [5, 5, 5, 5, 5]]
 (-6) -> []
-Click me to see the sample solution
+Click me to see the sample solution"""
 
-150. Write a Python program that takes a positive integer and calculates the cube root of the number until the number is less than three. Count the number of steps to complete the task. Go to the editor
+def test(N):
+    result = []
+    for i in range(N):
+        result.append([N]*N)
+    return result
+
+N = int(input("Input an integer : "))
+print(test(N))
+
+"""150. Write a Python program that takes a positive integer and calculates the cube root of the number until the number is less than three. Count the number of steps to complete the task. Go to the editor
 Sample Data:
 (3) -> 1
 (39) -> 2
 (10000) -> 2
-Click me to see the sample solution
-"""
+Click me to see the sample solution"""
+
+def test(n):
+	ctr = 0
+	while n >= 3:
+	    n =  n ** (1./3.)
+	    ctr = ctr + 1    
+    return 'Not a positive number!' if n < 0 else ctr
+
+n= int(input("Input a positive integer:"))
+print(test(n))
+
+
 
