@@ -485,3 +485,48 @@ def add_nums(num1, num2):
         num2 = data << 1
     return num1
 print(add_nums(2, 10))
+
+"""88. Write a Program to match a string that has the letter ‘a’ followed by 4 to 8 'b’s."""
+
+import re 
+def match_text(txt_data):
+    pattern = 'ab{4,8}' 
+    if re.search(pattern, txt_data): 
+        #search 
+        for pattern in txt_data:
+            return 'Match found'
+    else:
+        return('Match not found')
+print(match_text("abc")) #prints Match not found
+print(match_text("aabbbbbc")) #prints Match found
+
+
+"""89. Write a Program to convert date from yyyy-mm-dd format to dd-mm-yyyy format."""
+import re
+def transform_date_format(date):
+    return re.sub(r'(\d{4})-(\d{1,2})-(\d{1,2})', '\\3-\\2-\\1', date)
+date_input = "2021-08-01"
+print(transform_date_format(date_input))
+
+from datetime import datetime
+new_date = datetime.strptime("2021-08-01", "%Y-%m-%d").strftime("%d:%m:%Y")
+print(new_data)
+
+"""90. Write a Program to combine two different dictionaries.
+While combining, if you find the same keys, you can add the values of these same keys.
+Output the new dictionary"""
+
+from collections import Counter
+d1 = {'key1': 50, 'key2': 100, 'key3':200}
+d2 = {'key1': 200, 'key2': 100, 'key4':300}
+new_dict = Counter(d1) + Counter(d2)
+print(new_dict)
+
+
+"""91. How will you access the dataset of a publicly shared spreadsheet in CSV format stored in Google Drive?"""
+from io import StringIO
+import pandas
+csv_link = "https://docs.google.com/spreadsheets/d/..."
+data_source = StringIO.StringIO(requests.get(csv_link).content)
+dataframe = pd.read_csv(data_source)
+print(dataframe.head())
