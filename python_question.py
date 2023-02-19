@@ -525,7 +525,7 @@ print(new_dict)
 
 """91. How will you access the dataset of a publicly shared spreadsheet in CSV format stored in Google Drive?"""
 from io import StringIO
-import pandas
+import pandas as pd
 csv_link = "https://docs.google.com/spreadsheets/d/..."
 data_source = StringIO.StringIO(requests.get(csv_link).content)
 dataframe = pd.read_csv(data_source)
