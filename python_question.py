@@ -4,10 +4,9 @@ Python, Javascript, R, PHP, and Ruby are prime examples of Interpreted languages
 
 """4. What is PEP 8 and why is it important? 
 PEP stands for Python Enhancement Proposal.
-A PEP is an official design document 
-providing information to the Python community, or describing a new feature for Python or its processes."""
+A PEP is an official design document providing information to the Python community, or describing a new feature for Python or its processes."""
 
-"""5. What is Scope in Python? 
+"""5. What is Scope in Python?
 Every object in Python functions within a scope.
 A scope is a block of code where an object in Python remains relevant."""
 
@@ -22,17 +21,19 @@ the other hand are immutable objects.
 This means that lists can be modified, appended or sliced on the go but tuples 
 remain constant and cannot be modified in any manner."""
 
-# 7. What are the common built-in data types in Python?
-"""Numeric Types:
+"""
+7. What are the common built-in data types in Python?
+Numeric Types:
 There are three distinct numeric types - integers, floating-point numbers, and 
 complex numbers. Additionally, Booleans are a sub-type of integers."""
 
 """Sequence Types: 
+
 According to Python Docs, there are three basic Sequence Types - lists, tuples, and range objects."""
 
 """Mapping Types: 
-A mapping object can map hashable values to random objects in Python. Mappings 
-objects are mutable and there is currently only one standard mapping type, the dictionary.
+A mapping object can map hashable values to random objects in Python.
+Mappings objects are mutable and there is currently only one standard mapping type, the dictionary.
 dict : Stores comma-separated list of key: value pairs"""
 
 """Set Types:
@@ -50,6 +51,7 @@ They can still be accessed and modified from outside the class they are defined 
 Private attributes are attributes with double underscore prefixed to their identifier eg. __ansh.
 They cannot be accessed or modified from the outside directly and will result in an AttributeError if such an attempt is made.
 """
+
 """11. What is the use of self in Python?
 Self is used to represent the instance of the class. With this keyword, you can access the attributes and methods of the class in python.
 """
@@ -58,12 +60,14 @@ Self is used to represent the instance of the class. With this keyword, you can 
 __init__ is a contructor method in Python and is automatically called to allocate 
 memory when a new object/instance is created.
 """
+
 """13. What is break, continue and pass in Python?	
 Break :The break statement terminates the loop immediately and the control flows to the statement aȅ er the body of the loop. 
 Continue The continue statement terminates the current iteration of the statement, skips the rest of the code in the current iteration and the control flows to the next iteration of the loop. 
 Pass As explained above, the pass keyword in Python is generally used to fill up empty blocks and is similar to an empty statement represented by a semi-colon in languages such as Java, C++, Javascript, etc.
 """
-"""15. What is docstring in Python? 
+
+"""15. What is docstring in Python?
 Documentation string or docstring is a multiline string used to document a specific code segment. 
 The docstring should describe what the function or method does.
 """
@@ -72,6 +76,7 @@ The docstring should describe what the function or method does.
 Arrays in python can only contain elements of same data types i.e., data type of array should be homogeneous. It is a thin wrapper around C language arrays and consumes far less memory than lists. 
 Lists in python can contain elements of different data types i.e., data type of lists can be heterogeneous. It has the disadvantage of consuming large memory.
 """
+
 """20. What are Python namespaces? Why are they used?
 A namespace in Python ensures that object names in a program are unique and can be used without any conflict.
 """
@@ -80,33 +85,33 @@ Decorators in Python are essentially functions that add functionality to an exis
 decorator function to convert to lowercase 
 """
 
-def lowercase_decorator(function): 
-    def wrapper(): 
-        func = function() 
-        string_lowercase = func.lower() 
-        return string_lowercase 
-    return wrapper 
-# decorator function to split words 
-def splitter_decorator(function): 
-    def wrapper(): 
-        func = function() 
-        string_split = func.split() 
-        return string_split 
-    return wrapper 
+def lowercase_decorator(function):
+    def wrapper():
+        func = function()
+        string_lowercase = func.lower()
+        return string_lowercase
+    return wrapper
+# decorator function to split words
+def splitter_decorator(function):
+    def wrapper():
+        func = function()
+        string_split = func.split()
+        return string_split
+    return wrapper
 @splitter_decorator # this is executed next 
 @lowercase_decorator # this is executed first 
-def hello(): 
-    return 'Hello World' 
+def hello():
+    return 'Hello World'
 hello() # output => [ 'hello' , 'world' ]
 
-def names_decorator(function): 
-    def wrapper(arg1, arg2): 
+def names_decorator(function):
+    def wrapper(arg1, arg2):
         arg1 = arg1.capitalize() 
         arg2 = arg2.capitalize() 
         string_hello = function(arg1, arg2) 
         return string_hello 
-    return wrapper 
-@names_decorator 
+    return wrapper
+@names_decorator
 def say_hello(name1, name2): 
     return 'Hello ' + name1 + '! Hello ' + name2 + '!' 
 say_hello('sara', 'ansh') # output => 'Hello Sara
