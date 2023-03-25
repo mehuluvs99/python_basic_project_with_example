@@ -4992,7 +4992,9 @@ def test(N):
 N = int(input("Input an integer : "))
 print(test(N))
 
-"""150. Write a Python program that takes a positive integer and calculates the cube root of the number until the number is less than three. Count the number of steps to complete the task. Go to the editor
+"""150. Write a Python program that takes a positive integer and calculates the cube root 
+of the number until the number is less than three. 
+Count the number of steps to complete the task. Go to the editor
 Sample Data:
 (3) -> 1
 (39) -> 2
@@ -5003,7 +5005,7 @@ def test(n):
 	ctr = 0
 	while n >= 3:
 	    n =  n ** (1./3.)
-	    ctr = ctr + 1    
+	    ctr = ctr + 1
     return 'Not a positive number!' if n < 0 else ctr
 
 n= int(input("Input a positive integer:"))
